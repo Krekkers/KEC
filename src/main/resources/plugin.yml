@@ -1,0 +1,13 @@
+name: EasyCheckpoints
+version: '${project.version}'
+main: krekks.easycheckpoints.EasyCheckpoints
+prefix: KEC
+authors: [ Krekkers ]
+description: KEC
+
+
+Commands:
+  KecGetList:
+    us
+
+
