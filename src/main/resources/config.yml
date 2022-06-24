@@ -1,0 +1,4 @@
+checkpointblocks: Gold block
+checkpointsound:
+  -test
+checkpointmessage: "&2You got this champ!"
