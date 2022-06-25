@@ -6,8 +6,23 @@ authors: [ Krekkers ]
 description: KEC
 
 
-Commands:
+commands:
   KecGetList:
-    us
-
+    description: Prints the entire list of player data collected by the plugin
+    usage: "Usage: /<command>"
+    permission: Krekks.perms
+    permission-message: You do not have permission to use this command.
+  KecGetPlayerInList:
+    description: Shows you the single player you checked for!
+    usage: "Usage: /<command> [playername]"
+    permission: Krekks.perms
+    permission-message: You do not have permission to use this command.
+  KecToggle:
+    description: Toggles the usage of the plugin
+    usage: "Usage /<command>"
+    permission: Krekks.perms
+    permission-message: You do not have the permission to toggle.
+  Back:
+    description: Allows you to teleport back to your last checkpoint
+    usage: "Usage: /<command>"
 

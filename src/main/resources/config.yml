@@ -1,4 +1,3 @@
-checkpointblocks: Gold block
-checkpointsound:
-  -test
-checkpointmessage: "&2You got this champ!"
+checkpointblocks: "stone"
+checkpointsound: "PISTON_EXTEND"
+checkpointmessages: "&eCheckpoint &creached!"

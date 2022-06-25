@@ -1,17 +1,17 @@
 package krekks.easycheckpoints.Commands;
 
+import com.sun.nio.sctp.SendFailedNotification;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
-import static krekks.easycheckpoints.GoBack.GoToCheckPoint;
+import static krekks.easycheckpoints.EasyCheckpoints.Toggle;
 
-public class GoBackCommand implements CommandExecutor {
+public class ToggleCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        Player p = (Player) sender;
-        GoToCheckPoint(p);
+        Toggle = !Toggle;
+        sender.sendMessage("Checkpoint plugin = " + Toggle);
         return true;
     }
 }
