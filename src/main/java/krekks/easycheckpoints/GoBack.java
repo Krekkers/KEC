@@ -1,10 +1,12 @@
 package krekks.easycheckpoints;
 
+import krekks.easycheckpoints.PlayerData.PlayerData;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import static krekks.easycheckpoints.PlayerData.PlayerDataHandler.GetCheckpointOf;
+import static krekks.easycheckpoints.PlayerData.PlayerDataHandler.GetFromList;
 
 public class GoBack extends JavaPlugin {
 
@@ -21,6 +23,11 @@ public class GoBack extends JavaPlugin {
         newLoc.add(-0.5f,-1f,-0.5f);
         newLoc.setPitch(0);
         newLoc.setYaw(0);
+        PlayerData d = GetFromList(p.getName());
+        if(d.getfinished() == false){
+            d.addGoBackCounter(1);
+        }
+
     }
 
 }

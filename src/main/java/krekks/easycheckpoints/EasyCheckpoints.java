@@ -1,9 +1,6 @@
 package krekks.easycheckpoints;
 
-import krekks.easycheckpoints.Commands.GetListCommand;
-import krekks.easycheckpoints.Commands.GetPlayerInListCommand;
-import krekks.easycheckpoints.Commands.GoBackCommand;
-import krekks.easycheckpoints.Commands.ToggleCommand;
+import krekks.easycheckpoints.Commands.*;
 import krekks.easycheckpoints.Events.*;
 import krekks.easycheckpoints.PlayerData.PlayerDataHandler;
 import org.bukkit.Bukkit;
@@ -16,7 +13,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import static org.bukkit.Bukkit.broadcastMessage;
-
+import static krekks.easycheckpoints.PlayerData.PlayerDataHandler.*;
 public final class EasyCheckpoints extends JavaPlugin {
 
     PluginManager pluginManager = Bukkit.getPluginManager();
@@ -24,6 +21,13 @@ public final class EasyCheckpoints extends JavaPlugin {
     public static World world;
     public static boolean Toggle = false;
     public static Plugin plugin;
+
+
+    public static double finishX = 0;
+    public static double finishY = 0;
+    public static double finishZ = 0;
+
+
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -32,6 +36,9 @@ public final class EasyCheckpoints extends JavaPlugin {
         plugin = this;
         plugin.saveDefaultConfig();
         config = plugin.getConfig();
+        finishX = config.getDoubleList("finishlocation").get(0);
+        finishY = config.getDoubleList("finishlocation").get(1);
+        finishZ = config.getDoubleList("finishlocation").get(2);
         getLogger().info("Config has been setup");
         pluginManager.registerEvents(new Death(), this);
         pluginManager.registerEvents(new PlayerMove(), this);
@@ -44,6 +51,7 @@ public final class EasyCheckpoints extends JavaPlugin {
         getCommand("KecGetPlayerInList").setExecutor(new GetPlayerInListCommand());
         getCommand("Back").setExecutor(new GoBackCommand());
         getCommand("KecToggle").setExecutor(new ToggleCommand());
+        getCommand("KecGetTop").setExecutor(new GetTopCommand());
         getLogger().info("Commands are setup");
         // if the plugin gets reloaded I want it to not break
         getLogger().info("If there are any online players they now have no checkpoint location!");
@@ -57,5 +65,7 @@ public final class EasyCheckpoints extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        data.clear();
+        finishedList.clear();
     }
 }

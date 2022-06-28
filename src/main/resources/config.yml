@@ -1,3 +1,32 @@
-checkpointblocks: "stone"
+#Block Types
+checkpointblock: "gold block"
+jumpblock: "diamond block"
+finishblock: "emerald block"
+speedblock: "iron block"
+#Locations
+finishlocation:
+  - 0.0 #x
+  - 0.0 #y
+  - 0.0 #z
+
+#Sounds
 checkpointsound: "PISTON_EXTEND"
-checkpointmessages: "&eCheckpoint &creached!"
+boostsound: "BAT_TAKEOFF"
+#Messages
+checkpointmessage: "&eCheckpoint &creached!"
+boostmessage: "&5WHOOSH!"
+finishmessage: "&eFinish line &ereached!"
+
+#values
+jumpvalue: 10
+speedvalue: 10
+checkpointonly: false
+
+#items
+gobackitem:
+  name : "&cGo Back"
+  mat : "redstone"
+  lore: #can only have 2 lines
+    - "&eThis item will allow you to go back to your last checkpoint"
+    - "&eOr use /back"
+  index: 8 #the slot where the item will appear in!

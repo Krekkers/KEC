@@ -1,39 +1,75 @@
 package krekks.easycheckpoints.Events;
 
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import krekks.easycheckpoints.PlayerData.PlayerData;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.Vector;
 
-import static krekks.easycheckpoints.EasyCheckpoints.Toggle;
+import static krekks.easycheckpoints.Commands.ToggleCommand.sec;
+import static krekks.easycheckpoints.EasyCheckpoints.*;
 import static krekks.easycheckpoints.PlayerData.PlayerDataHandler.SetCheckpointOf;
+import static krekks.easycheckpoints.PlayerData.PlayerDataHandler.*;
 
 public class PlayerMove implements Listener {
 
+    //tip from thiemo to not check in a onmove!
+    Material checkpoint = Material.matchMaterial(config.getString("checkpointblock"));
+    Material boost = Material.matchMaterial(config.getString("jumpblock"));
+    Material finish = Material.matchMaterial(config.getString("finishblock"));
+    String BoostText = config.getString("boostmessage");
+    String checkpointText = config.getString("checkpointmessage");
+    Sound boostSound = Sound.valueOf(config.getString("boostsound"));
+    Sound checkpointSound = Sound.valueOf(config.getString("checkpointsound"));
     @EventHandler
     void MoveCheck(PlayerMoveEvent e){
+        if(!Toggle)  return;
+        if(e.getFrom().getBlockX() == e.getTo().getBlockX() && e.getFrom().getBlockY() == e.getTo().getBlockY() && e.getFrom().getBlockZ() == e.getTo().getBlockZ()) return;
+        //jump boost
+        if(e.getPlayer().getLocation().add(0,-1,0).getBlock().getType() == boost){
+            Boost(new Vector(0,1f,0), e.getPlayer());
+        }
         Player p = e.getPlayer();
-        if(!Toggle)
-            return;
-        if(e.getPlayer().getLocation().add(0,-1,0).getBlock().getType() == Material.GOLD_BLOCK){
+        //this is the part for the checkpoint
+        if(e.getPlayer().getLocation().add(0,-1,0).getBlock().getType() == checkpoint){
             Location loc = e.getPlayer().getLocation().add(0,-1,0).getBlock().getLocation();
             SetCheckpointOf(e.getPlayer(), loc);
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&',checkpointText));
+            p.playSound(p.getLocation(), checkpointSound,1,2);
         }
-        //jump boost
-        if(e.getPlayer().getLocation().add(0,-1,0).getBlock().getType() == Material.DIAMOND_BLOCK){
-            Boost(new Vector(0,1f,0), p);
+        //this is the part for the finishline
+        if(e.getPlayer().getLocation().add(0,-1,0).getBlock().getType() == finish){
+            Location l = p.getLocation();
+            l.setX(finishX); l.setY(finishY); l.setZ(finishZ);
+            p.sendMessage(ChatColor.YELLOW + "YOU " + ChatColor.RED + "FINISHED!");
+            Bukkit.broadcastMessage("> " + ChatColor.YELLOW + p.getName() + ChatColor.RED + " Has Finished As " + (finishedList.size() + 1) + "!");
+            SetCheckpointOf(e.getPlayer(), l);
+            p.teleport(l);
+            for(PlayerData d : data){
+                if(d.getP() == p && !d.getfinished()){
+                    d.setFinished(true);        //sets the finish of the player
+                    AddToFinished(p);           //add that user to the finished list.
+                    d.setSecondsToFinish(sec);  //sets the seconds it took to finish
+                }
+            }
+        }
+    }
+
+    @EventHandler
+    void FallDamage(EntityDamageEvent e){
+        if (e.getCause() == EntityDamageEvent.DamageCause.FALL){
+            e.setCancelled(true);
         }
     }
 
 
-
     void Boost(Vector velo, Player p){
         p.setVelocity(velo);
-        p.playSound(p.getLocation(), Sound.BAT_TAKEOFF,1,1);
+        p.sendMessage(ChatColor.translateAlternateColorCodes('&', BoostText));
+        p.playSound(p.getLocation(), boostSound,1,1);
     }
 
 

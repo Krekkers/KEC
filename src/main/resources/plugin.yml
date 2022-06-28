@@ -25,4 +25,9 @@ commands:
   Back:
     description: Allows you to teleport back to your last checkpoint
     usage: "Usage: /<command>"
+  KecGetTop:
+    description: Shows you all players that finished in order
+    usage: "Usage /<command>"
+    permission: Krekks.perms
+    permission-message: You do not have permission to use this command.
 
