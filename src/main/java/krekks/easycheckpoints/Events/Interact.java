@@ -3,7 +3,6 @@ package krekks.easycheckpoints.Events;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
@@ -21,7 +20,7 @@ public class Interact implements Listener {
     @EventHandler
     void Back(PlayerInteractEvent e){
         if(Toggle) {
-            if (e.getAction() == Action.RIGHT_CLICK_AIR && e.getPlayer().getItemInHand().getType() == Material.REDSTONE) {
+            if (e.getPlayer().getItemInHand().getType() == Material.REDSTONE) {
                 GoToCheckPoint(e.getPlayer());
                 e.setCancelled(true);
             }
@@ -29,7 +28,7 @@ public class Interact implements Listener {
     }
     @EventHandler
     void NoPlace(BlockPlaceEvent e){
-        if(Toggle){
+        if(Toggle && !e.getPlayer().hasPermission("Krekks.perms")){
             e.setCancelled(true);
         }
     }

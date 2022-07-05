@@ -20,12 +20,12 @@ public final class EasyCheckpoints extends JavaPlugin {
     public static FileConfiguration config = null;
     public static World world;
     public static boolean Toggle = false;
+    public static boolean joinLogging;
     public static Plugin plugin;
 
-
-    public static double finishX = 0;
-    public static double finishY = 0;
-    public static double finishZ = 0;
+    public static double finishX = 0;       //Position X of the place where players will be teleported to
+    public static double finishY = 0;       //Position Y of the place where players will be teleported to
+    public static double finishZ = 0;       //Position Z of the place where players will be teleported to
 
 
     @Override
@@ -52,6 +52,8 @@ public final class EasyCheckpoints extends JavaPlugin {
         getCommand("Back").setExecutor(new GoBackCommand());
         getCommand("KecToggle").setExecutor(new ToggleCommand());
         getCommand("KecGetTop").setExecutor(new GetTopCommand());
+        getCommand("kecbroadcasttop").setExecutor(new DisplayTopCommand());
+        getCommand("togglejoinlogging").setExecutor(new ToggleJoinLogging());
         getLogger().info("Commands are setup");
         // if the plugin gets reloaded I want it to not break
         getLogger().info("If there are any online players they now have no checkpoint location!");
@@ -59,7 +61,6 @@ public final class EasyCheckpoints extends JavaPlugin {
         for(Player p : Bukkit.getOnlinePlayers()){
             PlayerDataHandler.AddToList(p,null);
         }
-
     }
 
     @Override

@@ -10,17 +10,17 @@ commands:
   KecGetList:
     description: Prints the entire list of player data collected by the plugin
     usage: "Usage: /<command>"
-    permission: Krekks.perms
+    permission: krekks.perms
     permission-message: You do not have permission to use this command.
   KecGetPlayerInList:
     description: Shows you the single player you checked for!
     usage: "Usage: /<command> [playername]"
-    permission: Krekks.perms
+    permission: krekks.perms
     permission-message: You do not have permission to use this command.
   KecToggle:
     description: Toggles the usage of the plugin
     usage: "Usage /<command>"
-    permission: Krekks.perms
+    permission: krekks.perms
     permission-message: You do not have the permission to toggle.
   Back:
     description: Allows you to teleport back to your last checkpoint
@@ -28,6 +28,15 @@ commands:
   KecGetTop:
     description: Shows you all players that finished in order
     usage: "Usage /<command>"
-    permission: Krekks.perms
+    permission: krekks.perms
     permission-message: You do not have permission to use this command.
-
+  kecbroadcasttop:
+    description: Broadcasts the top to everyone
+    usage: "Usage /<command>"
+    permission: krekks.perms
+    permission-message: No permission
+  togglejoinlogging:
+    description: Enables the logging of players
+    usage: "Usage /<command>"
+    permission: krekks.perms
+    permission-message: No permission

@@ -12,9 +12,11 @@ finishlocation:
 #Sounds
 checkpointsound: "PISTON_EXTEND"
 boostsound: "BAT_TAKEOFF"
+speedsound: "ENDERDRAGON_WINGS"
 #Messages
 checkpointmessage: "&eCheckpoint &creached!"
 boostmessage: "&5WHOOSH!"
+speedtext: "&5WHOOSH!"
 finishmessage: "&eFinish line &ereached!"
 
 #values
