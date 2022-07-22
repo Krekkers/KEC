@@ -1,8 +1,9 @@
 package krekks.easycheckpoints;
 
-import krekks.easycheckpoints.Commands.*;
-import krekks.easycheckpoints.Events.*;
-import krekks.easycheckpoints.PlayerData.PlayerDataHandler;
+
+import krekks.easycheckpoints.command.*;
+import krekks.easycheckpoints.event.*;
+import krekks.easycheckpoints.playerdata.PlayerDataHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
@@ -12,8 +13,9 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import static krekks.easycheckpoints.playerdata.PlayerDataHandler.data;
+import static krekks.easycheckpoints.playerdata.PlayerDataHandler.finishedList;
 import static org.bukkit.Bukkit.broadcastMessage;
-import static krekks.easycheckpoints.PlayerData.PlayerDataHandler.*;
 public final class EasyCheckpoints extends JavaPlugin {
 
     PluginManager pluginManager = Bukkit.getPluginManager();
@@ -32,6 +34,7 @@ public final class EasyCheckpoints extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         getLogger().info("Launching Better Checkpoints!");
+
         //setting up
         plugin = this;
         plugin.saveDefaultConfig();
@@ -39,6 +42,7 @@ public final class EasyCheckpoints extends JavaPlugin {
         finishX = config.getDoubleList("finishlocation").get(0);
         finishY = config.getDoubleList("finishlocation").get(1);
         finishZ = config.getDoubleList("finishlocation").get(2);
+        joinLogging = config.getBoolean("joinloggingonlaunch");
         getLogger().info("Config has been setup");
         pluginManager.registerEvents(new Death(), this);
         pluginManager.registerEvents(new PlayerMove(), this);

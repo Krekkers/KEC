@@ -1,12 +1,12 @@
 package krekks.easycheckpoints;
 
-import krekks.easycheckpoints.PlayerData.PlayerData;
+import krekks.easycheckpoints.playerdata.PlayerData;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import static krekks.easycheckpoints.PlayerData.PlayerDataHandler.GetCheckpointOf;
-import static krekks.easycheckpoints.PlayerData.PlayerDataHandler.GetFromList;
+import static krekks.easycheckpoints.playerdata.PlayerDataHandler.GetCheckpointOf;
+import static krekks.easycheckpoints.playerdata.PlayerDataHandler.GetFromList;
 
 public class GoBack extends JavaPlugin {
 

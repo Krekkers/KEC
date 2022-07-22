@@ -1,11 +1,11 @@
-package krekks.easycheckpoints.Events;
-
-import static krekks.easycheckpoints.PlayerData.PlayerDataHandler.*;
-import static org.bukkit.Bukkit.getLogger;
+package krekks.easycheckpoints.event;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
+
+import static krekks.easycheckpoints.playerdata.PlayerDataHandler.RemoveFromList;
+import static org.bukkit.Bukkit.getLogger;
 
 public class Leave implements Listener {
     @EventHandler

@@ -1,12 +1,12 @@
-package krekks.easycheckpoints.Commands;
+package krekks.easycheckpoints.command;
 
-import krekks.easycheckpoints.PlayerData.PlayerData;
+import krekks.easycheckpoints.playerdata.PlayerData;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import static krekks.easycheckpoints.PlayerData.PlayerDataHandler.GetFromList;
+import static krekks.easycheckpoints.playerdata.PlayerDataHandler.GetFromList;
 public class GetPlayerInListCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

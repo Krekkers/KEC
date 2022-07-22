@@ -1,4 +1,4 @@
-package krekks.easycheckpoints.Commands;
+package krekks.easycheckpoints.command;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -7,8 +7,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import static krekks.easycheckpoints.PlayerData.PlayerDataHandler.data;
-import static krekks.easycheckpoints.PlayerData.PlayerDataHandler.finishedList;
+import static krekks.easycheckpoints.playerdata.PlayerDataHandler.data;
+import static krekks.easycheckpoints.playerdata.PlayerDataHandler.finishedList;
 
 public class DisplayTopCommand implements CommandExecutor {
     @Override

@@ -1,4 +1,4 @@
-package krekks.easycheckpoints.Events;
+package krekks.easycheckpoints.event;
 
 import org.bukkit.event.Listener;
 

@@ -1,4 +1,4 @@
-package krekks.easycheckpoints.Events;
+package krekks.easycheckpoints.event;
 
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
@@ -6,7 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import static krekks.easycheckpoints.EasyCheckpoints.*;
-import static krekks.easycheckpoints.PlayerData.PlayerDataHandler.AddToList;
+import static krekks.easycheckpoints.playerdata.PlayerDataHandler.AddToList;
 import static org.bukkit.Bukkit.getLogger;
 
 public class Join implements Listener {

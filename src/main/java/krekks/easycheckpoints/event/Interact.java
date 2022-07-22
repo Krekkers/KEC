@@ -1,4 +1,4 @@
-package krekks.easycheckpoints.Events;
+package krekks.easycheckpoints.event;
 
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;

@@ -1,6 +1,6 @@
-package krekks.easycheckpoints.Events;
+package krekks.easycheckpoints.event;
 
-import krekks.easycheckpoints.PlayerData.PlayerData;
+import krekks.easycheckpoints.playerdata.PlayerData;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -9,10 +9,10 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.Vector;
 
-import static krekks.easycheckpoints.Commands.ToggleCommand.sec;
+import static krekks.easycheckpoints.command.ToggleCommand.sec;
 import static krekks.easycheckpoints.EasyCheckpoints.*;
-import static krekks.easycheckpoints.PlayerData.PlayerDataHandler.SetCheckpointOf;
-import static krekks.easycheckpoints.PlayerData.PlayerDataHandler.*;
+import static krekks.easycheckpoints.playerdata.PlayerDataHandler.SetCheckpointOf;
+import static krekks.easycheckpoints.playerdata.PlayerDataHandler.*;
 
 public class PlayerMove implements Listener {
 
@@ -33,6 +33,7 @@ public class PlayerMove implements Listener {
     //values
     double boostval = config.getDouble("jumpvalue");
     double speedval = config.getDouble("speedvalue");
+    //
     boolean checkpointOnly = config.getBoolean("checkpointonly");
 
     @EventHandler
@@ -46,6 +47,7 @@ public class PlayerMove implements Listener {
             SetCheckpointOf(p, loc);
             p.sendMessage(ChatColor.translateAlternateColorCodes('&',checkpointText));
             p.playSound(p.getLocation(), checkpointSound,1,2);
+
         }
         //this is the part for the finishline
         if(p.getLocation().add(0,-1,0).getBlock().getType() == finish){
@@ -83,6 +85,7 @@ public class PlayerMove implements Listener {
 
     @EventHandler
     void FallDamage(EntityDamageEvent e){
+        if(!Toggle) return;
         if (e.getCause() == EntityDamageEvent.DamageCause.FALL && Toggle){
             e.setCancelled(true);
         }
@@ -90,6 +93,7 @@ public class PlayerMove implements Listener {
 
 
     void Boost(Vector velo, Player p){
+        if(!Toggle) return;
         p.setVelocity(velo);
         p.sendMessage(ChatColor.translateAlternateColorCodes('&', BoostText));
         p.playSound(p.getLocation(), boostSound,1,1);

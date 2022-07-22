@@ -1,4 +1,4 @@
-package krekks.easycheckpoints.PlayerData;
+package krekks.easycheckpoints.playerdata;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

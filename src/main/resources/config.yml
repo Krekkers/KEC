@@ -1,3 +1,7 @@
+#If you want to change what the plugin does on launch
+checkpointonly: true
+joinloggingonlaunch: true
+
 #Block Types
 checkpointblock: "gold block"
 jumpblock: "diamond block"
@@ -10,9 +14,9 @@ finishlocation:
   - 0.0 #z
 
 #Sounds
-checkpointsound: "PISTON_EXTEND"
-boostsound: "BAT_TAKEOFF"
-speedsound: "ENDERDRAGON_WINGS"
+checkpointsound: "BLOCK_PISTON_EXTEND"
+boostsound: "ENTITY_BAT_TAKEOFF"
+speedsound: "ENTITY_ENDER_DRAGON_FLAP"
 #Messages
 checkpointmessage: "&eCheckpoint &creached!"
 boostmessage: "&5WHOOSH!"
@@ -22,9 +26,7 @@ finishmessage: "&eFinish line &ereached!"
 #values
 jumpvalue: 10
 speedvalue: 10
-checkpointonly: false
-
-#items
+#items Not implemented yet.
 gobackitem:
   name : "&cGo Back"
   mat : "redstone"

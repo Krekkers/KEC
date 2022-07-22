@@ -1,12 +1,12 @@
-package krekks.easycheckpoints.Commands;
+package krekks.easycheckpoints.command;
 
-import krekks.easycheckpoints.PlayerData.PlayerData;
+import krekks.easycheckpoints.playerdata.PlayerData;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import static krekks.easycheckpoints.PlayerData.PlayerDataHandler.data;
+import static krekks.easycheckpoints.playerdata.PlayerDataHandler.data;
 
 public class GetListCommand implements CommandExecutor {
     @Override
