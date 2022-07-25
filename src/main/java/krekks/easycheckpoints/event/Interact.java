@@ -19,16 +19,15 @@ public class Interact implements Listener {
      */
     @EventHandler
     void Back(PlayerInteractEvent e){
-        if(Toggle) {
-            if (e.getPlayer().getItemInHand().getType() == Material.REDSTONE) {
-                GoToCheckPoint(e.getPlayer());
-                e.setCancelled(true);
-            }
+        if(!Toggle) return;
+        if (e.getPlayer().getItemInHand().getType() == Material.REDSTONE) {
+            GoToCheckPoint(e.getPlayer());
+            e.setCancelled( true);
         }
     }
     @EventHandler
     void NoPlace(BlockPlaceEvent e){
-        if(Toggle && !e.getPlayer().hasPermission("Krekks.perms")){
+        if(Toggle && !e.getPlayer().hasPermission("krekks.perms")){
             e.setCancelled(true);
         }
     }

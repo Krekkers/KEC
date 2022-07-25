@@ -68,7 +68,10 @@ public class PlayerMove implements Listener {
         if(checkpointOnly) return;
         //jump boost
         if(p.getLocation().add(0,-1,0).getBlock().getType() == boost){
-            Boost(new Vector(0,boostval / 10,0), e.getPlayer());
+            Boost(new Vector(0,boostval / 10,0), e.getPlayer(),boostSound);
+        }
+        if(p.getLocation().add(0,-1,0).getBlock().getType() == speed){
+            Boost(new Vector(e.getPlayer().getLocation().getDirection().getX(),speedval / 10,e.getPlayer().getLocation().getDirection().getZ()), e.getPlayer(),speedSound);
         }
         /* to be forgotten about since i will likely not add it!
         //speed boost
@@ -92,11 +95,11 @@ public class PlayerMove implements Listener {
     }
 
 
-    void Boost(Vector velo, Player p){
+    void Boost(Vector velo, Player p, Sound sound){
         if(!Toggle) return;
         p.setVelocity(velo);
         p.sendMessage(ChatColor.translateAlternateColorCodes('&', BoostText));
-        p.playSound(p.getLocation(), boostSound,1,1);
+        p.playSound(p.getLocation(), sound,1,1);
     }
 
 

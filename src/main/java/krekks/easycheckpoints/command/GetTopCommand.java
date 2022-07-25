@@ -14,9 +14,9 @@ public class GetTopCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         sender.sendMessage("Printing All finished players in order!");
         for(int i = 0; i < 10; i++){
-            if(i >= finishedList.size()) return true;
+            if(i > finishedList.size()) return true;
                 Player p = finishedList.get(i);
-                sender.sendMessage(ChatColor.YELLOW + "Player in position : " + ChatColor.RED + (i + 1) + " is : " + p.getName());
+                sender.sendMessage(ChatColor.YELLOW + "Player in position : " + ChatColor.RED + (i + 1) + ChatColor.YELLOW + " is : "  + ChatColor.RED + p.getName());
                 sender.sendMessage(ChatColor.YELLOW + "They took : " + ChatColor.RED + data.get(i).getSecondsToFinish() + " seconds");
         }
         return true;

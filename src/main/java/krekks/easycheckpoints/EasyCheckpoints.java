@@ -44,7 +44,7 @@ public final class EasyCheckpoints extends JavaPlugin {
         finishZ = config.getDoubleList("finishlocation").get(2);
         joinLogging = config.getBoolean("joinloggingonlaunch");
         getLogger().info("Config has been setup");
-        pluginManager.registerEvents(new Death(), this);
+        pluginManager.registerEvents(new DeathEvent(), this);
         pluginManager.registerEvents(new PlayerMove(), this);
         pluginManager.registerEvents(new InventoryEvents(), this);
         pluginManager.registerEvents(new Leave(), this);
