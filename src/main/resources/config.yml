@@ -1,12 +1,14 @@
 #If you want to change what the plugin does on launch
 checkpointonly: true
 joinloggingonlaunch: true
+autostart: false
+usepermissions: false
 
 #Block Types
 checkpointblock: "gold block"
 jumpblock: "diamond block"
 finishblock: "emerald block"
-speedblock: "iron block"
+boostblock: "iron block"
 #Locations
 finishlocation:
   - 0.0 #x
@@ -15,22 +17,21 @@ finishlocation:
 
 #Sounds
 checkpointsound: "PISTON_EXTEND"
-boostsound: "BAT_TAKEOFF"
-speedsound: "ENDER_DRAGON_FLAP"
+jumpsound: "BAT_TAKEOFF"
+boostsound: "ENDERDRAGON_WINGS"
 #Messages
 checkpointmessage: "&eCheckpoint &creached!"
-boostmessage: "&5WHOOSH!"
-speedtext: "&5WHOOSH!"
+jumpmessage: "&5WHOOSH!"
+boostmessage: "&3WHOOSH!"
 finishmessage: "&eFinish line &ereached!"
 
 #values
 jumpvalue: 10
-speedvalue: 10
-#items Not implemented yet.
-gobackitem:
-  name : "&cGo Back"
-  mat : "redstone"
-  lore: #can only have 2 lines
-    - "&eThis item will allow you to go back to your last checkpoint"
-    - "&eOr use /back"
-  index: 8 #the slot where the item will appear in!
+boostvalue: 10
+#Item
+backitemname: "&eGo &cBack"
+backmaterial: "REDSTONE"
+
+
+
+

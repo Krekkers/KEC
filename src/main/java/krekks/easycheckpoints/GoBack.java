@@ -24,7 +24,7 @@ public class GoBack extends JavaPlugin {
         newLoc.setPitch(0);
         newLoc.setYaw(0);
         PlayerData d = GetFromList(p.getName());
-        if(d.getfinished() == false){
+        if(!d.getFinished()){
             d.addGoBackCounter(1);
         }
 

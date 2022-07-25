@@ -23,8 +23,8 @@ public class GetPlayerInListCommand implements CommandExecutor {
             sender.sendMessage("> " + ChatColor.YELLOW + "CheckPointLocation : " + ChatColor.RED + d.getCheckpointLocation().getX() + " " + d.getCheckpointLocation().getY() + " " + d.getCheckpointLocation().getZ());
         }
         sender.sendMessage("> " + ChatColor.YELLOW + "Go back counter : " + ChatColor.RED + d.getGoBackCounter());
-        if(d.getfinished()){
-            sender.sendMessage("> " + ChatColor.YELLOW + "Finished = " + ChatColor.RED + d.getfinished());
+        if(d.getFinished()){
+            sender.sendMessage("> " + ChatColor.YELLOW + "Finished = " + ChatColor.RED + d.getFinished());
             sender.sendMessage("> " + ChatColor.YELLOW + "It took them : " + ChatColor.RED + d.getSecondsToFinish() + " Seconds");
         }
         return true;

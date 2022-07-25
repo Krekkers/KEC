@@ -44,7 +44,7 @@ public class PlayerData {
     public int getGoBackCounter(){
         return goBackCounter;
     }
-    public boolean getfinished(){
+    public boolean getFinished(){
         return finished;
     }
     public int getSecondsToFinish(){
