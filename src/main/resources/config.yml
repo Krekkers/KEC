@@ -2,7 +2,6 @@
 checkpointonly: true
 joinloggingonlaunch: true
 autostart: false
-usepermissions: false
 
 #Block Types
 checkpointblock: "gold block"
@@ -12,7 +11,7 @@ boostblock: "iron block"
 #Locations
 finishlocation:
   - 0.0 #x
-  - 0.0 #y
+  - 100.0 #y
   - 0.0 #z
 
 #Sounds

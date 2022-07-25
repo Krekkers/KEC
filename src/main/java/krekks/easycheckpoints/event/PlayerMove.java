@@ -11,7 +11,8 @@ import org.bukkit.util.Vector;
 
 import static krekks.easycheckpoints.command.ToggleCommand.sec;
 import static krekks.easycheckpoints.EasyCheckpoints.*;
-import static krekks.easycheckpoints.playerdata.PlayerDataHandler.SetCheckpointOf;
+import static krekks.easycheckpoints.misc.PlayerBoost.Boost;
+import static krekks.easycheckpoints.playerdata.PlayerDataHandler.setCheckpointOf;
 import static krekks.easycheckpoints.playerdata.PlayerDataHandler.*;
 
 public class PlayerMove implements Listener {
@@ -44,7 +45,7 @@ public class PlayerMove implements Listener {
         //this is the part for the checkpoint
         if(e.getPlayer().getLocation().add(0,-1,0).getBlock().getType() == checkpoint){
             Location loc = p.getLocation().add(0,-1,0).getBlock().getLocation();
-            SetCheckpointOf(p, loc);
+            setCheckpointOf(p, loc);
             p.sendMessage(ChatColor.translateAlternateColorCodes('&',checkpointText));
             p.playSound(p.getLocation(), checkpointSound,1,2);
 
@@ -55,12 +56,12 @@ public class PlayerMove implements Listener {
             l.setX(finishX); l.setY(finishY); l.setZ(finishZ);
             p.sendMessage(ChatColor.YELLOW + "YOU " + ChatColor.RED + "FINISHED!");
             Bukkit.broadcastMessage("> " + ChatColor.YELLOW + p.getName() + ChatColor.RED + " is number " + (finishedList.size() + 1) + " to finish!");
-            SetCheckpointOf(p, l);
+            setCheckpointOf(p, l);
             p.teleport(l);
             for(PlayerData d : data){
                 if(d.getP() == p && !d.getFinished()){
                     d.setFinished(true);        //sets the finish of the player
-                    AddToFinished(p);           //add that user to the finished list.
+                    addToFinished(p);           //add that user to the finished list.
                     d.setSecondsToFinish(sec);  //sets the seconds it took to finish
                 }
             }
@@ -82,15 +83,4 @@ public class PlayerMove implements Listener {
         if(!Toggle) return;
         if (e.getCause() == EntityDamageEvent.DamageCause.FALL && Toggle) e.setCancelled(true);
     }
-
-
-    void Boost(Vector velo, Player p, Sound sound, String message){
-        if(!Toggle) return;
-        p.setVelocity(velo);
-        p.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
-        p.playSound(p.getLocation(), sound,1,1);
-    }
-
-
-
 }

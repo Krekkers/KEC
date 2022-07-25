@@ -6,11 +6,11 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import static krekks.easycheckpoints.playerdata.PlayerDataHandler.GetFromList;
+import static krekks.easycheckpoints.playerdata.PlayerDataHandler.getFromList;
 public class GetPlayerInListCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        PlayerData d = GetFromList(args[0]);
+        PlayerData d = getFromList(args[0]);
         if(d == null){
             sender.sendMessage("Data = null");
             return true;

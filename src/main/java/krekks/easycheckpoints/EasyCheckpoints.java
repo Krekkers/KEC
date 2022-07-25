@@ -21,7 +21,7 @@ public final class EasyCheckpoints extends JavaPlugin {
     PluginManager pluginManager = Bukkit.getPluginManager();
     public static FileConfiguration config = null;
     public static World world;
-    public static boolean Toggle = false;
+    public static boolean Toggle;
     public static boolean joinLogging;
     public static Plugin plugin;
 
@@ -43,6 +43,7 @@ public final class EasyCheckpoints extends JavaPlugin {
         finishY = config.getDoubleList("finishlocation").get(1);
         finishZ = config.getDoubleList("finishlocation").get(2);
         joinLogging = config.getBoolean("joinloggingonlaunch");
+        Toggle = config.getBoolean("autostart");
         getLogger().info("Config has been setup");
         pluginManager.registerEvents(new DeathEvent(), this);
         pluginManager.registerEvents(new PlayerMove(), this);
@@ -54,7 +55,7 @@ public final class EasyCheckpoints extends JavaPlugin {
         getCommand("KecGetList").setExecutor(new GetListCommand());
         getCommand("KecGetPlayerInList").setExecutor(new GetPlayerInListCommand());
         getCommand("Back").setExecutor(new GoBackCommand());
-        getCommand("KecToggle").setExecutor(new ToggleCommand());
+        getCommand("KecStart").setExecutor(new ToggleCommand());
         getCommand("KecGetTop").setExecutor(new GetTopCommand());
         getCommand("kecbroadcasttop").setExecutor(new DisplayTopCommand());
         getCommand("togglejoinlogging").setExecutor(new ToggleJoinLogging());

@@ -3,7 +3,15 @@ package krekks.easycheckpoints.playerdata;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-
+/**
+ * This class is made to collect player data
+ * This data includes :
+ * Player,
+ * Checkpoint,
+ * Go back Counter,
+ * Finished ,
+ * Seconds it took for someone to finish
+ */
 public class PlayerData {
     Player p;
     Location checkpointLocation;
@@ -11,6 +19,9 @@ public class PlayerData {
     boolean finished = false;
     int secondsToFinish = 0;
 
+    /**
+     * Player data to collect.
+     */
     public PlayerData(Player _p, Location _l){
         checkpointLocation = _l;
         p = _p;

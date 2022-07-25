@@ -14,11 +14,21 @@ public class PlayerDataHandler {
         data.add(_data);
         return _data;
     }
-    public static void RemoveFromList(Player p){
+
+    /**
+     * Removes a player from the list
+     * @param p player to be removed
+     */
+    public static void removeFromList(Player p){
         data.removeIf(player -> player.getP().equals(p));
     }
 
-    public static PlayerData GetFromList(String p){
+    /**
+     * Gets a player from the list using player name
+     * @param p player name in the form of a string
+     * @return the PlayerData from the player
+     */
+    public static PlayerData getFromList(String p){
         for(PlayerData _data : data){
             if(_data.getP().getName().equals(p)){
                 return _data;
@@ -26,19 +36,35 @@ public class PlayerDataHandler {
         }
         return null;
     }
-    public static Player AddToFinished(Player p){
+
+    /**
+     * Adds the player to the finished list
+     * @param p player to add
+     * @return the player that got added
+     */
+    public static Player addToFinished(Player p){
         finishedList.add(p);
         return p;
     }
 
-    public static Location GetCheckpointOf(Player p){
+    /**
+     * Gets the checkpoint of a player and returns it
+     * @param p player to check the checkpoint of
+     * @return Players Checkpoint
+     */
+    public static Location getCheckpointOf(Player p){
         for(PlayerData player : data){
             if(player.getP() == p) return player.getCheckpointLocation();
         }
         return null;
     }
 
-    public static void SetCheckpointOf(Player p, Location loc){
+    /**
+     * Sets the checkpoint of a player
+     * @param p player
+     * @param loc checkpoint location
+     */
+    public static void setCheckpointOf(Player p, Location loc){
         //loops trough the list to find the player and sets its checkpoint (which it will do once!)
         for(PlayerData player : data){
             if(player.getP().equals(p)){
@@ -46,6 +72,8 @@ public class PlayerDataHandler {
             }
         }
     }
+
+
 
 
 

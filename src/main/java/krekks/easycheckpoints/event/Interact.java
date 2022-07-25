@@ -7,7 +7,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import static krekks.easycheckpoints.EasyCheckpoints.Toggle;
-import static krekks.easycheckpoints.GoBack.GoToCheckPoint;
+import static krekks.easycheckpoints.misc.GoBack.GoToCheckPoint;
 
 public class Interact implements Listener {
     /*

@@ -1,17 +1,21 @@
-package krekks.easycheckpoints;
+package krekks.easycheckpoints.misc;
 
 import krekks.easycheckpoints.playerdata.PlayerData;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import static krekks.easycheckpoints.playerdata.PlayerDataHandler.GetCheckpointOf;
-import static krekks.easycheckpoints.playerdata.PlayerDataHandler.GetFromList;
+import static krekks.easycheckpoints.playerdata.PlayerDataHandler.getCheckpointOf;
+import static krekks.easycheckpoints.playerdata.PlayerDataHandler.getFromList;
 
 public class GoBack extends JavaPlugin {
-
+    //goes back to the checkpoint
+    /**
+     * This make the player go back to the checkpoint
+     * @param p player to get back to his checkpoint
+     */
     public static void GoToCheckPoint(Player p){
-        Location newLoc = GetCheckpointOf(p);
+        Location newLoc = getCheckpointOf(p);
         if(newLoc == null)return;
         //setting location values to be teleported to
         newLoc.add(0.5f,1f,0.5f);
@@ -23,7 +27,7 @@ public class GoBack extends JavaPlugin {
         newLoc.add(-0.5f,-1f,-0.5f);
         newLoc.setPitch(0);
         newLoc.setYaw(0);
-        PlayerData d = GetFromList(p.getName());
+        PlayerData d = getFromList(p.getName());
         if(!d.getFinished()){
             d.addGoBackCounter(1);
         }
