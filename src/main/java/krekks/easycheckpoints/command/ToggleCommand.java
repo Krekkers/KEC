@@ -28,6 +28,6 @@ public class ToggleCommand implements CommandExecutor {
             }.runTaskTimer(plugin, 0,20);
         }else { sec = 0; }
 
-        return false;
+        return true;
     }
 }

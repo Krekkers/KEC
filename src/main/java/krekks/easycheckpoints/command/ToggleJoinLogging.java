@@ -11,6 +11,6 @@ public class ToggleJoinLogging implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         joinLogging = !joinLogging;
         sender.sendMessage("join logging = " + joinLogging);
-        return false;
+        return true;
     }
 }

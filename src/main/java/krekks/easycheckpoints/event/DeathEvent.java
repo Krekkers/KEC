@@ -15,6 +15,7 @@ public class DeathEvent implements Listener {
     @EventHandler
     void playerDeath(EntityDamageEvent e){
         Player p = (Player) e.getEntity();
+        p.setFireTicks(0);
         if((p.getHealth() - e.getFinalDamage()) <= 0 ){
             if(getCheckpointOf(p) == null) return;
             e.setCancelled(true);
@@ -23,6 +24,7 @@ public class DeathEvent implements Listener {
             p.sendMessage(ChatColor.YELLOW + "You got saved from " + ChatColor.RED + "Death!");
             p.teleport(l);
             p.setHealth(20);
+
         }
     }
 

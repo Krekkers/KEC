@@ -24,6 +24,6 @@ public class GetListCommand implements CommandExecutor {
                 sender.sendMessage("> " + ChatColor.YELLOW + "It took them : " + ChatColor.RED + d.getSecondsToFinish() + " Seconds");
             }
         }
-        return false;
+        return true;
     }
 }

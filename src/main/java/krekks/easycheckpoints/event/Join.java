@@ -14,15 +14,12 @@ import static org.bukkit.Bukkit.getLogger;
 
 public class Join implements Listener {
     ItemStack goBackItem = makeGoBackItem(Material.matchMaterial(config.getString("backmaterial")));
-
     @EventHandler
     void JoinEvent(PlayerJoinEvent e){
         //adds player to list
         if(!joinLogging) return;
-        if(e.getPlayer().hasPermission("krekks.perms"))return;
         AddToList(e.getPlayer(), null);
         getLogger().info("Player : " + e.getPlayer().getName() + " Has been added to the list!");
         e.getPlayer().getInventory().setItem(8, goBackItem);
-
     }
 }

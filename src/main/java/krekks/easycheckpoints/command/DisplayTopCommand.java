@@ -19,6 +19,6 @@ public class DisplayTopCommand implements CommandExecutor {
             Bukkit.broadcastMessage(ChatColor.YELLOW + "Player in position : " + ChatColor.RED + (i + 1) + " is : " + p.getName());
             Bukkit.broadcastMessage(ChatColor.YELLOW + "They took : " + ChatColor.RED + data.get(i).getSecondsToFinish() + " seconds");
         }
-        return false;
+        return true;
     }
 }

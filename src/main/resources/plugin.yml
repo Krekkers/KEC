@@ -40,3 +40,8 @@ commands:
     usage: "Usage /<command>"
     permission: krekks.perms
     permission-message: No permission
+  KecSetCheckpointOf:
+    description: Manually sets the checkpoint of a player to a specified location
+    usage: "Usage /<command> <Name> <x> <y> <z>"
+    permission: krekks.perms
+    permission-message: No permission

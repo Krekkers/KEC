@@ -10,9 +10,9 @@ finishblock: "emerald block"
 boostblock: "iron block"
 #Locations
 finishlocation:
-  - 0.0 #x
-  - 100.0 #y
-  - 0.0 #z
+  - 0.0     #x
+  - 100.0   #y
+  - 0.0     #z
 
 #Sounds
 checkpointsound: "PISTON_EXTEND"
