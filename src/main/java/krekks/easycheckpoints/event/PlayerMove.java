@@ -9,10 +9,8 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.Vector;
 
-import static krekks.easycheckpoints.command.ToggleCommand.sec;
 import static krekks.easycheckpoints.EasyCheckpoints.*;
 import static krekks.easycheckpoints.misc.PlayerBoost.Boost;
-import static krekks.easycheckpoints.playerdata.PlayerDataHandler.setCheckpointOf;
 import static krekks.easycheckpoints.playerdata.PlayerDataHandler.*;
 
 public class PlayerMove implements Listener {
@@ -51,7 +49,7 @@ public class PlayerMove implements Listener {
 
         }
         //this is the part for the finishline
-        if(p.getLocation().add(0,-1,0).getBlock().getType() == finish){
+        if(p.getLocation().add(0,-1,0).getBlock().getType() == finish && !e.getPlayer().hasPermission("krekks.perms")){
             Location l = p.getLocation();
             l.setX(finishX); l.setY(finishY); l.setZ(finishZ);
             p.sendMessage(ChatColor.YELLOW + "YOU " + ChatColor.RED + "FINISHED!");

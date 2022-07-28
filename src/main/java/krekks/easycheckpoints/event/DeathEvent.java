@@ -7,6 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 
+import static krekks.easycheckpoints.EasyCheckpoints.Toggle;
 import static krekks.easycheckpoints.playerdata.PlayerDataHandler.getCheckpointOf;
 
 public class DeathEvent implements Listener {
@@ -14,9 +15,11 @@ public class DeathEvent implements Listener {
     //for the future
     @EventHandler
     void playerDeath(EntityDamageEvent e){
-        Player p = (Player) e.getEntity();
-        p.setFireTicks(0);
-        if((p.getHealth() - e.getFinalDamage()) <= 0 ){
+
+        Player p = (Player) e.getEntity();                  //gets the player
+        if(Toggle) p.setFireTicks(0);                       //sets firetick to 0 so it doesnt happen
+
+        if((p.getHealth() - e.getFinalDamage()) <= 0 ){     //if player health is lower then 0;
             if(getCheckpointOf(p) == null) return;
             e.setCancelled(true);
             Location l = getCheckpointOf(p);

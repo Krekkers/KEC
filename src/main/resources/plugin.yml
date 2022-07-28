@@ -45,3 +45,23 @@ commands:
     usage: "Usage /<command> <Name> <x> <y> <z>"
     permission: krekks.perms
     permission-message: No permission
+  KecReset:
+    description: Reset the game. Will always toggle off
+    usage: "Usage /<command>"
+    permission: krekks.perms
+    permission-message: No permission
+  KecShowPluginData:
+    description: Shows you plugin info
+    usage: "Usage /<command>"
+    permission: krekks.perms
+    permission-message: No permission
+  KecChangeFinishLocation:
+    description: change the finishline
+    usage: "Usage /<command> <x> <y> <z>"
+    permission: krekks.perms
+    permission-message: No permission
+  KecChangeSpawnLocation:
+    description: change the spawnLocation
+    usage: "Usage /<command> <x> <y> <z>"
+    permission: krekks.perms
+    permission-message: No permission

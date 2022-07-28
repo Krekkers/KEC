@@ -6,12 +6,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import static krekks.easycheckpoints.EasyCheckpoints.Toggle;
-import static krekks.easycheckpoints.EasyCheckpoints.plugin;
-
+import static krekks.easycheckpoints.EasyCheckpoints.*;
 public class ToggleCommand implements CommandExecutor {
 
-    public static int sec;
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Toggle = !Toggle;

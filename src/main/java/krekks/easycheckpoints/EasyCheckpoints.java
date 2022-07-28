@@ -20,10 +20,11 @@ public final class EasyCheckpoints extends JavaPlugin {
 
     PluginManager pluginManager = Bukkit.getPluginManager();
     public static FileConfiguration config = null;
-    public static World world;
+    public static World world;              //unused
     public static boolean Toggle;
     public static boolean joinLogging;
     public static Plugin plugin;
+    public static int sec;
 
     public static double finishX = 0;       //Position X of the place where players will be teleported to
     public static double finishY = 0;       //Position Y of the place where players will be teleported to
@@ -32,19 +33,21 @@ public final class EasyCheckpoints extends JavaPlugin {
     public static double spawnX = 0;
     public static double spawnY = 0;
     public static double spawnZ = 0;
-
     @Override
     public void onEnable() {
         // Plugin startup logic
-        getLogger().info("Launching Better Checkpoints!");
-
+        getLogger().info("LAUNCHING KEC!");
         //setting up
         plugin = this;
         plugin.saveDefaultConfig();
         config = plugin.getConfig();
+        world = Bukkit.getWorld(config.getString("world"));
         finishX = config.getDoubleList("finishlocation").get(0);
         finishY = config.getDoubleList("finishlocation").get(1);
         finishZ = config.getDoubleList("finishlocation").get(2);
+        spawnX = config.getDoubleList("spawnlocation").get(0);
+        spawnY = config.getDoubleList("spawnlocation").get(1);
+        spawnZ = config.getDoubleList("spawnlocation").get(2);
         joinLogging = config.getBoolean("joinloggingonlaunch");
         Toggle = config.getBoolean("autostart");
         getLogger().info("Config has been setup");
@@ -63,6 +66,10 @@ public final class EasyCheckpoints extends JavaPlugin {
         getCommand("kecbroadcasttop").setExecutor(new DisplayTopCommand());
         getCommand("togglejoinlogging").setExecutor(new ToggleJoinLogging());
         getCommand("KecSetCheckpointOf").setExecutor(new SetCheckpointCommand());
+        getCommand("KecReset").setExecutor(new RestartCommand());
+        getCommand("KecShowPluginData").setExecutor(new PluginInfoCommand());
+        getCommand("KecChangeFinishLocation").setExecutor(new ChangeFinishLocationCommand());
+        getCommand("KecChangeSpawnLocation").setExecutor(new ChangeSpawnLocationCommand());
         getLogger().info("Commands are setup");
         // if the plugin gets reloaded I want it to not break
         getLogger().info("If there are any online players they now have no checkpoint location!");
