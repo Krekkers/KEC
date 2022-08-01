@@ -4,10 +4,11 @@ joinloggingonlaunch: true
 autostart: false
 
 #Block Types
-#checkpointblock: "gold block"
-#jumpblock: "diamond block"
-#finishblock: "emerald block"
-#boostblock: "iron block"
+checkpointblock: "gold block"
+jumpblock: "diamond block"
+finishblock: "emerald block"
+boostblock: "iron block"
+elytrablock: "PURPUR_PILLAR"
 #Locations
 finishlocation:
   - 0.0     #x
@@ -20,18 +21,20 @@ spawnlocation:
 
 
 #Sounds
-checkpointsound: "PISTON_EXTEND"
-jumpsound: "BAT_TAKEOFF"
-boostsound: "ENDERDRAGON_WINGS"
+#checkpointsound: "PISTON_EXTEND"
+#jumpsound: "BAT_TAKEOFF"
+#boostsound: "ENDERDRAGON_WINGS"
 #Messages
 checkpointmessage: "&eCheckpoint &creached!"
 jumpmessage: "&cWHOOSH!"
 boostmessage: "&eWHOOSH!"
+elytramessage: "&cjumps of building!"
 finishmessage: "&eFinish line &ereached!"
 
 #values
 jumpvalue: 10
 boostvalue: 10
+elytravalue: 5
 #Item
 backitemname: "&eGo &cBack"
 backmaterial: "REDSTONE"
