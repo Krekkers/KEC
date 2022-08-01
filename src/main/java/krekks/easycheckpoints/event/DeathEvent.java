@@ -18,7 +18,6 @@ public class DeathEvent implements Listener {
 
         Player p = (Player) e.getEntity();                  //gets the player
         if(Toggle) p.setFireTicks(0);                       //sets firetick to 0 so it doesnt happen
-
         if((p.getHealth() - e.getFinalDamage()) <= 0 ){     //if player health is lower then 0;
             if(getCheckpointOf(p) == null) return;
             e.setCancelled(true);

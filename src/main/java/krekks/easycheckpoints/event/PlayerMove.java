@@ -26,9 +26,14 @@ public class PlayerMove implements Listener {
     String checkpointText = config.getString("checkpointmessage");
     String boostText = config.getString("boostmessage");
     //sounds
+    Sound jumpSound = Sound.BLOCK_PISTON_EXTEND;
+    Sound checkpointSound = Sound.BLOCK_NOTE_BLOCK_PLING;
+    Sound boostSound = Sound.ENTITY_ENDER_DRAGON_FLAP;
+    /* Removed due to 1.19 support
     Sound jumpSound = Sound.valueOf(config.getString("jumpsound"));
     Sound checkpointSound = Sound.valueOf(config.getString("checkpointsound"));
     Sound boostSound = Sound.valueOf(config.getString("boostsound"));
+     */
     //values
     double jumpVal = config.getDouble("jumpvalue");
     double boostVal = config.getDouble("boostvalue");

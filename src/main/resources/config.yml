@@ -4,10 +4,10 @@ joinloggingonlaunch: true
 autostart: false
 
 #Block Types
-checkpointblock: "gold block"
-jumpblock: "diamond block"
-finishblock: "emerald block"
-boostblock: "iron block"
+#checkpointblock: "gold block"
+#jumpblock: "diamond block"
+#finishblock: "emerald block"
+#boostblock: "iron block"
 #Locations
 finishlocation:
   - 0.0     #x
@@ -25,8 +25,8 @@ jumpsound: "BAT_TAKEOFF"
 boostsound: "ENDERDRAGON_WINGS"
 #Messages
 checkpointmessage: "&eCheckpoint &creached!"
-jumpmessage: "&5WHOOSH!"
-boostmessage: "&3WHOOSH!"
+jumpmessage: "&cWHOOSH!"
+boostmessage: "&eWHOOSH!"
 finishmessage: "&eFinish line &ereached!"
 
 #values

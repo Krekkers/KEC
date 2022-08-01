@@ -18,7 +18,7 @@ public class InventoryEvents implements Listener {
     }
     @EventHandler
     void ItemDropEvent(PlayerDropItemEvent e){
-        if(!Toggle && !e.getPlayer().hasPermission("krekks.perms")) return;
+        if(Toggle && !e.getPlayer().hasPermission("krekks.perms")) return;
         e.setCancelled(true);
     }
 

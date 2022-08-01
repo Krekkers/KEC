@@ -41,7 +41,7 @@ public final class EasyCheckpoints extends JavaPlugin {
         plugin = this;
         plugin.saveDefaultConfig();
         config = plugin.getConfig();
-        world = Bukkit.getWorld(config.getString("world"));
+        //world = Bukkit.getWorld(config.getString("world"));
         finishX = config.getDoubleList("finishlocation").get(0);
         finishY = config.getDoubleList("finishlocation").get(1);
         finishZ = config.getDoubleList("finishlocation").get(2);
