@@ -15,7 +15,7 @@ import static org.bukkit.Bukkit.getLogger;
 public class Join implements Listener {
     ItemStack goBackItem = makeGoBackItem(Material.matchMaterial(config.getString("backmaterial")));
     @EventHandler
-    void JoinEvent(PlayerJoinEvent e){
+    void joinEvent(PlayerJoinEvent e){
         //adds player to list
         if(!joinLogging) return;
         AddToList(e.getPlayer(), null);

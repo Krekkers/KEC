@@ -1,5 +1,5 @@
 #If you want to change what the plugin does on launch
-checkpointonly: true
+checkpointonly: false
 joinloggingonlaunch: true
 autostart: false
 
@@ -21,20 +21,21 @@ spawnlocation:
 
 
 #Sounds
-#checkpointsound: "PISTON_EXTEND"
-#jumpsound: "BAT_TAKEOFF"
-#boostsound: "ENDERDRAGON_WINGS"
+checkpointsound: "BLOCK_NOTE_BLOCK_PLING"
+jumpsound: "BLOCK_PISTON_EXTEND"
+boostsound: "ENTITY_FIREWORK_ROCKET_LAUNCH"
+elytrasound: "ENTITY_ENDER_DRAGON_FLAP"
 #Messages
-checkpointmessage: "&eCheckpoint &creached!"
+checkpointmessage: "&eCheckpoint &cReached!"
 jumpmessage: "&cWHOOSH!"
 boostmessage: "&eWHOOSH!"
-elytramessage: "&cjumps of building!"
-finishmessage: "&eFinish line &ereached!"
+elytramessage: "&cWHOOSH!"
+finishmessage: "&eFinish Line &eReached!"
 
 #values
 jumpvalue: 10
 boostvalue: 10
-elytravalue: 5
+elytravalue: 15
 #Item
 backitemname: "&eGo &cBack"
 backmaterial: "REDSTONE"

@@ -9,7 +9,7 @@ import static krekks.easycheckpoints.EasyCheckpoints.Toggle;
 
 public class InventoryEvents implements Listener {
     @EventHandler
-    void InventoryUpdater(InventoryClickEvent e){
+    void inventoryUpdater(InventoryClickEvent e){
         //making sure
         if(Toggle && !e.getWhoClicked().hasPermission("krekks.perms")){
             if(e.getSlot() < 0) return;             //avoids big scary error
@@ -17,7 +17,7 @@ public class InventoryEvents implements Listener {
         }
     }
     @EventHandler
-    void ItemDropEvent(PlayerDropItemEvent e){
+    void itemDropEvent(PlayerDropItemEvent e){
         if(Toggle && !e.getPlayer().hasPermission("krekks.perms")) return;
         e.setCancelled(true);
     }

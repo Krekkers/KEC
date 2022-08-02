@@ -7,7 +7,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import static krekks.easycheckpoints.EasyCheckpoints.Toggle;
-import static krekks.easycheckpoints.misc.GoBack.GoToCheckPoint;
+import static krekks.easycheckpoints.misc.GoBack.goToCheckPoint;
 
 public class Interact implements Listener {
     /*
@@ -18,15 +18,15 @@ public class Interact implements Listener {
 
      */
     @EventHandler
-    void Back(PlayerInteractEvent e){
+    void back(PlayerInteractEvent e){
         if(!Toggle) return;
         if (e.getPlayer().getItemInHand().getType() == Material.REDSTONE) {
-            GoToCheckPoint(e.getPlayer());
+            goToCheckPoint(e.getPlayer());
             e.setCancelled( true);
         }
     }
     @EventHandler
-    void NoPlace(BlockPlaceEvent e){
+    void noPlace(BlockPlaceEvent e){
         if(Toggle && !e.getPlayer().hasPermission("krekks.perms")){
             e.setCancelled(true);
         }

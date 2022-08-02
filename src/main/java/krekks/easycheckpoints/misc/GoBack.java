@@ -14,7 +14,7 @@ public class GoBack extends JavaPlugin {
      * This make the player go back to the checkpoint
      * @param p player to get back to his checkpoint
      */
-    public static void GoToCheckPoint(Player p){
+    public static void goToCheckPoint(Player p){
         Location newLoc = getCheckpointOf(p);
         if(newLoc == null)return;
         //setting location values to be teleported to

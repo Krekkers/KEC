@@ -9,7 +9,7 @@ import static org.bukkit.Bukkit.getLogger;
 
 public class Leave implements Listener {
     @EventHandler
-    void LeaveEvent(PlayerQuitEvent e){
+    void leaveEvent(PlayerQuitEvent e){
         //removes player from list!
         removeFromList(e.getPlayer());
         getLogger().info("Player : " + e.getPlayer().getName() + " Has been removed from the list");
