@@ -41,6 +41,9 @@ public class PlayerMove implements Listener {
     double elytraVal = config.getDouble("elytravalue");
     //
     boolean checkpointOnly = config.getBoolean("checkpointonly");
+
+
+
     @EventHandler
     void MoveCheck(PlayerMoveEvent e){
         if(!Toggle)  return;

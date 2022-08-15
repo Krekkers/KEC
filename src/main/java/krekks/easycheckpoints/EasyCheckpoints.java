@@ -4,6 +4,7 @@ package krekks.easycheckpoints;
 import krekks.easycheckpoints.command.*;
 import krekks.easycheckpoints.event.*;
 import krekks.easycheckpoints.playerdata.PlayerDataHandler;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
@@ -37,10 +38,13 @@ public final class EasyCheckpoints extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         getLogger().info("LAUNCHING KEC!");
+        int pluginId = 15743;
+        Metrics metrics = new Metrics(this, pluginId);
         //setting up
         plugin = this;
         plugin.saveDefaultConfig();
         config = plugin.getConfig();
+        loadConfig();
         //world = Bukkit.getWorld(config.getString("world"));
         finishX = config.getDoubleList("finishlocation").get(0);
         finishY = config.getDoubleList("finishlocation").get(1);
@@ -84,5 +88,20 @@ public final class EasyCheckpoints extends JavaPlugin {
         // Plugin shutdown logic
         data.clear();
         finishedList.clear();
+    }
+
+    /**
+     * Loads the basic config.
+     */
+    public void loadConfig(){
+        finishX = config.getDoubleList("finishlocation").get(0);
+        finishY = config.getDoubleList("finishlocation").get(1);
+        finishZ = config.getDoubleList("finishlocation").get(2);
+        spawnX = config.getDoubleList("spawnlocation").get(0);
+        spawnY = config.getDoubleList("spawnlocation").get(1);
+        spawnZ = config.getDoubleList("spawnlocation").get(2);
+        joinLogging = config.getBoolean("joinloggingonlaunch");
+        Toggle = config.getBoolean("autostart");
+        broadcastMessage(ChatColor.translateAlternateColorCodes('&' , "&eK&cE&eC &6Has Been Reloaded!"));
     }
 }

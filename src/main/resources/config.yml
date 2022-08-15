@@ -41,5 +41,15 @@ backitemname: "&eGo &cBack"
 backmaterial: "REDSTONE"
 
 
+Level:
+  Location1:
+    - 20 #x
+    - 30 #y
+    - 15 #z
+  Location2:
+    - 20 #x
+    - 30 #y
+    - 15 #z
+
 
 

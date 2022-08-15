@@ -16,6 +16,7 @@ public class InventoryEvents implements Listener {
             e.setCancelled(true);                   //cancel the action
         }
     }
+    //prevents people from dropping the item before the game starts
     @EventHandler
     void itemDropEvent(PlayerDropItemEvent e){
         if(Toggle && !e.getPlayer().hasPermission("krekks.perms")) return;
