@@ -4,7 +4,6 @@ package krekks.easycheckpoints;
 import krekks.easycheckpoints.command.*;
 import krekks.easycheckpoints.event.*;
 import krekks.easycheckpoints.playerdata.PlayerDataHandler;
-import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
@@ -39,7 +38,7 @@ public final class EasyCheckpoints extends JavaPlugin {
         // Plugin startup logic
         getLogger().info("LAUNCHING KEC!");
         int pluginId = 15743;
-        Metrics metrics = new Metrics(this, pluginId);
+        //Metrics metrics = new Metrics(this, pluginId);
         //setting up
         plugin = this;
         plugin.saveDefaultConfig();
