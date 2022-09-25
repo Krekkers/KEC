@@ -6,6 +6,7 @@ import krekks.easycheckpoints.event.*;
 import krekks.easycheckpoints.playerdata.PlayerDataHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -33,6 +34,9 @@ public final class EasyCheckpoints extends JavaPlugin {
     public static double spawnX = 0;
     public static double spawnY = 0;
     public static double spawnZ = 0;
+
+    public static Sound MENUCLICKNOISE;
+
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -51,6 +55,7 @@ public final class EasyCheckpoints extends JavaPlugin {
         spawnX = config.getDoubleList("spawnlocation").get(0);
         spawnY = config.getDoubleList("spawnlocation").get(1);
         spawnZ = config.getDoubleList("spawnlocation").get(2);
+        MENUCLICKNOISE = Sound.valueOf(config.getString("menuclicksound"));
         joinLogging = config.getBoolean("joinloggingonlaunch");
         Toggle = config.getBoolean("autostart");
         getLogger().info("Config has been setup");
@@ -73,6 +78,7 @@ public final class EasyCheckpoints extends JavaPlugin {
         getCommand("KecShowPluginData").setExecutor(new PluginInfoCommand());
         getCommand("KecChangeFinishLocation").setExecutor(new ChangeFinishLocationCommand());
         getCommand("KecChangeSpawnLocation").setExecutor(new ChangeSpawnLocationCommand());
+        getCommand("KecGameManager").setExecutor(new GameManagerCommand());
         getLogger().info("Commands are setup");
         // if the plugin gets reloaded I want it to not break
         getLogger().info("If there are any online players they now have no checkpoint location!");

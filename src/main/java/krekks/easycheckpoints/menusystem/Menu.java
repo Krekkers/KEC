@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
+import org.bukkit.inventory.ItemStack;
 
 public abstract class Menu implements InventoryHolder {
     protected Inventory inventory;
@@ -32,6 +33,15 @@ public abstract class Menu implements InventoryHolder {
 
          menuUtility.getOwner().openInventory(inventory);
     }
+
+    public void fillInventoryWith(ItemStack item){
+        for(int i = 0; i < getSlots(); i++){
+            if(inventory.getItem(i) == null){
+                inventory.setItem(i,item);
+            }
+        }
+    }
+
 
     @Override
     public Inventory getInventory() {

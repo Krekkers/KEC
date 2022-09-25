@@ -3,6 +3,8 @@ checkpointonly: false
 joinloggingonlaunch: true
 autostart: false
 
+menuclicksound: "BLOCK_SCAFFOLDING_BREAK"
+
 #Block Types
 checkpointblock: "gold block"
 jumpblock: "diamond block"
