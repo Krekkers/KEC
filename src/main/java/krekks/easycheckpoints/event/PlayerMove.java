@@ -11,6 +11,9 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.Vector;
 import org.w3c.dom.Entity;
 
+import java.time.Duration;
+import java.time.Instant;
+
 import static krekks.easycheckpoints.EasyCheckpoints.*;
 import static krekks.easycheckpoints.misc.PlayerBoost.boost;
 import static krekks.easycheckpoints.misc.PlayerBoost.elytraBoost;
@@ -69,7 +72,7 @@ public class PlayerMove implements Listener {
                 if(d.getP() == p && !d.getFinished()){
                     d.setFinished(true);        //sets the finish of the player
                     addToFinished(p);           //add that user to the finished list.
-                    d.setSecondsToFinish(1);  //sets the seconds it took to finish
+                    d.setSecondsToFinish((int) Duration.between(time, Instant.now()).toMillis() / 1000);  //sets the seconds it took to finish
                 }
             }
         }

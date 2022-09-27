@@ -42,7 +42,7 @@ public class GameStatusMenu extends Menu {
         if(!joinLogging) join = createCustomItem(Material.RED_STAINED_GLASS_PANE, 1, "&cJoin Logging", "False" , "This displays Join Logging", "True = on" , "False = off");
         //Seconds passed
         ItemStack seconds;
-        long t = Duration.between(time, Instant.now()).toMillis();
+        long t = Duration.between(time, Instant.now()).toMillis() / 1000;
         seconds = createCustomItem(Material.PURPLE_STAINED_GLASS_PANE, 1, "&eSeconds : &c" + t, "Time spent in seconds");
 
         ItemStack refresh;
