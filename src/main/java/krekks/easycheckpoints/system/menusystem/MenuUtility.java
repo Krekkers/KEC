@@ -1,4 +1,4 @@
-package krekks.easycheckpoints.menusystem;
+package krekks.easycheckpoints.system.menusystem;
 
 import org.bukkit.entity.Player;
 

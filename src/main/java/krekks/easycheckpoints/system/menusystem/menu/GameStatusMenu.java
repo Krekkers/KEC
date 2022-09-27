@@ -1,11 +1,15 @@
-package krekks.easycheckpoints.menusystem.menu;
+package krekks.easycheckpoints.system.menusystem.menu;
 
-import krekks.easycheckpoints.menusystem.Menu;
-import krekks.easycheckpoints.menusystem.MenuUtility;
+import krekks.easycheckpoints.system.menusystem.Menu;
+import krekks.easycheckpoints.system.menusystem.MenuUtility;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
+
+import java.time.Duration;
+import java.time.Instant;
 
 import static krekks.easycheckpoints.EasyCheckpoints.*;
 import static krekks.easycheckpoints.misc.CustomItem.createCustomItem;
@@ -38,7 +42,8 @@ public class GameStatusMenu extends Menu {
         if(!joinLogging) join = createCustomItem(Material.RED_STAINED_GLASS_PANE, 1, "&cJoin Logging", "False" , "This displays Join Logging", "True = on" , "False = off");
         //Seconds passed
         ItemStack seconds;
-        seconds = createCustomItem(Material.PURPLE_STAINED_GLASS_PANE, 1, "&eSeconds : &c" + sec, "Time spent in seconds");
+        long t = Duration.between(time, Instant.now()).toMillis();
+        seconds = createCustomItem(Material.PURPLE_STAINED_GLASS_PANE, 1, "&eSeconds : &c" + t, "Time spent in seconds");
 
         ItemStack refresh;
         refresh = createCustomItem(Material.BLUE_STAINED_GLASS_PANE, 1, "&bRefresh", "Refreshes the UI");
@@ -54,20 +59,21 @@ public class GameStatusMenu extends Menu {
 
     @Override
     public void handleMenu(InventoryClickEvent e) {
+        Player p = (Player) e.getWhoClicked();
         if(e.getCurrentItem().getItemMeta().getDisplayName().contains("Toggled")){
             startGame(e.getWhoClicked());
-            e.getWhoClicked().getWorld().playSound(e.getWhoClicked().getLocation(), MENUCLICKNOISE,3,1);
+            p.playSound(p.getLocation(), MENUCLICKNOISE,3,1);
             setMenuItems();
         }
         if(e.getCurrentItem().getItemMeta().getDisplayName().contains("Join Logging")){
             joinLogging = !joinLogging;
             e.getWhoClicked().sendMessage(ChatColor.YELLOW + "Join Logging : " + ChatColor.RED + joinLogging);
-            e.getWhoClicked().getWorld().playSound(e.getWhoClicked().getLocation(), MENUCLICKNOISE,3,1);
+            p.playSound(p.getLocation(), MENUCLICKNOISE,3,1);
             setMenuItems();
         }
         if(e.getCurrentItem().getItemMeta().getDisplayName().contains("Refresh")){
             setMenuItems();
-            e.getWhoClicked().getWorld().playSound(e.getWhoClicked().getLocation(), MENUCLICKNOISE,3,1);
+            p.playSound(p.getLocation(), MENUCLICKNOISE,3,1);
         }
     }
 }

@@ -18,12 +18,13 @@ public class Interact implements Listener {
 
      */
     @EventHandler
-    void back(PlayerInteractEvent e){
+    void interactEvent(PlayerInteractEvent e){
         if(!Toggle) return;
-        if (e.getPlayer().getItemInHand().getType() == Material.REDSTONE) {
+        if (e.getItem().getType() == Material.REDSTONE) {
             goToCheckPoint(e.getPlayer());
             e.setCancelled( true);
         }
+
     }
     @EventHandler
     void noPlace(BlockPlaceEvent e){

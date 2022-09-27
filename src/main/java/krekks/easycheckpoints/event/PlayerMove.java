@@ -69,7 +69,7 @@ public class PlayerMove implements Listener {
                 if(d.getP() == p && !d.getFinished()){
                     d.setFinished(true);        //sets the finish of the player
                     addToFinished(p);           //add that user to the finished list.
-                    d.setSecondsToFinish(sec);  //sets the seconds it took to finish
+                    d.setSecondsToFinish(1);  //sets the seconds it took to finish
                 }
             }
         }

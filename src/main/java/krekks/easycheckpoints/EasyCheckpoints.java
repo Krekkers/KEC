@@ -14,6 +14,8 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.time.Instant;
+
 import static krekks.easycheckpoints.playerdata.PlayerDataHandler.data;
 import static krekks.easycheckpoints.playerdata.PlayerDataHandler.finishedList;
 import static org.bukkit.Bukkit.broadcastMessage;
@@ -26,6 +28,7 @@ public final class EasyCheckpoints extends JavaPlugin {
     public static boolean joinLogging;
     public static Plugin plugin;
     public static int sec;
+    public static Instant time;
 
     public static double finishX = 0;       //Position X of the place where players will be teleported to
     public static double finishY = 0;       //Position Y of the place where players will be teleported to
@@ -48,6 +51,7 @@ public final class EasyCheckpoints extends JavaPlugin {
         plugin.saveDefaultConfig();
         config = plugin.getConfig();
         loadConfig();
+        time = Instant.now();
         //world = Bukkit.getWorld(config.getString("world"));
         finishX = config.getDoubleList("finishlocation").get(0);
         finishY = config.getDoubleList("finishlocation").get(1);

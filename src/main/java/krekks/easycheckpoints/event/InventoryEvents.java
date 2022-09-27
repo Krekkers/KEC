@@ -1,6 +1,6 @@
 package krekks.easycheckpoints.event;
 
-import krekks.easycheckpoints.menusystem.Menu;
+import krekks.easycheckpoints.system.menusystem.Menu;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -11,7 +11,7 @@ import static krekks.easycheckpoints.EasyCheckpoints.Toggle;
 
 public class InventoryEvents implements Listener {
     @EventHandler
-    void inventoryUpdater(InventoryClickEvent e){
+    void inventoryClick(InventoryClickEvent e){
         //making sure
         InventoryHolder holder = e.getInventory().getHolder();
         if (holder instanceof Menu menu) {

@@ -1,4 +1,4 @@
-package krekks.easycheckpoints.menusystem;
+package krekks.easycheckpoints.system.menusystem;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.inventory.InventoryClickEvent;
