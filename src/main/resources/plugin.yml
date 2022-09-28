@@ -1,5 +1,5 @@
 name: KEC
-version: '1.6.2'
+version: '1.6.3'
 api-version: 1.19
 main: krekks.easycheckpoints.EasyCheckpoints
 prefix: KEC
