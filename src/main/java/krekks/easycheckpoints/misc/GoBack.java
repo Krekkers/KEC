@@ -15,6 +15,7 @@ public class GoBack extends JavaPlugin {
      * @param p player to get back to his checkpoint
      */
     public static void goToCheckPoint(Player p){
+        if(getCheckpointOf(p) == null) return;
         Location checkpoint = getCheckpointOf(p);
         Location newLoc = new Location(p.getWorld(),checkpoint.getX(),checkpoint.getY(),checkpoint.getZ());
         if(newLoc == null)return;

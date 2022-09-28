@@ -20,7 +20,7 @@ public class Interact implements Listener {
     @EventHandler
     void interactEvent(PlayerInteractEvent e){
         if(!Toggle) return;
-        if(e.getItem().getType() == null) return;
+        if(e.getItem() == null) return;
         if (e.getItem().getType() == Material.REDSTONE) {
             goToCheckPoint(e.getPlayer());
             e.setCancelled( true);
