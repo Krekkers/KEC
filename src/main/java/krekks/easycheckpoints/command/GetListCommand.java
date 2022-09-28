@@ -14,7 +14,7 @@ public class GetListCommand implements CommandExecutor {
         for(PlayerData d : data){
             sender.sendMessage("---------------------");
             sender.sendMessage("> " + ChatColor.YELLOW + "Player Data");
-            sender.sendMessage("> " + ChatColor.YELLOW + "Player : " + ChatColor.RED + d.getP().getName());
+            sender.sendMessage("> " + ChatColor.YELLOW + "Player : " + ChatColor.RED + d.getPlayer().getName());
             if(d.getCheckpointLocation() != null){
                 sender.sendMessage("> " + ChatColor.YELLOW + "CheckPointLocation : " + ChatColor.RED + d.getCheckpointLocation().getX() + " " + d.getCheckpointLocation().getY() + " " + d.getCheckpointLocation().getZ());
             }

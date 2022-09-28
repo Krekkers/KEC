@@ -13,7 +13,7 @@ import org.bukkit.entity.Player;
  * Seconds it took for someone to finish
  */
 public class PlayerData {
-    Player p;
+    Player player;
     Location checkpointLocation;
     int goBackCounter = 0;
     boolean finished = false;
@@ -24,33 +24,32 @@ public class PlayerData {
      */
     public PlayerData(Player _p, Location _l){
         checkpointLocation = _l;
-        p = _p;
+        player = _p;
     }
 
-    public Player getP(){
-        return p;
-    }
     public void addGoBackCounter(int s){
         goBackCounter += s;
-    }
-    public void setFinished(boolean s){
-        finished = s;
     }
     public void addSecondsToFinish(){
         secondsToFinish += 1;
     }
+
+    public void setFinished(boolean s){
+        finished = s;
+    }
     public void setSecondsToFinish(int s){
         secondsToFinish = s;
     }
-    public Location getCheckpointLocation(){
-        return checkpointLocation;
-    }
-
     public void setCheckpointLocation(Location _l){
         checkpointLocation = _l;
     }
-    public void setP(Player _p){
-        p = _p;
+    public void setPlayer(Player _p){
+        player = _p;
+    }
+    public void setGoBackCounter(int b) { goBackCounter = b; }
+
+    public Player getPlayer(){
+        return player;
     }
     public int getGoBackCounter(){
         return goBackCounter;
@@ -60,6 +59,9 @@ public class PlayerData {
     }
     public int getSecondsToFinish(){
         return secondsToFinish;
+    }
+    public Location getCheckpointLocation(){
+        return checkpointLocation;
     }
 
 

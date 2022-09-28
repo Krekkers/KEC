@@ -7,6 +7,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
+import java.time.Instant;
+
 import static krekks.easycheckpoints.EasyCheckpoints.*;
 import static krekks.easycheckpoints.playerdata.PlayerDataHandler.data;
 import static krekks.easycheckpoints.playerdata.PlayerDataHandler.removeFromList;
@@ -24,14 +26,15 @@ public class RestartCommand implements CommandExecutor {
         sender.sendMessage(ChatColor.RED + "This feature should be used with precaution.");
         //the resetting part.
         for(PlayerData d : data){
-            if(!d.getP().isOnline()){
-                removeFromList(d.getP());
+            if(!d.getPlayer().isOnline()){
+                removeFromList(d.getPlayer());
             }
             d.setFinished(false);
             d.setSecondsToFinish(0);
-            d.setCheckpointLocation(new Location(d.getP().getWorld(), spawnX,spawnY,spawnZ));
-            d.getP().teleport(d.getCheckpointLocation());
-            sec = 0;
+            d.setCheckpointLocation(new Location(d.getPlayer().getWorld(), spawnX,spawnY,spawnZ));
+            d.getPlayer().teleport(d.getCheckpointLocation());
+            d.setGoBackCounter(0);
+            time = Instant.now();
         }
         //gotta toggle the game off when resetting
         Toggle = false;

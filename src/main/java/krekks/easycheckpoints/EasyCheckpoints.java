@@ -53,12 +53,6 @@ public final class EasyCheckpoints extends JavaPlugin {
         loadConfig();
         time = Instant.now();
         //world = Bukkit.getWorld(config.getString("world"));
-        finishX = config.getDoubleList("finishlocation").get(0);
-        finishY = config.getDoubleList("finishlocation").get(1);
-        finishZ = config.getDoubleList("finishlocation").get(2);
-        spawnX = config.getDoubleList("spawnlocation").get(0);
-        spawnY = config.getDoubleList("spawnlocation").get(1);
-        spawnZ = config.getDoubleList("spawnlocation").get(2);
         MENUCLICKNOISE = Sound.valueOf(config.getString("menuclicksound"));
         joinLogging = config.getBoolean("joinloggingonlaunch");
         Toggle = config.getBoolean("autostart");
@@ -83,6 +77,7 @@ public final class EasyCheckpoints extends JavaPlugin {
         getCommand("KecChangeFinishLocation").setExecutor(new ChangeFinishLocationCommand());
         getCommand("KecChangeSpawnLocation").setExecutor(new ChangeSpawnLocationCommand());
         getCommand("KecGameManager").setExecutor(new GameManagerCommand());
+        getCommand("KecPlayerStats").setExecutor(new PlayerStatsMenuCommand());
         getLogger().info("Commands are setup");
         // if the plugin gets reloaded I want it to not break
         getLogger().info("If there are any online players they now have no checkpoint location!");

@@ -15,7 +15,8 @@ public class GoBack extends JavaPlugin {
      * @param p player to get back to his checkpoint
      */
     public static void goToCheckPoint(Player p){
-        Location newLoc = getCheckpointOf(p);
+        Location checkpoint = getCheckpointOf(p);
+        Location newLoc = new Location(p.getWorld(),checkpoint.getX(),checkpoint.getY(),checkpoint.getZ());
         if(newLoc == null)return;
         //setting location values to be teleported to
         newLoc.add(0.5f,1f,0.5f);
@@ -23,10 +24,6 @@ public class GoBack extends JavaPlugin {
         newLoc.setYaw(p.getLocation().getYaw());
         //teleports
         p.teleport(newLoc);
-        //setting back the values so it won't set the checkpoint again
-        newLoc.add(-0.5f,-1f,-0.5f);
-        newLoc.setPitch(0);
-        newLoc.setYaw(0);
         PlayerData d = getFromList(p.getName());
         if(!d.getFinished()){
             d.addGoBackCounter(1);

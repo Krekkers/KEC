@@ -72,3 +72,8 @@ commands:
     usage: "Usage /<command>"
     permission: krekks.perms
     permission-message: No permission
+  KecPlayerStats:
+    description: Access a menu that displays player data
+    usage: "Usage /<command> <playername>"
+    permission: krekks.perms
+    permission-message: No permission

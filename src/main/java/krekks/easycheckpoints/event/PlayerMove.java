@@ -69,7 +69,7 @@ public class PlayerMove implements Listener {
             setCheckpointOf(p, l);
             p.teleport(l);
             for(PlayerData d : data){
-                if(d.getP() == p && !d.getFinished()){
+                if(d.getPlayer() == p && !d.getFinished()){
                     d.setFinished(true);        //sets the finish of the player
                     addToFinished(p);           //add that user to the finished list.
                     d.setSecondsToFinish((int) Duration.between(time, Instant.now()).toMillis() / 1000);  //sets the seconds it took to finish

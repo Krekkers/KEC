@@ -20,7 +20,7 @@ public class PlayerDataHandler {
      * @param p player to be removed
      */
     public static void removeFromList(Player p){
-        data.removeIf(player -> player.getP().equals(p));
+        data.removeIf(player -> player.getPlayer().equals(p));
     }
 
     /**
@@ -30,12 +30,22 @@ public class PlayerDataHandler {
      */
     public static PlayerData getFromList(String p){
         for(PlayerData _data : data){
-            if(_data.getP().getName().equals(p)){
+            if(_data.getPlayer().getName().equals(p)){
                 return _data;
             }
         }
         return null;
     }
+
+    public static boolean isInList(String p){
+        for(PlayerData _data : data){
+            if(_data.getPlayer().getName().equals(p)){
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     /**
      * Adds the player to the finished list
@@ -54,7 +64,7 @@ public class PlayerDataHandler {
      */
     public static Location getCheckpointOf(Player p){
         for(PlayerData player : data){
-            if(player.getP() == p) return player.getCheckpointLocation();
+            if(player.getPlayer() == p) return player.getCheckpointLocation();
         }
         return null;
     }
@@ -67,7 +77,7 @@ public class PlayerDataHandler {
     public static void setCheckpointOf(Player p, Location loc){
         //loops trough the list to find the player and sets its checkpoint (which it will do once!)
         for(PlayerData player : data){
-            if(player.getP().equals(p)){
+            if(player.getPlayer().equals(p)){
                 if(!loc.equals(player.getCheckpointLocation())) player.setCheckpointLocation(loc);
             }
         }
