@@ -1,17 +1,13 @@
 package krekks.easycheckpoints.command;
 
-import krekks.easycheckpoints.playerdata.PlayerData;
+import krekks.easycheckpoints.system.menusystem.menu.RestartMenu;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
-import java.time.Instant;
-
-import static krekks.easycheckpoints.EasyCheckpoints.*;
-import static krekks.easycheckpoints.playerdata.PlayerDataHandler.data;
-import static krekks.easycheckpoints.playerdata.PlayerDataHandler.removeFromList;
+import static krekks.easycheckpoints.system.menusystem.MenuManager.getMenuUtility;
 
 public class RestartCommand implements CommandExecutor {
     //not implemented yet.
@@ -25,19 +21,10 @@ public class RestartCommand implements CommandExecutor {
         sender.sendMessage(ChatColor.RED + "Resetting Data");
         sender.sendMessage(ChatColor.RED + "This feature should be used with precaution.");
         //the resetting part.
-        for(PlayerData d : data){
-            if(!d.getPlayer().isOnline()){
-                removeFromList(d.getPlayer());
-            }
-            d.setFinished(false);
-            d.setSecondsToFinish(0);
-            d.setCheckpointLocation(new Location(d.getPlayer().getWorld(), spawnX,spawnY,spawnZ));
-            d.getPlayer().teleport(d.getCheckpointLocation());
-            d.setGoBackCounter(0);
-            time = Instant.now();
-        }
-        //gotta toggle the game off when resetting
-        Toggle = false;
+        Player player = (Player) sender;
+        RestartMenu menu = new RestartMenu(getMenuUtility(player));
+        menu.openMenu();
         return true;
+
     }
 }

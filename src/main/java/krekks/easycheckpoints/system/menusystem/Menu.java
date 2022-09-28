@@ -34,6 +34,10 @@ public abstract class Menu implements InventoryHolder {
          menuUtility.getOwner().openInventory(inventory);
     }
 
+    public void closeMenu(){
+        menuUtility.getOwner().closeInventory();
+    }
+
     public void fillInventoryWith(ItemStack item){
         for(int i = 0; i < getSlots(); i++){
             if(inventory.getItem(i) == null){
