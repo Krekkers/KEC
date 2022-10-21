@@ -1,6 +1,7 @@
 package krekks.easycheckpoints.playerdata;
 
 import org.bukkit.Location;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
 /**
@@ -15,6 +16,7 @@ import org.bukkit.entity.Player;
 public class PlayerData {
     Player player;
     Location checkpointLocation;
+    Block checkpointBlock;
     int goBackCounter = 0;
     boolean finished = false;
     int secondsToFinish = 0;
@@ -37,6 +39,7 @@ public class PlayerData {
     public void setFinished(boolean s){
         finished = s;
     }
+    public void setCheckpointBlock(Block b) { checkpointBlock = b; }
     public void setSecondsToFinish(int s){
         secondsToFinish = s;
     }
@@ -60,6 +63,7 @@ public class PlayerData {
     public int getSecondsToFinish(){
         return secondsToFinish;
     }
+    public Block getCheckpointBlock() { return checkpointBlock; }
     public Location getCheckpointLocation(){
         return checkpointLocation;
     }

@@ -2,6 +2,7 @@ package krekks.easycheckpoints.event;
 
 import krekks.easycheckpoints.playerdata.PlayerData;
 import org.bukkit.*;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -49,14 +50,16 @@ public class PlayerMove implements Listener {
 
     @EventHandler
     void MoveCheck(PlayerMoveEvent e){
-        if(!Toggle)  return;
+        if(!Toggle) return;
         if(e.getFrom().getBlockX() == e.getTo().getBlockX() && e.getFrom().getBlockY() == e.getTo().getBlockY() && e.getFrom().getBlockZ() == e.getTo().getBlockZ()) return;
         Player p = e.getPlayer();
         Material block = p.getLocation().add(0,-1,0).getBlock().getType();
+        Block b = p.getLocation().add(0,-1,0).getBlock();
         //this is the part for the checkpoint
+
         if(block == checkpoint){
             Location loc = p.getLocation().add(0,-1,0).getBlock().getLocation();
-            setCheckpointOf(p, loc);
+            setCheckpointOf(p, loc, b);
             p.sendMessage(ChatColor.translateAlternateColorCodes('&',checkpointText));
             p.playSound(p.getLocation(), checkpointSound,1,2);
         }
@@ -66,7 +69,7 @@ public class PlayerMove implements Listener {
             l.setX(finishX); l.setY(finishY); l.setZ(finishZ);
             p.sendMessage(ChatColor.YELLOW + "YOU " + ChatColor.RED + "FINISHED!");
             Bukkit.broadcastMessage("> " + ChatColor.YELLOW + p.getName() + ChatColor.RED + " is number " + (finishedList.size() + 1) + " to finish!");
-            setCheckpointOf(p, l);
+            setCheckpointOf(p, l, b);
             p.teleport(l);
             for(PlayerData d : data){
                 if(d.getPlayer() == p && !d.getFinished()){

@@ -1,6 +1,7 @@
 package krekks.easycheckpoints.playerdata;
 
 import org.bukkit.Location;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -73,12 +74,16 @@ public class PlayerDataHandler {
      * Sets the checkpoint of a player
      * @param p player
      * @param loc checkpoint location
+     * @param b
      */
-    public static void setCheckpointOf(Player p, Location loc){
+    public static void setCheckpointOf(Player p, Location loc, Block b){
         //loops trough the list to find the player and sets its checkpoint (which it will do once!)
         for(PlayerData player : data){
             if(player.getPlayer().equals(p)){
-                if(!loc.equals(player.getCheckpointLocation())) player.setCheckpointLocation(loc);
+                if(!loc.equals(player.getCheckpointLocation())){
+                    player.setCheckpointLocation(loc);
+                    player.setCheckpointBlock(b);
+                }
             }
         }
     }

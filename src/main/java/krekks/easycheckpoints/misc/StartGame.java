@@ -11,7 +11,10 @@ import static krekks.easycheckpoints.EasyCheckpoints.*;
 public class StartGame {
 
 
-    //only players can do this
+    /**
+     * starts game
+     * @param sender
+     */
     public static void startGame(CommandSender sender){
         Toggle = !Toggle;
         sender.sendMessage(ChatColor.YELLOW + "KEC toggled state = " + ChatColor.RED + Toggle);
