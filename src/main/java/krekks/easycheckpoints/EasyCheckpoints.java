@@ -19,6 +19,7 @@ import java.time.Instant;
 import static krekks.easycheckpoints.playerdata.PlayerDataHandler.data;
 import static krekks.easycheckpoints.playerdata.PlayerDataHandler.finishedList;
 import static org.bukkit.Bukkit.broadcastMessage;
+
 public final class EasyCheckpoints extends JavaPlugin {
 
     PluginManager pluginManager = Bukkit.getPluginManager();
@@ -44,13 +45,12 @@ public final class EasyCheckpoints extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         getLogger().info("LAUNCHING KEC!");
-        int pluginId = 15743;
-        //Metrics metrics = new Metrics(this, pluginId);
         //setting up
         plugin = this;
         plugin.saveDefaultConfig();
         config = plugin.getConfig();
         loadConfig();
+        loadBStats();
         time = Instant.now();
         //world = Bukkit.getWorld(config.getString("world"));
         MENUCLICKNOISE = Sound.valueOf(config.getString("menuclicksound"));
@@ -85,6 +85,8 @@ public final class EasyCheckpoints extends JavaPlugin {
         for(Player p : Bukkit.getOnlinePlayers()){
             PlayerDataHandler.AddToList(p,null);
         }
+        final int pluginId = 15743;
+        Metrics metrics = new Metrics(this,pluginId);
     }
 
     @Override
@@ -108,4 +110,10 @@ public final class EasyCheckpoints extends JavaPlugin {
         Toggle = config.getBoolean("autostart");
         broadcastMessage(ChatColor.translateAlternateColorCodes('&' , "&eK&cE&eC &6Has Been Reloaded!"));
     }
+
+    public void loadBStats(){
+
+
+    }
+
 }
