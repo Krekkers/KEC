@@ -85,6 +85,7 @@ public final class EasyCheckpoints extends JavaPlugin {
         for(Player p : Bukkit.getOnlinePlayers()){
             PlayerDataHandler.AddToList(p,null);
         }
+        //bstats
         final int pluginId = 15743;
         Metrics metrics = new Metrics(this,pluginId);
     }
