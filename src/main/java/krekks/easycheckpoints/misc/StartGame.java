@@ -5,7 +5,7 @@ import org.bukkit.command.CommandSender;
 
 import java.time.Instant;
 
-import static krekks.easycheckpoints.EasyCheckpoints.*;
+import static krekks.easycheckpoints.Config.*;
 
 
 public class StartGame {

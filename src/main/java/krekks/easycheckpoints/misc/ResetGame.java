@@ -5,8 +5,7 @@ import org.bukkit.Location;
 
 import java.time.Instant;
 
-import static krekks.easycheckpoints.EasyCheckpoints.*;
-import static krekks.easycheckpoints.EasyCheckpoints.time;
+import static krekks.easycheckpoints.Config.*;
 import static krekks.easycheckpoints.playerdata.PlayerDataHandler.data;
 import static krekks.easycheckpoints.playerdata.PlayerDataHandler.removeFromList;
 

@@ -10,7 +10,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
-import static krekks.easycheckpoints.EasyCheckpoints.MENUCLICKNOISE;
+import static krekks.easycheckpoints.Config.MENUCLICKNOISE;
 import static krekks.easycheckpoints.misc.CustomItem.createCustomItem;
 
 public class PlayerStatsMenu extends Menu {

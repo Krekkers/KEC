@@ -4,7 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import static krekks.easycheckpoints.EasyCheckpoints.joinLogging;
+import static krekks.easycheckpoints.Config.*;
 
 public class ToggleJoinLogging implements CommandExecutor {
     @Override

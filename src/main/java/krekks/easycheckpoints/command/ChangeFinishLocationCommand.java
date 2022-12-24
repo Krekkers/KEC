@@ -8,6 +8,7 @@ import org.bukkit.command.CommandSender;
 import java.util.ArrayList;
 import java.util.List;
 
+import static krekks.easycheckpoints.Config.*;
 import static krekks.easycheckpoints.EasyCheckpoints.*;
 
 public class ChangeFinishLocationCommand implements CommandExecutor {

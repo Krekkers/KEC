@@ -6,7 +6,6 @@ import krekks.easycheckpoints.event.*;
 import krekks.easycheckpoints.playerdata.PlayerDataHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -14,8 +13,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.time.Instant;
-
+import static krekks.easycheckpoints.Config.ConfigLoader;
 import static krekks.easycheckpoints.playerdata.PlayerDataHandler.data;
 import static krekks.easycheckpoints.playerdata.PlayerDataHandler.finishedList;
 import static org.bukkit.Bukkit.broadcastMessage;
@@ -25,22 +23,7 @@ public final class EasyCheckpoints extends JavaPlugin {
     PluginManager pluginManager = Bukkit.getPluginManager();
     public static FileConfiguration config = null;
     public static World world;              //unused
-    public static boolean Toggle;
-    public static boolean joinLogging;
     public static Plugin plugin;
-    public static int sec;
-    public static Instant time;
-
-    public static double finishX = 0;       //Position X of the place where players will be teleported to
-    public static double finishY = 0;       //Position Y of the place where players will be teleported to
-    public static double finishZ = 0;       //Position Z of the place where players will be teleported to
-
-    public static double spawnX = 0;
-    public static double spawnY = 0;
-    public static double spawnZ = 0;
-
-    public static Sound MENUCLICKNOISE;
-
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -49,13 +32,9 @@ public final class EasyCheckpoints extends JavaPlugin {
         plugin = this;
         plugin.saveDefaultConfig();
         config = plugin.getConfig();
-        loadConfig();
+        ConfigLoader();
         loadBStats();
-        time = Instant.now();
-        //world = Bukkit.getWorld(config.getString("world"));
-        MENUCLICKNOISE = Sound.valueOf(config.getString("menuclicksound"));
-        joinLogging = config.getBoolean("joinloggingonlaunch");
-        Toggle = config.getBoolean("autostart");
+
         getLogger().info("Config has been setup");
         pluginManager.registerEvents(new DeathEvent(), this);
         pluginManager.registerEvents(new PlayerMove(), this);
@@ -101,15 +80,7 @@ public final class EasyCheckpoints extends JavaPlugin {
      * Loads the basic config.
      */
     public void loadConfig(){
-        finishX = config.getDoubleList("finishlocation").get(0);
-        finishY = config.getDoubleList("finishlocation").get(1);
-        finishZ = config.getDoubleList("finishlocation").get(2);
-        spawnX = config.getDoubleList("spawnlocation").get(0);
-        spawnY = config.getDoubleList("spawnlocation").get(1);
-        spawnZ = config.getDoubleList("spawnlocation").get(2);
-        joinLogging = config.getBoolean("joinloggingonlaunch");
-        Toggle = config.getBoolean("autostart");
-        broadcastMessage(ChatColor.translateAlternateColorCodes('&' , "&eK&cE&eC &6Has Been Reloaded!"));
+
     }
 
     public void loadBStats(){

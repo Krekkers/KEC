@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import java.time.Duration;
 import java.time.Instant;
 
-import static krekks.easycheckpoints.EasyCheckpoints.*;
+import static krekks.easycheckpoints.Config.*;
 import static krekks.easycheckpoints.misc.CustomItem.createCustomItem;
 import static krekks.easycheckpoints.misc.StartGame.startGame;
 

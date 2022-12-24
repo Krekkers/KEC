@@ -7,7 +7,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 
-import static krekks.easycheckpoints.EasyCheckpoints.*;
+import static krekks.easycheckpoints.Config.*;
+import static krekks.easycheckpoints.EasyCheckpoints.config;
 import static krekks.easycheckpoints.misc.ItemMaker.makeGoBackItem;
 import static krekks.easycheckpoints.playerdata.PlayerDataHandler.AddToList;
 import static org.bukkit.Bukkit.getLogger;

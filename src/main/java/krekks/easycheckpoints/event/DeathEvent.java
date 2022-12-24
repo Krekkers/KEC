@@ -7,7 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 
-import static krekks.easycheckpoints.EasyCheckpoints.Toggle;
+import static krekks.easycheckpoints.Config.*;
 import static krekks.easycheckpoints.playerdata.PlayerDataHandler.getCheckpointOf;
 
 public class DeathEvent implements Listener {

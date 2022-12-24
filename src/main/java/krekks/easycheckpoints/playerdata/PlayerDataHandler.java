@@ -1,18 +1,27 @@
 package krekks.easycheckpoints.playerdata;
 
+import krekks.easycheckpoints.Config;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PlayerDataHandler {
 
     public static final ArrayList<PlayerData> data = new ArrayList<>();
+
+
+    public static final HashMap<Player, PlayerData> playerList = new HashMap<>();
     public static final ArrayList<Player> finishedList = new ArrayList<>();
+
     public static PlayerData AddToList(Player p, Location l){
         PlayerData _data = new PlayerData(p,l);
         data.add(_data);
+        playerList.put(p,_data);
         return _data;
     }
 
@@ -21,6 +30,7 @@ public class PlayerDataHandler {
      * @param p player to be removed
      */
     public static void removeFromList(Player p){
+        playerList.remove(p);
         data.removeIf(player -> player.getPlayer().equals(p));
     }
 
@@ -35,6 +45,7 @@ public class PlayerDataHandler {
                 return _data;
             }
         }
+        playerList.get(Bukkit.getPlayer(p));
         return null;
     }
 
@@ -83,6 +94,8 @@ public class PlayerDataHandler {
                 if(!loc.equals(player.getCheckpointLocation())){
                     player.setCheckpointLocation(loc);
                     player.setCheckpointBlock(b);
+                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', Config.checkpointText));
+                    p.playSound(loc, Config.checkpointSound, 1 , 1);
                 }
             }
         }

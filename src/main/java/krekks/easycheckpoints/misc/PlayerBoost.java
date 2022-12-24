@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
-import static krekks.easycheckpoints.EasyCheckpoints.Toggle;
+import static krekks.easycheckpoints.Config.*;
 
 public class PlayerBoost {
     /**

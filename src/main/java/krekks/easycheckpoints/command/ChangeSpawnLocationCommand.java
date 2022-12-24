@@ -8,7 +8,9 @@ import org.bukkit.command.CommandSender;
 import java.util.ArrayList;
 import java.util.List;
 
-import static krekks.easycheckpoints.EasyCheckpoints.*;
+import static krekks.easycheckpoints.Config.*;
+import static krekks.easycheckpoints.EasyCheckpoints.config;
+import static krekks.easycheckpoints.EasyCheckpoints.plugin;
 
 public class ChangeSpawnLocationCommand implements CommandExecutor {
     @Override

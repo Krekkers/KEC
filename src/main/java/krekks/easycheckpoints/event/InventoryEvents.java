@@ -7,7 +7,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.InventoryHolder;
 
-import static krekks.easycheckpoints.EasyCheckpoints.Toggle;
+import static krekks.easycheckpoints.Config.*;
 
 public class InventoryEvents implements Listener {
     @EventHandler
