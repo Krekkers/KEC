@@ -1,13 +1,12 @@
 package krekks.easycheckpoints;
 
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 
 import java.time.Instant;
 
 import static krekks.easycheckpoints.EasyCheckpoints.config;
-import static org.bukkit.Bukkit.broadcastMessage;
+import static org.bukkit.Bukkit.getLogger;
 
 public class Config {
     public static boolean Toggle;
@@ -27,31 +26,54 @@ public class Config {
     public static Sound MENUCLICKNOISE;
     //todo : load everything in config
     //materials
-    public static Material checkpoint = Material.matchMaterial(config.getString("checkpointblock"));
-    public static Material jump = Material.matchMaterial(config.getString("jumpblock"));
-    public static Material boost = Material.matchMaterial(config.getString("boostblock"));
-    public static Material elytra = Material.matchMaterial(config.getString("elytrablock"));
-    public static Material finish = Material.matchMaterial(config.getString("finishblock"));
+    public static Material checkpoint;
+    public static Material jump;
+    public static Material boost;
+    public static Material elytra;
+    public static Material finish;
     //text
-    public static String jumpText = config.getString("jumpmessage");
-    public static String checkpointText = config.getString("checkpointmessage");
-    public static String boostText = config.getString("boostmessage");
-    public static String elytraText = config.getString("elytramessage");
+    public static String jumpText;
+    public static String checkpointText;
+    public static String boostText;
+    public static String elytraText;
     //sounds
-    public static Sound jumpSound = Sound.valueOf(config.getString("jumpsound"));
-    public static Sound checkpointSound = Sound.valueOf(config.getString("checkpointsound"));
-    public static Sound boostSound = Sound.valueOf(config.getString("boostsound"));
-    public static Sound elytraSound = Sound.valueOf(config.getString("elytrasound"));
+    public static Sound jumpSound;
+    public static Sound checkpointSound;
+    public static Sound boostSound;
+    public static Sound elytraSound;
     //values
-    public static double jumpVal = config.getDouble("jumpvalue");
-    public static double boostVal = config.getDouble("boostvalue");
-    public static double elytraVal = config.getDouble("elytravalue");
-    //
+    public static double jumpVal;
+    public static double boostVal;
+    public static double elytraVal;
 
-    public static void ConfigLoader(){
+    public static void configLoader(){
         time = Instant.now();
         //world = Bukkit.getWorld(config.getString("world"));
+
+        getLogger().info("Setting up blocks");
+        checkpoint = Material.matchMaterial(config.getString("checkpointblock"));
+        jump = Material.matchMaterial(config.getString("jumpblock"));
+        boost = Material.matchMaterial(config.getString("boostblock"));
+        elytra = Material.matchMaterial(config.getString("elytrablock"));
+        finish = Material.matchMaterial(config.getString("finishblock"));
+
+        getLogger().info("Setting up Text");
+        jumpText = config.getString("jumpmessage");
+        checkpointText = config.getString("checkpointmessage");
+        boostText = config.getString("boostmessage");
+        elytraText = config.getString("elytramessage");
+
+        getLogger().info("Setting up sounds");
         MENUCLICKNOISE = Sound.valueOf(config.getString("menuclicksound"));
+        jumpSound = Sound.valueOf(config.getString("jumpsound"));
+        checkpointSound = Sound.valueOf(config.getString("checkpointsound"));
+        boostSound = Sound.valueOf(config.getString("boostsound"));
+        elytraSound = Sound.valueOf(config.getString("elytrasound"));
+
+        getLogger().info("Loading Game settings");
+        jumpVal = config.getDouble("jumpvalue");
+        boostVal = config.getDouble("boostvalue");
+        elytraVal = config.getDouble("elytravalue");
         joinLogging = config.getBoolean("joinloggingonlaunch");
         Toggle = config.getBoolean("autostart");
         finishX = config.getDoubleList("finishlocation").get(0);
@@ -62,7 +84,6 @@ public class Config {
         spawnZ = config.getDoubleList("spawnlocation").get(2);
         joinLogging = config.getBoolean("joinloggingonlaunch");
         Toggle = config.getBoolean("autostart");
-        broadcastMessage(ChatColor.translateAlternateColorCodes('&' , "&eK&cE&eC &6Has Been Reloaded!"));
     }
 
 

@@ -13,7 +13,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import static krekks.easycheckpoints.Config.ConfigLoader;
+import static krekks.easycheckpoints.Config.configLoader;
 import static krekks.easycheckpoints.playerdata.PlayerDataHandler.data;
 import static krekks.easycheckpoints.playerdata.PlayerDataHandler.finishedList;
 import static org.bukkit.Bukkit.broadcastMessage;
@@ -32,32 +32,9 @@ public final class EasyCheckpoints extends JavaPlugin {
         plugin = this;
         plugin.saveDefaultConfig();
         config = plugin.getConfig();
-        ConfigLoader();
-        loadBStats();
-
-        getLogger().info("Config has been setup");
-        pluginManager.registerEvents(new DeathEvent(), this);
-        pluginManager.registerEvents(new PlayerMove(), this);
-        pluginManager.registerEvents(new InventoryEvents(), this);
-        pluginManager.registerEvents(new Leave(), this);
-        pluginManager.registerEvents(new Join(), this);
-        pluginManager.registerEvents(new Interact(),this);
-        getLogger().info("Events have been setup");;
-        getCommand("KecGetList").setExecutor(new GetListCommand());
-        getCommand("KecGetPlayerInList").setExecutor(new GetPlayerInListCommand());
-        getCommand("Back").setExecutor(new GoBackCommand());
-        getCommand("KecStart").setExecutor(new ToggleCommand());
-        getCommand("KecGetTop").setExecutor(new GetTopCommand());
-        getCommand("kecbroadcasttop").setExecutor(new DisplayTopCommand());
-        getCommand("togglejoinlogging").setExecutor(new ToggleJoinLogging());
-        getCommand("KecSetCheckpointOf").setExecutor(new SetCheckpointCommand());
-        getCommand("KecReset").setExecutor(new RestartCommand());
-        getCommand("KecShowPluginData").setExecutor(new PluginInfoCommand());
-        getCommand("KecChangeFinishLocation").setExecutor(new ChangeFinishLocationCommand());
-        getCommand("KecChangeSpawnLocation").setExecutor(new ChangeSpawnLocationCommand());
-        getCommand("KecGameManager").setExecutor(new GameManagerCommand());
-        getCommand("KecPlayerStats").setExecutor(new PlayerStatsMenuCommand());
-        getLogger().info("Commands are setup");
+        configLoader();
+        eventsRegister();
+        commandSetup();
         // if the plugin gets reloaded I want it to not break
         getLogger().info("If there are any online players they now have no checkpoint location!");
         broadcastMessage(ChatColor.translateAlternateColorCodes('&' , "&eK&cE&eC &6Has Loaded"));
@@ -76,16 +53,34 @@ public final class EasyCheckpoints extends JavaPlugin {
         finishedList.clear();
     }
 
-    /**
-     * Loads the basic config.
-     */
-    public void loadConfig(){
-
+    public void eventsRegister(){
+        getLogger().info("Setting up Events...");;
+        pluginManager.registerEvents(new DeathEvent(), this);
+        pluginManager.registerEvents(new PlayerMove(), this);
+        pluginManager.registerEvents(new InventoryEvents(), this);
+        pluginManager.registerEvents(new Leave(), this);
+        pluginManager.registerEvents(new Join(), this);
+        pluginManager.registerEvents(new Interact(),this);
+        getLogger().info("Events have been setup");;
     }
 
-    public void loadBStats(){
-
-
+    public void commandSetup(){
+        getLogger().info("Setting up Commands...");
+        getCommand("GetList").setExecutor(new GetListCommand());
+        getCommand("GetPlayerInList").setExecutor(new GetPlayerInListCommand());
+        getCommand("Back").setExecutor(new GoBackCommand());
+        getCommand("Start").setExecutor(new ToggleCommand());
+        getCommand("GetTop").setExecutor(new GetTopCommand());
+        getCommand("broadcasttop").setExecutor(new DisplayTopCommand());
+        getCommand("togglejoinlogging").setExecutor(new ToggleJoinLogging());
+        getCommand("SetCheckpointOf").setExecutor(new SetCheckpointCommand());
+        getCommand("Reset").setExecutor(new RestartCommand());
+        getCommand("ShowPluginData").setExecutor(new PluginInfoCommand());
+        getCommand("ChangeFinishLocation").setExecutor(new ChangeFinishLocationCommand());
+        getCommand("ChangeSpawnLocation").setExecutor(new ChangeSpawnLocationCommand());
+        getCommand("GameManager").setExecutor(new GameManagerCommand());
+        getCommand("PlayerStats").setExecutor(new PlayerStatsMenuCommand());
+        getLogger().info("Commands are setup");
     }
 
 }

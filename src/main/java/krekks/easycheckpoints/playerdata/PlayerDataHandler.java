@@ -46,7 +46,7 @@ public class PlayerDataHandler {
             }
         }
         playerList.get(Bukkit.getPlayer(p));
-        return null;
+        return playerList.get(Bukkit.getPlayer(p));
     }
 
     public static boolean isInList(String p){

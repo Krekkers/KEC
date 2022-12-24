@@ -8,17 +8,22 @@ authors: [ Krekkers ]
 description: Krekks Easy Checkpoints is a easy to use / simple parkour plugin. You dont need any fancy configuration work to be able to use it. For more info visit my website!
 
 commands:
-  KecGetList:
+  reloadconfig:
+    description: "Reload the config"
+    usage: "Usage: /<command>"
+    permission: krekks.perms
+    permission-message: You do not have permission to use this command.
+  GetList:
     description: Prints the entire list of player data collected by the plugin
     usage: "Usage: /<command>"
     permission: krekks.perms
     permission-message: You do not have permission to use this command.
-  KecGetPlayerInList:
+  GetPlayerInList:
     description: Shows you the single player you checked for!
     usage: "Usage: /<command> <playername>"
     permission: krekks.perms
     permission-message: You do not have permission to use this command.
-  KecStart:
+  Start:
     description: Starts the game
     usage: "Usage /<command>"
     permission: krekks.perms
@@ -26,12 +31,12 @@ commands:
   Back:
     description: Allows you to teleport back to your last checkpoint
     usage: "Usage: /<command>"
-  KecGetTop:
+  GetTop:
     description: Shows you all players that finished in order
     usage: "Usage /<command>"
     permission: krekks.perms
     permission-message: You do not have permission to use this command.
-  kecbroadcasttop:
+  broadcasttop:
     description: Broadcasts the top to everyone
     usage: "Usage /<command>"
     permission: krekks.perms
@@ -41,37 +46,37 @@ commands:
     usage: "Usage /<command>"
     permission: krekks.perms
     permission-message: No permission
-  KecSetCheckpointOf:
+  SetCheckpointOf:
     description: Manually sets the checkpoint of a player to a specified location
     usage: "Usage /<command> <Name> <x> <y> <z>"
     permission: krekks.perms
     permission-message: No permission
-  KecReset:
+  Reset:
     description: Reset the game. Will always toggle off
     usage: "Usage /<command>"
     permission: krekks.perms
     permission-message: No permission
-  KecShowPluginData:
+  ShowPluginData:
     description: Shows you plugin info
     usage: "Usage /<command>"
     permission: krekks.perms
     permission-message: No permission
-  KecChangeFinishLocation:
+  ChangeFinishLocation:
     description: change the finishline
     usage: "Usage /<command> <x> <y> <z>"
     permission: krekks.perms
     permission-message: No permission
-  KecChangeSpawnLocation:
+  ChangeSpawnLocation:
     description: change the spawnLocation
     usage: "Usage /<command> <x> <y> <z>"
     permission: krekks.perms
     permission-message: No permission
-  KecGameManager:
+  GameManager:
     description: Access the GameManager Menu
     usage: "Usage /<command>"
     permission: krekks.perms
     permission-message: No permission
-  KecPlayerStats:
+  PlayerStats:
     description: Access a menu that displays player data
     usage: "Usage /<command> <playername>"
     permission: krekks.perms
