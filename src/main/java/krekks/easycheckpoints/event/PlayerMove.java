@@ -16,6 +16,7 @@ import static krekks.easycheckpoints.Config.*;
 import static krekks.easycheckpoints.misc.PlayerBoost.boost;
 import static krekks.easycheckpoints.misc.PlayerBoost.elytraBoost;
 import static krekks.easycheckpoints.playerdata.PlayerDataHandler.setCheckpointOf;
+import static krekks.easycheckpoints.system.levelsystem.LevelHandler.playerSetNextLevel;
 
 public class PlayerMove implements Listener {
 
@@ -34,7 +35,7 @@ public class PlayerMove implements Listener {
         }
         //This will trigger the player to go to the next level
         if(block == finish && !e.getPlayer().hasPermission("krekks.perms")){
-
+            playerSetNextLevel(e.getPlayer());
 
             /*
             Location l = p.getLocation();

@@ -1,6 +1,7 @@
 package krekks.easycheckpoints.command;
 
 import krekks.easycheckpoints.playerdata.PlayerData;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -10,7 +11,7 @@ import static krekks.easycheckpoints.playerdata.PlayerDataHandler.getFromList;
 public class GetPlayerInListCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        PlayerData d = getFromList(args[0]);
+        PlayerData d = getFromList(Bukkit.getPlayer(args[0]));
         if(d == null){
             sender.sendMessage("Data = null");
             return true;

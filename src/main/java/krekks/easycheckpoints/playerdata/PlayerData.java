@@ -28,6 +28,7 @@ public class PlayerData {
     public PlayerData(Player _p, Location _l){
         checkpointLocation = _l;
         player = _p;
+        level = 0;
     }
 
     public void addGoBackCounter(int s){

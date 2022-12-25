@@ -6,8 +6,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import static krekks.easycheckpoints.playerdata.PlayerDataHandler.data;
 import static krekks.easycheckpoints.playerdata.PlayerDataHandler.finishedList;
+import static krekks.easycheckpoints.playerdata.PlayerDataHandler.playerList;
 
 public class GetTopCommand implements CommandExecutor {
     @Override
@@ -17,7 +17,7 @@ public class GetTopCommand implements CommandExecutor {
             if(i > finishedList.size()) return true;
                 Player p = finishedList.get(i);
                 sender.sendMessage(ChatColor.YELLOW + "Player in position : " + ChatColor.RED + (i + 1) + ChatColor.YELLOW + " is : "  + ChatColor.RED + p.getName());
-                sender.sendMessage(ChatColor.YELLOW + "They took : " + ChatColor.RED + data.get(i).getSecondsToFinish() + " seconds");
+                sender.sendMessage(ChatColor.YELLOW + "They took : " + ChatColor.RED + playerList.get(p).getSecondsToFinish() + " seconds");
         }
         return true;
     }

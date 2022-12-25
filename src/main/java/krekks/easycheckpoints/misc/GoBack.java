@@ -25,7 +25,7 @@ public class GoBack extends JavaPlugin {
         newLoc.setYaw(p.getLocation().getYaw());
         //teleports
         p.teleport(newLoc);
-        PlayerData d = getFromList(p.getName());
+        PlayerData d = getFromList(p);
         if(!d.getFinished()){
             d.addGoBackCounter(1);
         }

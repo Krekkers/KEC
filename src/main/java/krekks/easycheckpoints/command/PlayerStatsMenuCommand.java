@@ -2,6 +2,7 @@ package krekks.easycheckpoints.command;
 
 import krekks.easycheckpoints.playerdata.PlayerDataHandler;
 import krekks.easycheckpoints.system.menusystem.menu.PlayerStatsMenu;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -24,7 +25,7 @@ public class PlayerStatsMenuCommand implements CommandExecutor {
         }
         Player player = (Player) sender;
         PlayerStatsMenu menu = new PlayerStatsMenu(getMenuUtility(player));
-        menu.playerData = PlayerDataHandler.getFromList(args[0]);
+        menu.playerData = PlayerDataHandler.getFromList(Bukkit.getPlayer(args[0]));
         menu.openMenu();
         return true;
     }

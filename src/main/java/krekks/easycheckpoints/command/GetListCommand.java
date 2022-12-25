@@ -1,17 +1,15 @@
 package krekks.easycheckpoints.command;
 
-import krekks.easycheckpoints.playerdata.PlayerData;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import static krekks.easycheckpoints.playerdata.PlayerDataHandler.data;
 
 public class GetListCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        for(PlayerData d : data){
+        /*
+        for(PlayerData d : playerList){
             sender.sendMessage("---------------------");
             sender.sendMessage("> " + ChatColor.YELLOW + "Player Data");
             sender.sendMessage("> " + ChatColor.YELLOW + "Player : " + ChatColor.RED + d.getPlayer().getName());
@@ -24,6 +22,8 @@ public class GetListCommand implements CommandExecutor {
                 sender.sendMessage("> " + ChatColor.YELLOW + "It took them : " + ChatColor.RED + d.getSecondsToFinish() + " Seconds");
             }
         }
+         */
+        sender.sendMessage("being reworked... sorry");
         return true;
     }
 }

@@ -14,7 +14,6 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import static krekks.easycheckpoints.Config.configLoader;
-import static krekks.easycheckpoints.playerdata.PlayerDataHandler.data;
 import static krekks.easycheckpoints.playerdata.PlayerDataHandler.finishedList;
 import static org.bukkit.Bukkit.broadcastMessage;
 
@@ -49,7 +48,6 @@ public final class EasyCheckpoints extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        data.clear();
         finishedList.clear();
     }
 
