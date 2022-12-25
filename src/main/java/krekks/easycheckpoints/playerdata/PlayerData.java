@@ -17,6 +17,7 @@ public class PlayerData {
     Player player;
     Location checkpointLocation;
     Block checkpointBlock;
+    int level;
     int goBackCounter = 0;
     boolean finished = false;
     int secondsToFinish = 0;
@@ -38,6 +39,9 @@ public class PlayerData {
 
     public void setFinished(boolean s){
         finished = s;
+    }
+    public void setLevel(int l) {
+        level = l;
     }
     public void setCheckpointBlock(Block b) { checkpointBlock = b; }
     public void setSecondsToFinish(int s){
@@ -64,6 +68,9 @@ public class PlayerData {
         return secondsToFinish;
     }
     public Block getCheckpointBlock() { return checkpointBlock; }
+    public int getLevel() {
+        return level;
+    }
     public Location getCheckpointLocation(){
         return checkpointLocation;
     }

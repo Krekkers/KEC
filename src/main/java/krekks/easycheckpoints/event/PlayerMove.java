@@ -32,8 +32,10 @@ public class PlayerMove implements Listener {
             Location loc = p.getLocation().add(0,-1,0).getBlock().getLocation();
             setCheckpointOf(p, loc, b);
         }
-        //this is the part for the finishline
+        //This will trigger the player to go to the next level
         if(block == finish && !e.getPlayer().hasPermission("krekks.perms")){
+
+
             /*
             Location l = p.getLocation();
             l.setX(finishX); l.setY(finishY); l.setZ(finishZ);

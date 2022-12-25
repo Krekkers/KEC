@@ -6,6 +6,7 @@ import org.bukkit.Sound;
 import java.time.Instant;
 
 import static krekks.easycheckpoints.EasyCheckpoints.config;
+import static krekks.easycheckpoints.system.levelsystem.LevelHandler.loadParkourLevels;
 import static org.bukkit.Bukkit.getLogger;
 
 public class Config {
@@ -83,6 +84,7 @@ public class Config {
         spawnY = config.getDoubleList("spawnlocation").get(1);
         spawnZ = config.getDoubleList("spawnlocation").get(2);
         joinLogging = config.getBoolean("joinloggingonlaunch");
+        loadParkourLevels();
         Toggle = config.getBoolean("autostart");
     }
 
