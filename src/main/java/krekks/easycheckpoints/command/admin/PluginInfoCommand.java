@@ -1,4 +1,4 @@
-package krekks.easycheckpoints.command;
+package krekks.easycheckpoints.command.admin;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;

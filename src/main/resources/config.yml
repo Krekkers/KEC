@@ -23,6 +23,7 @@ spawnlocation:
 
 
 #Sounds
+nextlevelsound: "BLOCK_AMETHYST_BLOCK_PLACE"
 checkpointsound: "BLOCK_NOTE_BLOCK_PLING"
 jumpsound: "BLOCK_PISTON_EXTEND"
 boostsound: "ENTITY_FIREWORK_ROCKET_LAUNCH"

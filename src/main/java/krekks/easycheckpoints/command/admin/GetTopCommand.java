@@ -1,4 +1,4 @@
-package krekks.easycheckpoints.command;
+package krekks.easycheckpoints.command.admin;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -16,8 +16,8 @@ public class GetTopCommand implements CommandExecutor {
         for(int i = 0; i < 10; i++){
             if(i > finishedList.size()) return true;
                 Player p = finishedList.get(i);
-                sender.sendMessage(ChatColor.YELLOW + "Player in position : " + ChatColor.RED + (i + 1) + ChatColor.YELLOW + " is : "  + ChatColor.RED + p.getName());
-                sender.sendMessage(ChatColor.YELLOW + "They took : " + ChatColor.RED + playerList.get(p).getSecondsToFinish() + " seconds");
+                sender.sendMessage(ChatColor.GREEN + "Player in position : " + ChatColor.DARK_GREEN + (i + 1) + ChatColor.GREEN + " is : "  + ChatColor.DARK_GREEN + p.getName());
+                sender.sendMessage(ChatColor.GREEN + "They took : " + ChatColor.DARK_GREEN + playerList.get(p).getSecondsToFinish() + " seconds");
         }
         return true;
     }

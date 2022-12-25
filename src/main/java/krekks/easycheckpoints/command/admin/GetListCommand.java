@@ -1,4 +1,4 @@
-package krekks.easycheckpoints.command;
+package krekks.easycheckpoints.command.admin;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

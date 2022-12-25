@@ -1,4 +1,4 @@
-package krekks.easycheckpoints.command;
+package krekks.easycheckpoints.command.admin;
 
 import krekks.easycheckpoints.system.menusystem.menu.RestartMenu;
 import org.bukkit.ChatColor;

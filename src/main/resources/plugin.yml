@@ -13,6 +13,14 @@ commands:
     usage: "Usage: /<command>"
     permission: krekks.perms
     permission-message: You do not have permission to use this command.
+  showlevels:
+    description: ""
+    usage: "Usage: /<command>"
+    permission: krekks.perms
+    permission-message: You do not have permission to use this command.
+  levels:
+    description: ""
+    usage: "Usage: /<command>"
   GetList:
     description: Prints the entire list of player data collected by the plugin
     usage: "Usage: /<command>"

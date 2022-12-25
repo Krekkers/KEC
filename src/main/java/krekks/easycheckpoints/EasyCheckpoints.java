@@ -2,6 +2,9 @@ package krekks.easycheckpoints;
 
 
 import krekks.easycheckpoints.command.*;
+import krekks.easycheckpoints.command.admin.*;
+import krekks.easycheckpoints.command.level.LevelSelectorCommand;
+import krekks.easycheckpoints.command.level.admin.LevelDataCommand;
 import krekks.easycheckpoints.event.*;
 import krekks.easycheckpoints.playerdata.PlayerDataHandler;
 import org.bukkit.Bukkit;
@@ -64,6 +67,9 @@ public final class EasyCheckpoints extends JavaPlugin {
 
     public void commandSetup(){
         getLogger().info("Setting up Commands...");
+        getCommand("reloadconfig").setExecutor(new ReloadConfigCommand());
+        getCommand("showlevels").setExecutor(new LevelDataCommand());
+        getCommand("levels").setExecutor(new LevelSelectorCommand());
         getCommand("GetList").setExecutor(new GetListCommand());
         getCommand("GetPlayerInList").setExecutor(new GetPlayerInListCommand());
         getCommand("Back").setExecutor(new GoBackCommand());

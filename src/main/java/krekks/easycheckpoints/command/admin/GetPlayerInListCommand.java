@@ -1,4 +1,4 @@
-package krekks.easycheckpoints.command;
+package krekks.easycheckpoints.command.admin;
 
 import krekks.easycheckpoints.playerdata.PlayerData;
 import org.bukkit.Bukkit;
@@ -18,15 +18,15 @@ public class GetPlayerInListCommand implements CommandExecutor {
         }
         sender.sendMessage("---------------------");
         //sending playerdata
-        sender.sendMessage("> " + ChatColor.YELLOW + "Player Data");
-        sender.sendMessage("> " + ChatColor.YELLOW + "Player : " + ChatColor.RED + d.getPlayer().getName());
+        sender.sendMessage("> " + ChatColor.GREEN + "Player Data");
+        sender.sendMessage("> " + ChatColor.GREEN + "Player : " + ChatColor.DARK_GREEN + d.getPlayer().getName());
         if(d.getCheckpointLocation() != null){
-            sender.sendMessage("> " + ChatColor.YELLOW + "CheckPointLocation : " + ChatColor.RED + d.getCheckpointLocation().getX() + " " + d.getCheckpointLocation().getY() + " " + d.getCheckpointLocation().getZ());
+            sender.sendMessage("> " + ChatColor.GREEN + "CheckPointLocation : " + ChatColor.DARK_GREEN + d.getCheckpointLocation().getX() + " " + d.getCheckpointLocation().getY() + " " + d.getCheckpointLocation().getZ());
         }
-        sender.sendMessage("> " + ChatColor.YELLOW + "Go back counter : " + ChatColor.RED + d.getGoBackCounter());
+        sender.sendMessage("> " + ChatColor.GREEN + "Go back counter : " + ChatColor.DARK_GREEN + d.getGoBackCounter());
         if(d.getFinished()){
-            sender.sendMessage("> " + ChatColor.YELLOW + "Finished = " + ChatColor.RED + d.getFinished());
-            sender.sendMessage("> " + ChatColor.YELLOW + "It took them : " + ChatColor.RED + d.getSecondsToFinish() + " Seconds");
+            sender.sendMessage("> " + ChatColor.GREEN + "Finished = " + ChatColor.DARK_GREEN + d.getFinished());
+            sender.sendMessage("> " + ChatColor.GREEN + "It took them : " + ChatColor.DARK_GREEN + d.getSecondsToFinish() + " Seconds");
         }
         return true;
     }

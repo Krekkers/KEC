@@ -1,4 +1,4 @@
-package krekks.easycheckpoints.command;
+package krekks.easycheckpoints.command.admin;
 
 import krekks.easycheckpoints.playerdata.PlayerDataHandler;
 import krekks.easycheckpoints.system.menusystem.menu.PlayerStatsMenu;

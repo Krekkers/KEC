@@ -42,6 +42,7 @@ public class Config {
     public static Sound checkpointSound;
     public static Sound boostSound;
     public static Sound elytraSound;
+    public static Sound nextLevelSound;
     //values
     public static double jumpVal;
     public static double boostVal;
@@ -70,6 +71,7 @@ public class Config {
         checkpointSound = Sound.valueOf(config.getString("checkpointsound"));
         boostSound = Sound.valueOf(config.getString("boostsound"));
         elytraSound = Sound.valueOf(config.getString("elytrasound"));
+        nextLevelSound = Sound.valueOf(config.getString("nextlevelsound"));
 
         getLogger().info("Loading Game settings");
         jumpVal = config.getDouble("jumpvalue");

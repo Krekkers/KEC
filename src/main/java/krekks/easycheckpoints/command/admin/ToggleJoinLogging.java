@@ -1,16 +1,16 @@
-package krekks.easycheckpoints.command;
+package krekks.easycheckpoints.command.admin;
 
-import krekks.easycheckpoints.Config;
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-public class ReloadConfigCommand implements CommandExecutor {
+import static krekks.easycheckpoints.Config.*;
+
+public class ToggleJoinLogging implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        Config.configLoader();
-        Bukkit.broadcast("Reloading Config", "krekks.perms");
+        joinLogging = !joinLogging;
+        sender.sendMessage("join logging = " + joinLogging);
         return true;
     }
 }
