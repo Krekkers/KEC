@@ -22,7 +22,10 @@ public class LevelHandler {
      */
     public static void loadParkourLevels(){
         levelList.clear();
-        getLogger().info("------------------------");
+        getLogger().info("" +
+                "------------------------ \n" +
+                "Loading levels!\n" +
+                "------------------------");
         for (int i = 0; i < config.getList("levels").size(); i++){
             LinkedHashMap<String, Object> levelObj = (LinkedHashMap<String, Object>) config.getList("levels").get(i);
             Location levelSpawn = new Location(Bukkit.getWorld("world"), (Double) levelObj.get("x"),(Double) levelObj.get("y"),(Double) levelObj.get("z"));
@@ -53,7 +56,20 @@ public class LevelHandler {
         p.playSound(p,nextLevelSound, 1f,1f);
 
     }
+    public static void playerSetParkourLevel(Player p, int id){
+        //set the parkour level and teleport player to new level
+        PlayerData pd = PlayerDataHandler.getFromList(p);
+        LevelData ld = levelList.get(id);
+        //set data
+        pd.setLevel(ld.getLevelID());
+        pd.setCheckpointLocation(ld.getLevelSpawn());
+        ld.getLevelSpawn().setYaw(90f);
+        p.teleport(ld.getLevelSpawn());
+        //success
+        p.sendMessage("Level " + ld.getLevelName() + " | Difficulty : " + ld.getDifficulty());
+        p.playSound(p,nextLevelSound, 1f,1f);
 
+    }
 
 
 

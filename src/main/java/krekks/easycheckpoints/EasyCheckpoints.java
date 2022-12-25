@@ -32,8 +32,6 @@ public final class EasyCheckpoints extends JavaPlugin {
         getLogger().info("LAUNCHING KEC!");
         //setting up
         plugin = this;
-        plugin.saveDefaultConfig();
-        config = plugin.getConfig();
         configLoader();
         eventsRegister();
         commandSetup();

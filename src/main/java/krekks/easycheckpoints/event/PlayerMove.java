@@ -12,9 +12,19 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.Vector;
 import org.w3c.dom.Entity;
 
-import static krekks.easycheckpoints.Config.*;
+import static krekks.easycheckpoints.Config.Toggle;
+import static krekks.easycheckpoints.Config.boost;
+import static krekks.easycheckpoints.Config.boostSound;
+import static krekks.easycheckpoints.Config.boostText;
+import static krekks.easycheckpoints.Config.boostVal;
+import static krekks.easycheckpoints.Config.checkpoint;
+import static krekks.easycheckpoints.Config.checkpointOnly;
+import static krekks.easycheckpoints.Config.finish;
+import static krekks.easycheckpoints.Config.jump;
+import static krekks.easycheckpoints.Config.jumpSound;
+import static krekks.easycheckpoints.Config.jumpText;
+import static krekks.easycheckpoints.Config.jumpVal;
 import static krekks.easycheckpoints.misc.PlayerBoost.boost;
-import static krekks.easycheckpoints.misc.PlayerBoost.elytraBoost;
 import static krekks.easycheckpoints.playerdata.PlayerDataHandler.setCheckpointOf;
 import static krekks.easycheckpoints.system.levelsystem.LevelHandler.playerSetNextLevel;
 
@@ -36,23 +46,6 @@ public class PlayerMove implements Listener {
         //This will trigger the player to go to the next level
         if(block == finish && !e.getPlayer().hasPermission("krekks.perms")){
             playerSetNextLevel(e.getPlayer());
-
-            /*
-            Location l = p.getLocation();
-            l.setX(finishX); l.setY(finishY); l.setZ(finishZ);
-            p.sendMessage(ChatColor.YELLOW + "YOU " + ChatColor.RED + "FINISHED!");
-            Bukkit.broadcastMessage("> " + ChatColor.YELLOW + p.getName() + ChatColor.RED + " is number " + (finishedList.size() + 1) + " to finish!");
-            setCheckpointOf(p, l, b);
-            p.teleport(l);
-            for(PlayerData d : data){
-                if(d.getPlayer() == p && !d.getFinished()){
-                    d.setFinished(true);        //sets the finish of the player
-                    addToFinished(p);           //add that user to the finished list.
-                    d.setSecondsToFinish((int) Duration.between(time, Instant.now()).toMillis() / 1000);  //sets the seconds it took to finish
-                }
-            }
-             */
-
         }
         if(checkpointOnly) return;
         //jump boost
@@ -64,9 +57,10 @@ public class PlayerMove implements Listener {
             boost(new Vector(e.getPlayer().getLocation().getDirection().getX(),boostVal / 10,e.getPlayer().getLocation().getDirection().getZ()), e.getPlayer(),boostSound , boostText);
         }
         //elytra boost
-        else if(block == elytra){
+        /*else if(block == elytra){
             elytraBoost(e.getPlayer(),elytraVal / 10,elytraSound , elytraText);
         }
+         */
     }
     //prevents falldamage
     @EventHandler

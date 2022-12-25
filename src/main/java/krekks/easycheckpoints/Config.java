@@ -6,6 +6,7 @@ import org.bukkit.Sound;
 import java.time.Instant;
 
 import static krekks.easycheckpoints.EasyCheckpoints.config;
+import static krekks.easycheckpoints.EasyCheckpoints.plugin;
 import static krekks.easycheckpoints.system.levelsystem.LevelHandler.loadParkourLevels;
 import static org.bukkit.Bukkit.getLogger;
 
@@ -49,6 +50,8 @@ public class Config {
     public static double elytraVal;
 
     public static void configLoader(){
+        plugin.saveDefaultConfig();
+        config = plugin.getConfig();
         time = Instant.now();
         //world = Bukkit.getWorld(config.getString("world"));
 
