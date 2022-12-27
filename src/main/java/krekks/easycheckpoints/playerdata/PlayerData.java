@@ -19,8 +19,6 @@ public class PlayerData {
     Block checkpointBlock;
     int level;
     int goBackCounter = 0;
-    boolean finished = false;
-    int secondsToFinish = 0;
 
     /**
      * Player data to collect.
@@ -34,20 +32,11 @@ public class PlayerData {
     public void addGoBackCounter(int s){
         goBackCounter += s;
     }
-    public void addSecondsToFinish(){
-        secondsToFinish += 1;
-    }
 
-    public void setFinished(boolean s){
-        finished = s;
-    }
     public void setLevel(int l) {
         level = l;
     }
     public void setCheckpointBlock(Block b) { checkpointBlock = b; }
-    public void setSecondsToFinish(int s){
-        secondsToFinish = s;
-    }
     public void setCheckpointLocation(Location _l){
         checkpointLocation = _l;
     }
@@ -61,12 +50,6 @@ public class PlayerData {
     }
     public int getGoBackCounter(){
         return goBackCounter;
-    }
-    public boolean getFinished(){
-        return finished;
-    }
-    public int getSecondsToFinish(){
-        return secondsToFinish;
     }
     public Block getCheckpointBlock() { return checkpointBlock; }
     public int getLevel() {

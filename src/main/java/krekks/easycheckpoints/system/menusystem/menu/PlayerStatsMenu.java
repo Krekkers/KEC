@@ -43,9 +43,6 @@ public class PlayerStatsMenu extends Menu {
         //checkpoint
         ItemStack checkpointCount = createCustomItem(Material.GOLD_BLOCK, 1 ,"&eCount : &c" + playerData.getGoBackCounter());
         //finished
-        ItemStack finished = null;
-        if(playerData.getFinished()) finished = createCustomItem(Material.LIME_STAINED_GLASS_PANE, 1, "&aFinished", "True" , "Time it took : " + playerData.getSecondsToFinish() + " Seconds");
-        if(!playerData.getFinished()) finished = createCustomItem(Material.RED_STAINED_GLASS_PANE, 1, "&cFinished", "False" , "This player has not finished yet.");
         //checkpoint
         ItemStack checkpointLocation = createCustomItem(Material.ARROW,1, "Player has no checkpoint");
         if(playerData.getCheckpointLocation() != null){
@@ -59,7 +56,6 @@ public class PlayerStatsMenu extends Menu {
 
         inventory.setItem(2,playerSkull);
         inventory.setItem(4, checkpointCount);
-        inventory.setItem(6, finished);
         inventory.setItem(22, checkpointLocation);
         fillInventoryWith(createCustomItem(Material.BLACK_STAINED_GLASS_PANE, 1, "&8Filler"));
     }

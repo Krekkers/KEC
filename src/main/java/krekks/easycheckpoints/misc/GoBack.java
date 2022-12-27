@@ -26,9 +26,6 @@ public class GoBack extends JavaPlugin {
         //teleports
         p.teleport(newLoc);
         PlayerData d = getFromList(p);
-        if(!d.getFinished()){
-            d.addGoBackCounter(1);
-        }
 
     }
 

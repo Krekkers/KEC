@@ -3,14 +3,14 @@ package krekks.easycheckpoints.system.menusystem.menu;
 import krekks.easycheckpoints.system.levelsystem.LevelData;
 import krekks.easycheckpoints.system.menusystem.Menu;
 import krekks.easycheckpoints.system.menusystem.MenuUtility;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
 import static krekks.easycheckpoints.misc.CustomItem.createCustomItem;
-import static krekks.easycheckpoints.system.levelsystem.LevelHandler.*;
+import static krekks.easycheckpoints.system.levelsystem.LevelHandler.levelList;
+import static krekks.easycheckpoints.system.levelsystem.LevelHandler.playerSetParkourLevel;
 
 public class LevelSelectionMenu extends Menu {
 
@@ -33,6 +33,7 @@ public class LevelSelectionMenu extends Menu {
 
     @Override
     public void setMenuItems() {
+        inventory.clear();
         int levelCount = levelList.size();
         for(int i = listLimit * page; i < levelCount; i++){
             LevelData ld = levelList.get(i);
@@ -44,10 +45,11 @@ public class LevelSelectionMenu extends Menu {
             inventory.addItem(item);
         }
         //control
-        inventory.setItem(26, createCustomItem(Material.GREEN_WOOL,1, "&aNext"));
-        inventory.setItem(25, createCustomItem(Material.RED_WOOL,1, "&cPrevious"));
+        inventory.setItem(23, createCustomItem(Material.GREEN_WOOL,1, "&aNext"));
+        inventory.setItem(22, createCustomItem(Material.GRAY_WOOL,1, "&2Page : " + (page + 1)));
+        inventory.setItem(21, createCustomItem(Material.RED_WOOL,1, "&cPrevious"));
         //fill remaining space
-        fillInventoryWith(createCustomItem(Material.BLACK_STAINED_GLASS_PANE,1, "",""));
+        fillInventoryWith(createCustomItem(Material.BLACK_STAINED_GLASS_PANE,1, "&8#",""));
     }
 
     @Override
@@ -58,10 +60,12 @@ public class LevelSelectionMenu extends Menu {
             playerSetParkourLevel((Player) e.getWhoClicked(),id);
         }
         if(e.getCurrentItem().getItemMeta().getDisplayName().contains("Next")){
-            Bukkit.getLogger().info("not working");
+            page += 1;
+            setMenuItems();
         }
-        if(e.getCurrentItem().getItemMeta().getDisplayName().contains("Previous")){
-            Bukkit.getLogger().info("not working");
+        if(e.getCurrentItem().getItemMeta().getDisplayName().contains("Previous") && page >= 1){
+            page -= 1;
+            setMenuItems();
         }
 
     }
