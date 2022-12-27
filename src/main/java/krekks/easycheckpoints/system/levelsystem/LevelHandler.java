@@ -4,6 +4,7 @@ import krekks.easycheckpoints.playerdata.PlayerData;
 import krekks.easycheckpoints.playerdata.PlayerDataHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -29,7 +30,8 @@ public class LevelHandler {
         for (int i = 0; i < config.getList("levels").size(); i++){
             LinkedHashMap<String, Object> levelObj = (LinkedHashMap<String, Object>) config.getList("levels").get(i);
             Location levelSpawn = new Location(Bukkit.getWorld("world"), (Double) levelObj.get("x"),(Double) levelObj.get("y"),(Double) levelObj.get("z"));
-            LevelData ld = new LevelData(i,levelSpawn, (String) levelObj.get("name"), (String) levelObj.get("difficulty"));
+            Material icon =  Material.matchMaterial((String) levelObj.get("icon"));
+            LevelData ld = new LevelData(i,levelSpawn, (String) levelObj.get("name"), (String) levelObj.get("difficulty"),(String) levelObj.get("creator"), icon);
             getLogger().info("Loaded level : " + (String) levelObj.get("name"));
             levelList.put(i,ld);
         }

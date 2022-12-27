@@ -3,6 +3,7 @@ package krekks.easycheckpoints.system.menusystem.menu;
 import krekks.easycheckpoints.system.levelsystem.LevelData;
 import krekks.easycheckpoints.system.menusystem.Menu;
 import krekks.easycheckpoints.system.menusystem.MenuUtility;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -12,6 +13,10 @@ import static krekks.easycheckpoints.misc.CustomItem.createCustomItem;
 import static krekks.easycheckpoints.system.levelsystem.LevelHandler.*;
 
 public class LevelSelectionMenu extends Menu {
+
+    int page = 0;
+    int listLimit = 18;
+
     public LevelSelectionMenu(MenuUtility utility) {
         super(utility);
     }
@@ -28,15 +33,19 @@ public class LevelSelectionMenu extends Menu {
 
     @Override
     public void setMenuItems() {
-        for(int i = 0; i < levelList.size(); i++){
+        int levelCount = levelList.size();
+        for(int i = listLimit * page; i < levelCount; i++){
             LevelData ld = levelList.get(i);
-            ItemStack item = createCustomItem(Material.GREEN_WOOL,1,
-                    "Level : " + ld.getLevelName()
-                    , "ID : " +  ld.getLevelID()
-                    , "Difficulty : " + ld.getDifficulty()
-                    , "Made by : " + "Username");
+            ItemStack item = createCustomItem(ld.getIcon(),1,
+                    "&a&lLevel : &c" + ld.getLevelName()
+                    , "&cID : " +  ld.getLevelID()
+                    , "&aDifficulty : &c" + ld.getDifficulty()
+                    , "&aMade by : &c" + ld.getCreator());
             inventory.addItem(item);
         }
+        //control
+        inventory.setItem(26, createCustomItem(Material.GREEN_WOOL,1, "&aNext"));
+        inventory.setItem(25, createCustomItem(Material.RED_WOOL,1, "&cPrevious"));
         //fill remaining space
         fillInventoryWith(createCustomItem(Material.BLACK_STAINED_GLASS_PANE,1, "",""));
     }
@@ -47,6 +56,12 @@ public class LevelSelectionMenu extends Menu {
             int id = getDigitFromString(e.getCurrentItem().getItemMeta().getLore().get(0));
             e.getWhoClicked().sendMessage("id = " + id);
             playerSetParkourLevel((Player) e.getWhoClicked(),id);
+        }
+        if(e.getCurrentItem().getItemMeta().getDisplayName().contains("Next")){
+            Bukkit.getLogger().info("not working");
+        }
+        if(e.getCurrentItem().getItemMeta().getDisplayName().contains("Previous")){
+            Bukkit.getLogger().info("not working");
         }
 
     }

@@ -1,18 +1,39 @@
 package krekks.easycheckpoints.system.levelsystem;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
 
 public class LevelData {
     int levelID;
     Location levelSpawn;
     String levelName;
     String difficulty;
+    String creator;
+    Material icon;
 
-    public LevelData (int id, Location l, String name, String d){
+    public LevelData (int id, Location l, String name, String d, String c, Material m){
         levelID = id;
         levelSpawn = l;
         levelName = name;
         difficulty = d;
+        creator = c;
+        icon = m;
+    }
+
+    public Material getIcon() {
+        return icon;
+    }
+
+    public void setIcon(Material icon) {
+        this.icon = icon;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
     }
 
     public int getLevelID() {

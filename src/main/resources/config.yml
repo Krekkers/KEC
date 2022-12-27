@@ -11,15 +11,6 @@ jumpblock: "diamond block"
 finishblock: "emerald block"
 boostblock: "iron block"
 elytrablock: "PURPUR_PILLAR"
-#Locations
-finishlocation:
-  - 0.0     #x
-  - 100.0   #y
-  - 0.0     #z
-spawnlocation:
-  - 0.0     #x
-  - 50.0    #y
-  - 0.0     #z
 
 
 #Sounds
@@ -52,13 +43,15 @@ levels:
     y: 0.0
     z: 0.0
     difficulty: "easy"
+    creator: ""
   - 2 :
     name: "Default 2"
     icon: "GREEN_WOOL"
     x: 1.0
-    y: 0.5
+    y: 0.5z
     z: 0.15
     difficulty: "easy"
+    creator: ""
 
 
 
