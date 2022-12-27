@@ -29,6 +29,7 @@ public class PlayerBoost {
      * @param sound Sound that will be played when boosted
      * @param message Messaged that will be displayed
      */
+    @Deprecated
     public static void elytraBoost(Player p,double force, Sound sound, String message){
         p.getInventory().setChestplate(new ItemStack(Material.ELYTRA));
         p.setVelocity(new Vector(0,force,0));

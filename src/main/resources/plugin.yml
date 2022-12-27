@@ -19,64 +19,26 @@ commands:
     permission: krekks.perms
     permission-message: You do not have permission to use this command.
   levels:
-    description: ""
+    description: "Open level menu"
     usage: "Usage: /<command>"
-  GetList:
-    description: Prints the entire list of player data collected by the plugin
-    usage: "Usage: /<command>"
-    permission: krekks.perms
-    permission-message: You do not have permission to use this command.
+    aliases: [l,level,parkours]
   GetPlayerInList:
     description: Shows you the single player you checked for!
     usage: "Usage: /<command> <playername>"
     permission: krekks.perms
     permission-message: You do not have permission to use this command.
-  Start:
-    description: Starts the game
-    usage: "Usage /<command>"
-    permission: krekks.perms
-    permission-message: You do not have the permission to toggle.
   Back:
     description: Allows you to teleport back to your last checkpoint
     usage: "Usage: /<command>"
-  GetTop:
-    description: Shows you all players that finished in order
-    usage: "Usage /<command>"
-    permission: krekks.perms
-    permission-message: You do not have permission to use this command.
-  broadcasttop:
-    description: Broadcasts the top to everyone
-    usage: "Usage /<command>"
-    permission: krekks.perms
-    permission-message: No permission
-  togglejoinlogging:
-    description: Enables the logging of players
-    usage: "Usage /<command>"
-    permission: krekks.perms
-    permission-message: No permission
+    aliases: [b]
   SetCheckpointOf:
     description: Manually sets the checkpoint of a player to a specified location
     usage: "Usage /<command> <Name> <x> <y> <z>"
     permission: krekks.perms
     permission-message: No permission
-  Reset:
-    description: Reset the game. Will always toggle off
-    usage: "Usage /<command>"
-    permission: krekks.perms
-    permission-message: No permission
   ShowPluginData:
     description: Shows you plugin info
     usage: "Usage /<command>"
-    permission: krekks.perms
-    permission-message: No permission
-  ChangeFinishLocation:
-    description: change the finishline
-    usage: "Usage /<command> <x> <y> <z>"
-    permission: krekks.perms
-    permission-message: No permission
-  ChangeSpawnLocation:
-    description: change the spawnLocation
-    usage: "Usage /<command> <x> <y> <z>"
     permission: krekks.perms
     permission-message: No permission
   GameManager:

@@ -70,18 +70,10 @@ public final class EasyCheckpoints extends JavaPlugin {
         getCommand("reloadconfig").setExecutor(new ReloadConfigCommand());
         getCommand("showlevels").setExecutor(new LevelDataCommand());
         getCommand("levels").setExecutor(new LevelSelectorCommand());
-        getCommand("GetList").setExecutor(new GetListCommand());
         getCommand("GetPlayerInList").setExecutor(new GetPlayerInListCommand());
         getCommand("Back").setExecutor(new GoBackCommand());
-        getCommand("Start").setExecutor(new ToggleCommand());
-        getCommand("GetTop").setExecutor(new GetTopCommand());
-        getCommand("broadcasttop").setExecutor(new DisplayTopCommand());
-        getCommand("togglejoinlogging").setExecutor(new ToggleJoinLogging());
         getCommand("SetCheckpointOf").setExecutor(new SetCheckpointCommand());
-        getCommand("Reset").setExecutor(new RestartCommand());
         getCommand("ShowPluginData").setExecutor(new PluginInfoCommand());
-        getCommand("ChangeFinishLocation").setExecutor(new ChangeFinishLocationCommand());
-        getCommand("ChangeSpawnLocation").setExecutor(new ChangeSpawnLocationCommand());
         getCommand("GameManager").setExecutor(new GameManagerCommand());
         getCommand("PlayerStats").setExecutor(new PlayerStatsMenuCommand());
         getLogger().info("Commands are setup");

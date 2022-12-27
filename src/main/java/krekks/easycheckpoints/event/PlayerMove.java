@@ -38,7 +38,6 @@ public class PlayerMove implements Listener {
         Material block = p.getLocation().add(0,-1,0).getBlock().getType();
         Block b = p.getLocation().add(0,-1,0).getBlock();
         //this is the part for the checkpoint
-
         if(block == checkpoint){
             Location loc = p.getLocation().add(0,-1,0).getBlock().getLocation();
             setCheckpointOf(p, loc, b);
