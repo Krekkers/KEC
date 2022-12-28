@@ -1,4 +1,4 @@
-name: KEC
+name: KEP
 version: '2.0.0'
 api-version: 1.19
 main: krekks.easyparkour.KEP

@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>Krekks</groupId>
-    <artifactId>EasyCheckpoints</artifactId>
-    <version>1.0.0</version>
+    <artifactId>KEP</artifactId>
+    <version>2.0.0</version>
     <packaging>jar</packaging>
 
-    <name>EasyCheckpoints</name>
+    <name>KEP</name>
 
-    <description>KEC</description>
+    <description>KEP</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

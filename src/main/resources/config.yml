@@ -4,6 +4,11 @@ parkoursettings:
     checkpointonly: false
     jumpvalue: 10
     boostvalue: 10
+    spawnlocation:
+      world: "world"
+      x: 0.0
+      y: 0.0
+      z: 0.0
   blocks:
     checkpointblock: "GOLD_BLOCK"
     jumpblock: "DIAMOND_BLOCK"
@@ -25,6 +30,7 @@ parkoursettings:
     goback:
       backitemname: "&eGo &cBack"
       backmaterial: "REDSTONE"
+
 
 levels:
   - 1 :

@@ -4,15 +4,6 @@ import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
-/**
- * This class is made to collect player data
- * This data includes :
- * Player,
- * Checkpoint,
- * Go back Counter,
- * Finished ,
- * Seconds it took for someone to finish
- */
 public class PlayerData {
     Player player;
     Location checkpointLocation;
