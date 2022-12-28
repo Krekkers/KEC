@@ -7,8 +7,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.InventoryHolder;
 
-import static krekks.easyparkour.Config.*;
-
 public class InventoryEvents implements Listener {
     @EventHandler
     void inventoryClick(InventoryClickEvent e){
@@ -26,7 +24,7 @@ public class InventoryEvents implements Listener {
     @EventHandler
     void itemDropEvent(PlayerDropItemEvent e){
 
-        if(Toggle && !e.getPlayer().hasPermission("krekks.perms")) return;
+        if(!e.getPlayer().hasPermission("krekks.perms")) return;
         e.setCancelled(true);
     }
 

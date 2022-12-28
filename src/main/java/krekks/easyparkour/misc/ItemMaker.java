@@ -16,7 +16,7 @@ public class ItemMaker {
     public static ItemStack makeGoBackItem(Material mat){
         ItemStack newItem = new ItemStack(mat);
         ItemMeta itemMeta = newItem.getItemMeta();
-        itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&' , config.getString("backitemname")));
+        itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&' , config.getString("parkoursettings.items.goback.backitemname")));
         newItem.setItemMeta(itemMeta);
         return newItem;
     }

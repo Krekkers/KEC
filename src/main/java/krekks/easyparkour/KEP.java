@@ -1,10 +1,9 @@
 package krekks.easyparkour;
 
 
-import krekks.easyparkour.command.*;
+import krekks.easyparkour.command.GoBackCommand;
 import krekks.easyparkour.command.admin.*;
 import krekks.easyparkour.command.level.LevelSelectorCommand;
-import krekks.easyparkour.command.level.admin.LevelDataCommand;
 import krekks.easyparkour.event.*;
 import krekks.easyparkour.playerdata.PlayerDataHandler;
 import org.bukkit.Bukkit;
@@ -68,7 +67,6 @@ public final class KEP extends JavaPlugin {
     public void commandSetup(){
         getLogger().info("Setting up Commands...");
         getCommand("reloadconfig").setExecutor(new ReloadConfigCommand());
-        getCommand("showlevels").setExecutor(new LevelDataCommand());
         getCommand("levels").setExecutor(new LevelSelectorCommand());
         getCommand("GetPlayerInList").setExecutor(new GetPlayerInListCommand());
         getCommand("Back").setExecutor(new GoBackCommand());

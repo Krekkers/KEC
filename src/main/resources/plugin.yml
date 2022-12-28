@@ -1,7 +1,7 @@
 name: KEC
 version: '2.0.0'
 api-version: 1.19
-main: krekks.easycheckpoints.EasyCheckpoints
+main: krekks.easyparkour.KEP
 prefix: KEP
 website: ""
 authors: [ Krekkers ]
@@ -10,11 +10,6 @@ description: KEC V2. This plugin will allow you to host a parkour server.
 commands:
   reloadconfig:
     description: "Reload the config"
-    usage: "Usage: /<command>"
-    permission: krekks.perms
-    permission-message: You do not have permission to use this command.
-  showlevels:
-    description: ""
     usage: "Usage: /<command>"
     permission: krekks.perms
     permission-message: You do not have permission to use this command.

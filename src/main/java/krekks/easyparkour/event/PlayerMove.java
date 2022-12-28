@@ -21,7 +21,6 @@ public class PlayerMove implements Listener {
 
     @EventHandler
     void MoveCheck(PlayerMoveEvent e){
-        if(!Toggle) return;
         if(e.getFrom().getBlockX() == e.getTo().getBlockX() && e.getFrom().getBlockY() == e.getTo().getBlockY() && e.getFrom().getBlockZ() == e.getTo().getBlockZ()) return;
         Player p = e.getPlayer();
         Material block = p.getLocation().add(0,-1,0).getBlock().getType();
@@ -32,7 +31,7 @@ public class PlayerMove implements Listener {
             setCheckpointOf(p, loc, b);
         }
         //This will trigger the player to go to the next level
-        if(block == finish && !e.getPlayer().hasPermission("krekks.perms")){
+        if(block == nextLevel && !e.getPlayer().hasPermission("krekks.perms")){
             playerSetNextLevel(e.getPlayer());
         }
         if(checkpointOnly) return;
@@ -44,16 +43,11 @@ public class PlayerMove implements Listener {
         else if(block == boost){
             boost(new Vector(e.getPlayer().getLocation().getDirection().getX(),boostVal / 10,e.getPlayer().getLocation().getDirection().getZ()), e.getPlayer(),boostSound , boostText);
         }
-        //elytra boost
-        /*else if(block == elytra){
-            elytraBoost(e.getPlayer(),elytraVal / 10,elytraSound , elytraText);
-        }
-         */
     }
     //prevents falldamage
     @EventHandler
     void fallDamage(EntityDamageEvent e){
-        if (e.getCause() == EntityDamageEvent.DamageCause.FALL && Toggle) e.setCancelled(true);
+        if (e.getCause() == EntityDamageEvent.DamageCause.FALL) e.setCancelled(true);
     }
     //removes the elytra when player lands.
     //to prevent cheating

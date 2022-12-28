@@ -1,39 +1,30 @@
-#If you want to change what the plugin does on launch
-checkpointonly: false
-joinloggingonlaunch: true
-autostart: false
-
-menuclicksound: "BLOCK_SCAFFOLDING_BREAK"
-
-#Block Types
-checkpointblock: "gold block"
-jumpblock: "diamond block"
-finishblock: "emerald block"
-boostblock: "iron block"
-elytrablock: "PURPUR_PILLAR"
-
-
-#Sounds
-nextlevelsound: "BLOCK_AMETHYST_BLOCK_PLACE"
-checkpointsound: "BLOCK_NOTE_BLOCK_PLING"
-jumpsound: "BLOCK_PISTON_EXTEND"
-boostsound: "ENTITY_FIREWORK_ROCKET_LAUNCH"
-elytrasound: "ENTITY_ENDER_DRAGON_FLAP"
-#Messages
-checkpointmessage: "&eCheckpoint &cReached!"
-jumpmessage: "&cWHOOSH!"
-boostmessage: "&eWHOOSH!"
-elytramessage: "&cWHOOSH!"
-finishmessage: "&eFinish Line &eReached!"
-
-#values
-jumpvalue: 10
-boostvalue: 10
-elytravalue: 15
-#Item
-backitemname: "&eGo &cBack"
-backmaterial: "REDSTONE"
-
+#generic settings
+parkoursettings:
+  gamesettings:
+    checkpointonly: false
+    jumpvalue: 10
+    boostvalue: 10
+  blocks:
+    checkpointblock: "GOLD_BLOCK"
+    jumpblock: "DIAMOND_BLOCK"
+    nextlevelblock: "EMERALD_BLOCK"
+    boostblock: "IRON_BLOCK"
+  sounds:
+    menuclicksound: "BLOCK_SCAFFOLDING_BREAK"
+    nextlevelsound: "BLOCK_AMETHYST_BLOCK_PLACE"
+    checkpointsound: "BLOCK_NOTE_BLOCK_PLING"
+    jumpsound: "BLOCK_PISTON_EXTEND"
+    boostsound: "ENTITY_FIREWORK_ROCKET_LAUNCH"
+  messages:
+    checkpointmessage: "&eCheckpoint &cReached!"
+    jumpmessage: "&cWHOOSH!"
+    boostmessage: "&eWHOOSH!"
+    elytramessage: "&cWHOOSH!"
+    finishmessage: "&eFinish Line &eReached!"
+  items:
+    goback:
+      backitemname: "&eGo &cBack"
+      backmaterial: "REDSTONE"
 
 levels:
   - 1 :

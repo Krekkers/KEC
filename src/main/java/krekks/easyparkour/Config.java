@@ -12,7 +12,7 @@ import static org.bukkit.Bukkit.getLogger;
 public class Config {
     public static boolean Toggle;
     public static boolean joinLogging;
-    public static boolean checkpointOnly = config.getBoolean("checkpointonly");
+    public static boolean checkpointOnly;
     public static int sec;
     public static Instant time;
 
@@ -31,7 +31,7 @@ public class Config {
     public static Material jump;
     public static Material boost;
     public static Material elytra;
-    public static Material finish;
+    public static Material nextLevel;
     //text
     public static String jumpText;
     public static String checkpointText;
@@ -53,41 +53,29 @@ public class Config {
         //world = Bukkit.getWorld(config.getString("world"));
 
         getLogger().info("Setting up blocks");
-        checkpoint = Material.matchMaterial(config.getString("checkpointblock"));
-        jump = Material.matchMaterial(config.getString("jumpblock"));
-        boost = Material.matchMaterial(config.getString("boostblock"));
-        elytra = Material.matchMaterial(config.getString("elytrablock"));
-        finish = Material.matchMaterial(config.getString("finishblock"));
+        checkpoint = Material.matchMaterial(config.getString("parkoursettings.blocks.checkpointblock"));
+        jump = Material.matchMaterial(config.getString("parkoursettings.blocks.jumpblock"));
+        boost = Material.matchMaterial(config.getString("parkoursettings.blocks.boostblock"));
+        nextLevel = Material.matchMaterial(config.getString("parkoursettings.blocks.finishblock"));
 
         getLogger().info("Setting up Text");
-        jumpText = config.getString("jumpmessage");
-        checkpointText = config.getString("checkpointmessage");
-        boostText = config.getString("boostmessage");
-        elytraText = config.getString("elytramessage");
+        jumpText = config.getString("parkoursettings.messages.jumpmessage");
+        checkpointText = config.getString("parkoursettings.messages.checkpointmessage");
+        boostText = config.getString("parkoursettings.messages.boostmessage");
 
         getLogger().info("Setting up sounds");
-        MENUCLICKNOISE = Sound.valueOf(config.getString("menuclicksound"));
-        jumpSound = Sound.valueOf(config.getString("jumpsound"));
-        checkpointSound = Sound.valueOf(config.getString("checkpointsound"));
-        boostSound = Sound.valueOf(config.getString("boostsound"));
-        elytraSound = Sound.valueOf(config.getString("elytrasound"));
-        nextLevelSound = Sound.valueOf(config.getString("nextlevelsound"));
+        MENUCLICKNOISE = Sound.valueOf(config.getString("parkoursettings.sounds.menuclicksound"));
+        jumpSound = Sound.valueOf(config.getString("parkoursettings.sounds.jumpsound"));
+        checkpointSound = Sound.valueOf(config.getString("parkoursettings.sounds.checkpointsound"));
+        boostSound = Sound.valueOf(config.getString("parkoursettings.sounds.boostsound"));
+        nextLevelSound = Sound.valueOf(config.getString("parkoursettings.sounds.nextlevelsound"));
 
         getLogger().info("Loading Game settings");
-        jumpVal = config.getDouble("jumpvalue");
-        boostVal = config.getDouble("boostvalue");
-        elytraVal = config.getDouble("elytravalue");
-        joinLogging = config.getBoolean("joinloggingonlaunch");
-        Toggle = config.getBoolean("autostart");
-        finishX = config.getDoubleList("finishlocation").get(0);
-        finishY = config.getDoubleList("finishlocation").get(1);
-        finishZ = config.getDoubleList("finishlocation").get(2);
-        spawnX = config.getDoubleList("spawnlocation").get(0);
-        spawnY = config.getDoubleList("spawnlocation").get(1);
-        spawnZ = config.getDoubleList("spawnlocation").get(2);
-        joinLogging = config.getBoolean("joinloggingonlaunch");
+        jumpVal = config.getDouble("parkoursettings.gamesettings.jumpvalue");
+        boostVal = config.getDouble("parkoursettings.gamesettings.boostvalue");
         loadParkourLevels();
-        Toggle = config.getBoolean("autostart");
+        checkpointOnly
+                = config.getBoolean("parkoursettings.gamesettings.checkpointonly");
     }
 
 
