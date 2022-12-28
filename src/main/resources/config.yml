@@ -44,14 +44,16 @@ levels:
     z: 0.0
     difficulty: "easy"
     creator: ""
+    points: 1
   - 2 :
     name: "Default 2"
     icon: "GREEN_WOOL"
     x: 1.0
-    y: 0.5z
+    y: 0.5
     z: 0.15
     difficulty: "easy"
     creator: ""
+    points: 1
 
 
 
