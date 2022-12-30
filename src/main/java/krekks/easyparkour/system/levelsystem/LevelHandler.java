@@ -3,6 +3,7 @@ package krekks.easyparkour.system.levelsystem;
 import krekks.easyparkour.playerdata.PlayerData;
 import krekks.easyparkour.playerdata.PlayerDataHandler;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -31,7 +32,7 @@ public class LevelHandler {
             LinkedHashMap<String, Object> levelObj = (LinkedHashMap<String, Object>) config.getList("levels").get(i);
             Location levelSpawn = new Location(Bukkit.getWorld("world"), (Double) levelObj.get("x"),(Double) levelObj.get("y"),(Double) levelObj.get("z"));
             Material icon =  Material.matchMaterial((String) levelObj.get("icon"));
-            LevelData ld = new LevelData(i,levelSpawn, (String) levelObj.get("name"), (String) levelObj.get("difficulty"),(String) levelObj.get("creator"), icon);
+            LevelData ld = new LevelData(i,levelSpawn, (String) levelObj.get("name"), (String) levelObj.get("difficulty"),(String) levelObj.get("creator"), icon, (int) levelObj.get("points"));
             getLogger().info("Loaded level : " + (String) levelObj.get("name"));
             levelList.put(i,ld);
         }
@@ -49,13 +50,33 @@ public class LevelHandler {
             return;
         }
         LevelData ld = levelList.get(pd.getLevel() + 1);
+        pd.addPoints(ld.getPoints());
         //set data
         pd.setLevel(ld.getLevelID());
         pd.setCheckpointLocation(ld.getLevelSpawn());
         p.teleport(ld.getLevelSpawn());
         //success
-        p.sendMessage("Level " + ld.getLevelName() + " | Difficulty : " + ld.getDifficulty());
-        p.playSound(p,nextLevelSound, 1f,1f);
+        p.sendMessage(ChatColor.GREEN + "You finished!");
+        p.sendMessage(ChatColor.GREEN + "You earned : " + ChatColor.RED + ld.getPoints() + ChatColor.GREEN + " Points.");
+        p.sendMessage(ChatColor.GREEN + "The difficulty was : " + ChatColor.RED + ld.getDifficulty());
+        p.playSound(p,nextLevelSound, 2f,1f);
+
+    }
+    public static void finishLevel(Player p){
+        //set the parkour level and teleport player to new level
+        PlayerData pd = PlayerDataHandler.getFromList(p);
+
+        LevelData ld = levelList.get(pd.getLevel());
+        pd.addPoints(ld.getPoints());
+        //set data
+        pd.setLevel(ld.getLevelID());
+        pd.setCheckpointLocation(ld.getLevelSpawn());
+        p.teleport(ld.getLevelSpawn());
+        //success
+        p.sendMessage(ChatColor.GREEN + "You finished!");
+        p.sendMessage(ChatColor.GREEN + "You earned : " + ChatColor.RED + ld.getPoints() + ChatColor.GREEN + " Points.");
+        p.sendMessage(ChatColor.GREEN + "The difficulty was : " + ChatColor.RED + ld.getDifficulty());
+        p.playSound(p,nextLevelSound, 2f,1f);
 
     }
     public static void playerSetParkourLevel(Player p, int id){
@@ -68,7 +89,6 @@ public class LevelHandler {
         ld.getLevelSpawn().setYaw(90f);
         p.teleport(ld.getLevelSpawn());
         //success
-        p.sendMessage("Level " + ld.getLevelName() + " | Difficulty : " + ld.getDifficulty());
         p.playSound(p,nextLevelSound, 1f,1f);
 
     }

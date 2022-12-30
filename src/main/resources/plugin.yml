@@ -5,7 +5,7 @@ main: krekks.easyparkour.KEP
 prefix: KEP
 website: ""
 authors: [ Krekkers ]
-description: KEC V2. This plugin will allow you to host a parkour server.
+description: KEP is the successor of KEC. This plugin will allow you to host a parkour server! To see all the features to go play.villager-club.com
 
 commands:
   reloadconfig:

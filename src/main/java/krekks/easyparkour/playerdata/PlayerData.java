@@ -9,6 +9,8 @@ public class PlayerData {
     Location checkpointLocation;
     Block checkpointBlock;
     int level;
+
+
     int points;
     int goBackCounter = 0;
 
@@ -24,7 +26,14 @@ public class PlayerData {
     public void addGoBackCounter(int s){
         goBackCounter += s;
     }
+    public void addPoints(int points) {
+        this.points += points;
+    }
 
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
     public void setLevel(int l) {
         level = l;
     }
@@ -36,7 +45,9 @@ public class PlayerData {
         player = _p;
     }
     public void setGoBackCounter(int b) { goBackCounter = b; }
-
+    public int getPoints() {
+        return points;
+    }
     public Player getPlayer(){
         return player;
     }

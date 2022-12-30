@@ -15,8 +15,11 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.sql.SQLException;
+
 import static krekks.easyparkour.Config.configLoader;
 import static krekks.easyparkour.playerdata.PlayerDataHandler.finishedList;
+import static krekks.easyparkour.system.storage.PlayerSaveUtil.initDB;
 import static org.bukkit.Bukkit.broadcastMessage;
 
 public final class KEP extends JavaPlugin {
@@ -41,6 +44,11 @@ public final class KEP extends JavaPlugin {
         broadcastMessage(ChatColor.translateAlternateColorCodes('&' , "&eK&cE&eC &6Has Loaded"));
         for(Player p : Bukkit.getOnlinePlayers()){
             PlayerDataHandler.AddToList(p,null);
+        }
+        try {
+            initDB();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         //bstats
         final int pluginId = 15743;

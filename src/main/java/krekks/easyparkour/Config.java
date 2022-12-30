@@ -21,11 +21,8 @@ public class Config {
     public static Location spawn = new Location(Bukkit.getWorld("world"),0,0,0);
 
     public static Sound MENUCLICKNOISE;
-    //todo : load everything in config
     //materials
     public static Material checkpoint;
-    public static Material jump;
-    public static Material boost;
     public static Material nextLevel;
     //text
     public static String jumpText;
@@ -46,8 +43,6 @@ public class Config {
 
         getLogger().info("Setting up blocks");
         checkpoint = Material.matchMaterial(config.getString("parkoursettings.blocks.checkpointblock"));
-        jump = Material.matchMaterial(config.getString("parkoursettings.blocks.jumpblock"));
-        boost = Material.matchMaterial(config.getString("parkoursettings.blocks.boostblock"));
         nextLevel = Material.matchMaterial(config.getString("parkoursettings.blocks.nextlevelblock"));
 
         getLogger().info("Setting up Text");
@@ -63,6 +58,7 @@ public class Config {
         nextLevelSound = Sound.valueOf(config.getString("parkoursettings.sounds.nextlevelsound"));
 
         getLogger().info("Loading Game settings");
+        checkpointOnly = config.getBoolean("parkoursettings.gamesettings.checkpointonly");
         jumpVal = config.getDouble("parkoursettings.gamesettings.jumpvalue");
         boostVal = config.getDouble("parkoursettings.gamesettings.boostvalue");
         spawnWorld = config.getString("parkoursettings.gamesettings.spawnlocation.world");
@@ -71,7 +67,7 @@ public class Config {
         spawn.setY(config.getDouble("parkoursettings.gamesettings.spawnlocation.y"));
         spawn.setZ(config.getDouble("parkoursettings.gamesettings.spawnlocation.z"));
         loadParkourLevels();
-        checkpointOnly = config.getBoolean("parkoursettings.gamesettings.checkpointonly");
+
     }
 
 

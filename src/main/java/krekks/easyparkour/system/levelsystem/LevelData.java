@@ -13,13 +13,14 @@ public class LevelData {
     String creator;
     Material icon;
 
-    public LevelData (int id, Location l, String name, String d, String c, Material m){
+    public LevelData (int id, Location l, String name, String d, String c, Material m, int p){
         levelID = id;
         levelSpawn = l;
         levelName = name;
         difficulty = d;
         creator = c;
         icon = m;
+        points = p;
     }
 
     public int getPoints() {

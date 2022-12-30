@@ -24,6 +24,7 @@ public class GetPlayerInListCommand implements CommandExecutor {
             sender.sendMessage("> " + ChatColor.GREEN + "CheckPointLocation : " + ChatColor.DARK_GREEN + d.getCheckpointLocation().getX() + " " + d.getCheckpointLocation().getY() + " " + d.getCheckpointLocation().getZ());
         }
         sender.sendMessage("> " + ChatColor.GREEN + "Go back counter : " + ChatColor.DARK_GREEN + d.getGoBackCounter());
+        sender.sendMessage("> " + ChatColor.GREEN + "Points : " + ChatColor.RED + d.getPoints());
         sender.sendMessage("> " + ChatColor.GREEN + "Level : " + ChatColor.RED + d.getLevel());
         sender.sendMessage("---------------------");
         return true;
