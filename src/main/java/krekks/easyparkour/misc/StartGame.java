@@ -9,8 +9,6 @@ import static krekks.easyparkour.Config.*;
 
 
 public class StartGame {
-
-
     /**
      * starts game
      * @param sender

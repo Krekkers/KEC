@@ -2,11 +2,12 @@ package krekks.easyparkour.command.admin;
 
 import krekks.easyparkour.playerdata.PlayerData;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
+import static krekks.easyparkour.misc.KrekkMessages.krekkSendMessageArray;
 import static krekks.easyparkour.playerdata.PlayerDataHandler.getFromList;
 public class GetPlayerInListCommand implements CommandExecutor {
     @Override
@@ -20,21 +21,23 @@ public class GetPlayerInListCommand implements CommandExecutor {
             sender.sendMessage("This player does not exist in the data list");
             return true;
         }
-        sender.sendMessage("---------------------");
-        //sending playerdata
-        sender.sendMessage("> " + ChatColor.GREEN + "Player Data");
-        sender.sendMessage("====================");
-        sender.sendMessage("> " + ChatColor.GREEN + "Player : " + ChatColor.DARK_GREEN + d.getPlayer().getName());
+        String checkpoint = "&a No checkpoint available...";
         if(d.getCheckpointLocation() != null){
-            sender.sendMessage("> " + ChatColor.GREEN + "CheckPointLocation : " +
-                    ChatColor.RED + d.getCheckpointLocation().getX() +
-                    ", " + d.getCheckpointLocation().getY() + ", " +
-                    d.getCheckpointLocation().getZ());
+                checkpoint = "&aCheckpoint location : &c" +
+                        d.getCheckpointLocation().getX()
+                        + " "
+                        + d.getCheckpointLocation().getY()
+                        + " "
+                        + d.getCheckpointLocation().getZ();
         }
-        sender.sendMessage("> " + ChatColor.GREEN + "Go back counter : " + ChatColor.RED + d.getGoBackCounter());
-        sender.sendMessage("> " + ChatColor.GREEN + "Points : " + ChatColor.RED + d.getPoints());
-        sender.sendMessage("> " + ChatColor.GREEN + "Level : " + ChatColor.RED + d.getLevel());
-        sender.sendMessage("---------------------");
+        krekkSendMessageArray((Player) sender,
+                "---------------------",
+                "&a&lPlayer : &c" + d.getPlayer().getName(),
+                "> " + checkpoint,
+                "> " + "&aLevel : &c" + d.getLevel(),
+                "> " + "&aPoints : &c" + d.getPoints(),
+                "---------------------"
+                );
         return true;
     }
 }

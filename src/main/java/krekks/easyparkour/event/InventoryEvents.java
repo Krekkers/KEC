@@ -19,12 +19,13 @@ public class InventoryEvents implements Listener {
             }
             menu.handleMenu(e);
         }
+        if(e.getWhoClicked().hasPermission("krekks.perms")) return;
         e.setCancelled(true);
     }
     //prevents people from dropping the item before the game starts
     @EventHandler
     void itemDropEvent(PlayerDropItemEvent e){
-        if(!e.getPlayer().hasPermission("krekks.perms")) return;
+        if(e.getPlayer().hasPermission("krekks.perms")) return;
         e.setCancelled(true);
     }
 

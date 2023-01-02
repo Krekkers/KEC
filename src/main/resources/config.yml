@@ -21,17 +21,17 @@ parkoursettings:
     jumpsound: "BLOCK_PISTON_EXTEND"
     boostsound: "ENTITY_FIREWORK_ROCKET_LAUNCH"
   messages:
-    checkpointmessage: "&eCheckpoint &cReached!"
+    checkpointmessage: "&aCheckpoint &cReached!"
     jumpmessage: "&cWHOOSH!"
     boostmessage: "&eWHOOSH!"
     elytramessage: "&cWHOOSH!"
-    finishmessage: "&eFinish Line &eReached!"
+    finishmessage: "&aFinish Line &eReached!"
   items:
     goback:
-      name: "&eGo &cBack"
+      name: "&c[&aGo Back&a]"
       material: "REDSTONE"
     levelselector:
-      name: "&a[Level Selector]"
+      name: "&c[&aLevel Selector]"
       material: "CLOCK"
   database:
     usesql: false # false = use sqlite, true = use mysql
