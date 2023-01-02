@@ -28,7 +28,7 @@ public class PlayerMove implements Listener {
             setCheckpointOf(p, loc, b);
         }
         //This will trigger the player to go to the next level
-        if(block == nextLevel && !e.getPlayer().hasPermission("krekks.perms")) {
+        if(block == nextLevel) {
             finishLevel(e.getPlayer());
         }
     }

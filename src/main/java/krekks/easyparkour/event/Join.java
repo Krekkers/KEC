@@ -18,5 +18,6 @@ public class Join implements Listener {
 
 
         e.getPlayer().getInventory().setItem(8, ItemMaker.checkpointItem);
+        e.getPlayer().getInventory().setItem(0, ItemMaker.levelSelector);
     }
 }

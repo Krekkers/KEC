@@ -3,11 +3,13 @@ package krekks.easyparkour.system.menusystem.menu;
 import krekks.easyparkour.system.levelsystem.LevelData;
 import krekks.easyparkour.system.menusystem.Menu;
 import krekks.easyparkour.system.menusystem.MenuUtility;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
+import static krekks.easyparkour.Config.MENUCLICKNOISE;
 import static krekks.easyparkour.misc.CustomItem.createCustomItem;
 import static krekks.easyparkour.system.levelsystem.LevelHandler.levelList;
 import static krekks.easyparkour.system.levelsystem.LevelHandler.playerSetParkourLevel;
@@ -23,7 +25,7 @@ public class LevelSelectionMenu extends Menu {
 
     @Override
     public String getMenuName() {
-        return "Levels";
+        return ChatColor.GREEN + "Levels";
     }
 
     @Override
@@ -42,7 +44,7 @@ public class LevelSelectionMenu extends Menu {
             LevelData ld = levelList.get(i);
             ItemStack item = createCustomItem(ld.getIcon(),1,
                     "&a&lLevel : &c" + ld.getLevelName()
-                    , "&cID : " +  ld.getLevelID()
+                    , "&aID : &c" +  ld.getLevelID()
                     , "&aDifficulty : &c" + ld.getDifficulty()
                     , "&aPoints : &c" + ld.getPoints()
                     , "&aMade by : &c" + ld.getCreator());
@@ -58,18 +60,22 @@ public class LevelSelectionMenu extends Menu {
 
     @Override
     public void handleMenu(InventoryClickEvent e) {
+        Player p = (Player) e.getWhoClicked();
         if(e.getCurrentItem().getItemMeta().getDisplayName().contains("Level")){
             int id = getDigitFromString(e.getCurrentItem().getItemMeta().getLore().get(0));
             e.getWhoClicked().sendMessage("id = " + id);
             playerSetParkourLevel((Player) e.getWhoClicked(),id);
+            p.playSound(p.getLocation(), MENUCLICKNOISE,3,1);
         }
         if(e.getCurrentItem().getItemMeta().getDisplayName().contains("Next")){
             page += 1;
             setMenuItems();
+            p.playSound(p.getLocation(), MENUCLICKNOISE,3,1);
         }
         if(e.getCurrentItem().getItemMeta().getDisplayName().contains("Previous") && page >= 1){
             page -= 1;
             setMenuItems();
+            p.playSound(p.getLocation(), MENUCLICKNOISE,3,1);
         }
 
     }

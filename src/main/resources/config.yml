@@ -11,8 +11,8 @@ parkoursettings:
       z: 0.0
   blocks:
     checkpointblock: "GOLD_BLOCK"
-    #jumpblock: "DIAMOND_BLOCK"
     nextlevelblock: "EMERALD_BLOCK"
+    #jumpblock: "DIAMOND_BLOCK"
     #boostblock: "IRON_BLOCK"
   sounds:
     menuclicksound: "BLOCK_SCAFFOLDING_BREAK"
@@ -28,8 +28,11 @@ parkoursettings:
     finishmessage: "&eFinish Line &eReached!"
   items:
     goback:
-      backitemname: "&eGo &cBack"
-      backmaterial: "REDSTONE"
+      name: "&eGo &cBack"
+      material: "REDSTONE"
+    levelselector:
+      name: "&a[Level Selector]"
+      material: "CLOCK"
   database:
     usesql: false # false = use sqlite, true = use mysql
     link: "localhost:3306"

@@ -16,6 +16,10 @@ public class SetCheckpointCommand implements CommandExecutor {
         //location setter
         if(sender instanceof Player){
             Player p = (Player) sender;
+            if(args[1] == null || args[2] == null || args[3] == null ){
+                sender.sendMessage(ChatColor.RED + "A location needs to be provided");
+                sender.sendMessage(ChatColor.RED + "Example : " + ChatColor.GREEN + "/setcheckpointof playername 100 50 100");
+            }
             Location loc = new Location(p.getWorld(), Double.parseDouble(args[1]),Double.parseDouble(args[2]),Double.parseDouble(args[3]));
             setCheckpointOf(Bukkit.getPlayer(args[0]), loc, loc.getBlock());
             sender.sendMessage(ChatColor.RED + args[0] + ChatColor.GREEN + " His checkpoint has been manually changed to : " + ChatColor.RED + args[1] + " " + args[2] + " " + args[3]);
