@@ -10,7 +10,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
 import static krekks.easyparkour.Config.MENUCLICKNOISE;
-import static krekks.easyparkour.misc.CustomItem.createCustomItem;
+import static krekks.easyparkour.misc.item.CustomItem.createCustomItem;
 import static krekks.easyparkour.system.levelsystem.LevelHandler.levelList;
 import static krekks.easyparkour.system.levelsystem.LevelHandler.playerSetParkourLevel;
 

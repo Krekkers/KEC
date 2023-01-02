@@ -1,4 +1,4 @@
-package krekks.easyparkour.misc;
+package krekks.easyparkour.misc.movement;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

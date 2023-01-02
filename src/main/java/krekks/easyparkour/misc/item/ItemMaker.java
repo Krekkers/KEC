@@ -1,11 +1,11 @@
-package krekks.easyparkour.misc;
+package krekks.easyparkour.misc.item;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import static krekks.easyparkour.KEP.config;
-import static krekks.easyparkour.misc.CustomItem.createCustomItem;
+import static krekks.easyparkour.misc.item.CustomItem.createCustomItem;
 
 public class ItemMaker {
     public static ItemStack checkpointItem = createCustomItem(

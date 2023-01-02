@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 
 import static krekks.easyparkour.Config.MENUCLICKNOISE;
 import static krekks.easyparkour.Config.Toggle;
-import static krekks.easyparkour.misc.CustomItem.createCustomItem;
+import static krekks.easyparkour.misc.item.CustomItem.createCustomItem;
 import static krekks.easyparkour.misc.StartGame.startGame;
 
 public class GameStatusMenu extends Menu {

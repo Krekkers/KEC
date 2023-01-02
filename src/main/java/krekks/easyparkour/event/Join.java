@@ -1,6 +1,6 @@
 package krekks.easyparkour.event;
 
-import krekks.easyparkour.misc.ItemMaker;
+import krekks.easyparkour.misc.item.ItemMaker;
 import krekks.easyparkour.playerdata.PlayerDataHandler;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

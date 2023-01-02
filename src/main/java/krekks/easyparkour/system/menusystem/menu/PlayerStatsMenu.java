@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import static krekks.easyparkour.Config.MENUCLICKNOISE;
-import static krekks.easyparkour.misc.CustomItem.createCustomItem;
+import static krekks.easyparkour.misc.item.CustomItem.createCustomItem;
 
 public class PlayerStatsMenu extends Menu {
 

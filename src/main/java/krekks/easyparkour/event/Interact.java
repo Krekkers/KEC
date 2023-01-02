@@ -8,7 +8,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import static krekks.easyparkour.misc.GoBack.goToCheckPoint;
-import static krekks.easyparkour.misc.ItemMaker.*;
+import static krekks.easyparkour.misc.item.ItemMaker.*;
 import static krekks.easyparkour.system.menusystem.MenuManager.getMenuUtility;
 
 public class Interact implements Listener {
