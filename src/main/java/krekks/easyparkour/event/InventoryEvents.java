@@ -19,7 +19,7 @@ public class InventoryEvents implements Listener {
             }
             menu.handleMenu(e);
         }
-        if(e.getWhoClicked().hasPermission("krekks.perms")) return;
+        if(e.getWhoClicked().hasPermission("krekks.staff")) return;
         e.setCancelled(true);
     }
     //prevents people from dropping the item before the game starts

@@ -50,6 +50,7 @@ levels:
     difficulty: "easy"
     creator: "Default"
     points: 1
+    reward: 15
   - 2 :
     name: "Default 2"
     icon: "GREEN_WOOL"
@@ -58,7 +59,7 @@ levels:
     z: 0.15
     difficulty: "easy"
     creator: "Default"
-    points: 1
+    reward: 15
 
 
 

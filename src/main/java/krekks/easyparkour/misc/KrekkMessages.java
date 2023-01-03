@@ -12,8 +12,8 @@ public class KrekkMessages {
      * @param line
      */
     public static void krekkSendMessageArray(Player p, String... line){
-        for(int i = 0; i < line.length; i++){
-            p.sendMessage(ChatColor.translateAlternateColorCodes('&', line[i]));
+        for (String s : line) {
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&', s));
         }
     }
 

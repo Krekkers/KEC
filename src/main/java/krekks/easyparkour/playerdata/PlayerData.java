@@ -1,8 +1,11 @@
 package krekks.easyparkour.playerdata;
 
+import krekks.easyparkour.system.levelsystem.LevelData;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+
+import static krekks.easyparkour.system.levelsystem.LevelHandler.levelList;
 
 public class PlayerData {
     Player player;
@@ -55,6 +58,7 @@ public class PlayerData {
         return goBackCounter;
     }
     public Block getCheckpointBlock() { return checkpointBlock; }
+    public LevelData getLevelData(){ return levelList.get(level); }
     public int getLevel() {
         return level;
     }

@@ -1,5 +1,6 @@
 package krekks.easyparkour.command.level;
 
+import krekks.easyparkour.playerdata.PlayerDataHandler;
 import krekks.easyparkour.system.menusystem.menu.LevelSelectionMenu;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -14,6 +15,7 @@ public class LevelSelectorCommand implements CommandExecutor {
         if(!(sender instanceof Player)) return false;
         Player player = (Player) sender;
         LevelSelectionMenu menu = new LevelSelectionMenu(getMenuUtility(player));
+        menu.pd = PlayerDataHandler.getFromList(player);
         menu.openMenu();
         return true;
     }

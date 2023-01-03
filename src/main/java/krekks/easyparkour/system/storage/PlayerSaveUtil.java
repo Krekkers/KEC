@@ -29,10 +29,11 @@ public class PlayerSaveUtil {
     }
 
     public static void getPlayerFromDB(PlayerData pd){
-        String sql = "SELECT * FROM kr_KEP";
+        String sql = "SELECT * FROM kr_KEP WHERE `uuid` = ?";
         PreparedStatement stmt = null;
         try {
             stmt = connection.prepareStatement(sql);
+            stmt.setString(1, pd.getPlayer().getUniqueId().toString());
             ResultSet rs = stmt.executeQuery();
             rs.next();
             pd.setPoints(rs.getInt("points"));

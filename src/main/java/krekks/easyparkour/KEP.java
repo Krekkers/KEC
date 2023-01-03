@@ -2,6 +2,7 @@ package krekks.easyparkour;
 
 
 import krekks.easyparkour.command.GoBackCommand;
+import krekks.easyparkour.command.TemplateCommand;
 import krekks.easyparkour.command.admin.*;
 import krekks.easyparkour.command.level.LevelSelectorCommand;
 import krekks.easyparkour.event.*;
@@ -76,8 +77,12 @@ public final class KEP extends JavaPlugin {
         getCommand("GetPlayerInList").setExecutor(new GetPlayerInListCommand());
         getCommand("Back").setExecutor(new GoBackCommand());
         getCommand("SetCheckpointOf").setExecutor(new SetCheckpointCommand());
+        getCommand("setlevelof").setExecutor(new TemplateCommand());
+        getCommand("setpointsof").setExecutor(new TemplateCommand());
+        getCommand("setleveldata").setExecutor(new TemplateCommand());
+        getCommand("deletelevel").setExecutor(new TemplateCommand());
+        getCommand("createlevel").setExecutor(new TemplateCommand());
         getCommand("ShowPluginData").setExecutor(new PluginInfoCommand());
-        getCommand("GameManager").setExecutor(new GameManagerCommand());
         getCommand("PlayerStats").setExecutor(new PlayerStatsMenuCommand());
         getLogger().info("Commands are setup");
     }

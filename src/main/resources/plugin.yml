@@ -8,10 +8,18 @@ authors: [ Krekkers ]
 description: KEP is the successor of KEC. This plugin will allow you to host a parkour server! To see all the features to go play.villager-club.com
 
 commands:
+  setlevelof:
+    description: Sets the level of a user
+    usage: "Usage </command> <username> <level_id>"
+    permission: krekks.staff
+  setleveldata:
+    description: Sets level data
+    usage: "Usage : </command> <level id> <location,reward,points,icon,creator,name> <value>"
+    permission: krekks.admin
   reloadconfig:
     description: "Reload the config"
     usage: "Usage: /<command>"
-    permission: krekks.perms
+    permission: krekks.admin
     permission-message: You do not have permission to use this command.
   levels:
     description: "Open level menu"
@@ -20,7 +28,7 @@ commands:
   GetPlayerInList:
     description: Shows you the single player you checked for!
     usage: "Usage: /<command> <playername>"
-    permission: krekks.perms
+    permission: krekks.staff
     permission-message: You do not have permission to use this command.
   Back:
     description: Allows you to teleport back to your last checkpoint
@@ -29,20 +37,20 @@ commands:
   SetCheckpointOf:
     description: Manually sets the checkpoint of a player to a specified location
     usage: "Usage /<command> <Name> <x> <y> <z>"
-    permission: krekks.perms
+    permission: krekks.staff
     permission-message: No permission
   ShowPluginData:
     description: Shows you plugin info q
     usage: "Usage /<command>"
-    permission: krekks.perms
+    permission: krekks.admin
     permission-message: No permission
   GameManager:
     description: Access the GameManager Menu
     usage: "Usage /<command>"
-    permission: krekks.perms
+    permission: krekks.admin
     permission-message: No permission
   PlayerStats:
     description: Access a menu that displays player data
     usage: "Usage /<command> <playername>"
-    permission: krekks.perms
+    permission: krekks.staff
     permission-message: No permission

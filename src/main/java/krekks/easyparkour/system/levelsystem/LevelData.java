@@ -7,13 +7,14 @@ public class LevelData {
 
     int levelID;
     int points;
+    int reward;
     Location levelSpawn;
     String levelName;
     String difficulty;
     String creator;
     Material icon;
 
-    public LevelData (int id, Location l, String name, String d, String c, Material m, int p){
+    public LevelData (int id, Location l, String name, String d, String c, Material m, int p, int r){
         levelID = id;
         levelSpawn = l;
         levelName = name;
@@ -21,6 +22,15 @@ public class LevelData {
         creator = c;
         icon = m;
         points = p;
+        reward = r;
+    }
+
+    public void setReward(int r) {
+        reward = r;
+    }
+
+    public int getReward() {
+        return reward;
     }
 
     public int getPoints() {

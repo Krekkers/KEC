@@ -1,5 +1,6 @@
 package krekks.easyparkour.event;
 
+import krekks.easyparkour.playerdata.PlayerDataHandler;
 import krekks.easyparkour.system.menusystem.menu.LevelSelectionMenu;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -24,6 +25,7 @@ public class Interact implements Listener {
         if (e.getItem().getItemMeta().equals(levelSelector.getItemMeta())) {
             Player player = e.getPlayer();
             LevelSelectionMenu menu = new LevelSelectionMenu(getMenuUtility(player));
+            menu.pd = PlayerDataHandler.getFromList(player);
             menu.openMenu();
         }
 
