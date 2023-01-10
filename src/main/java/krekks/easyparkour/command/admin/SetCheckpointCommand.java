@@ -21,7 +21,7 @@ public class SetCheckpointCommand implements CommandExecutor {
                 sender.sendMessage(ChatColor.RED + "Example : " + ChatColor.GREEN + "/setcheckpointof playername 100 50 100");
             }
             Location loc = new Location(p.getWorld(), Double.parseDouble(args[1]),Double.parseDouble(args[2]),Double.parseDouble(args[3]));
-            setCheckpointOf(Bukkit.getPlayer(args[0]), loc, loc.getBlock());
+            setCheckpointOf(Bukkit.getPlayer(args[0]), loc);
             sender.sendMessage(ChatColor.RED + args[0] + ChatColor.GREEN + " His checkpoint has been manually changed to : " + ChatColor.RED + args[1] + " " + args[2] + " " + args[3]);
         }else{
             sender.sendMessage("Sorry but only players can do this command due to the world needing to be a option as of now.");

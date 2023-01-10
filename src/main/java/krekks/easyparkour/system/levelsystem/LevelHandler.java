@@ -67,33 +67,13 @@ public class LevelHandler {
     }
     public static void finishLevel(Player p){
         //set the parkour level and teleport player to new level
-        PlayerData pd = PlayerDataHandler.getFromList(p);
-
-        LevelData ld = levelList.get(pd.getLevel());
-        pd.addPoints(ld.getReward());
-        //set data
-        pd.setLevel(ld.getLevelID());
-        pd.setCheckpointLocation(ld.getLevelSpawn());
-        p.teleport(ld.getLevelSpawn());
-        //success
-        p.sendMessage(ChatColor.GREEN + "You finished!");
-        p.sendMessage(ChatColor.GREEN + "You earned : " + ChatColor.RED + ld.getReward() + ChatColor.GREEN + " Points.");
-        p.sendMessage(ChatColor.GREEN + "The difficulty was : " + ChatColor.RED + ld.getDifficulty());
-        p.playSound(p,nextLevelSound, 2f,1f);
-
+       PlayerDataHandler.getFromList(p).finishLevel();
     }
     public static void playerSetParkourLevel(Player p, int id){
         //set the parkour level and teleport player to new level
-        PlayerData pd = PlayerDataHandler.getFromList(p);
         LevelData ld = levelList.get(id);
         //set data
-        pd.setLevel(ld.getLevelID());
-        pd.setCheckpointLocation(ld.getLevelSpawn());
-        ld.getLevelSpawn().setYaw(90f);
-        p.teleport(ld.getLevelSpawn());
-        //success
-        p.playSound(p,nextLevelSound, 1f,1f);
-
+        PlayerDataHandler.getFromList(p).setLevel(ld.getLevelID());
     }
 
 

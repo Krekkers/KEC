@@ -16,6 +16,7 @@ public class Config {
     public static boolean checkpointOnly;
     public static int sec;
     public static Instant time;
+    public static String LICENSEKEY;
 
     public static String spawnWorld;
     public static Location spawn = new Location(Bukkit.getWorld("world"),0,0,0);
@@ -25,42 +26,33 @@ public class Config {
     public static Material checkpoint;
     public static Material nextLevel;
     //text
-    public static String jumpText;
     public static String checkpointText;
-    public static String boostText;
     //sounds
-    public static Sound jumpSound;
     public static Sound checkpointSound;
-    public static Sound boostSound;
     public static Sound nextLevelSound;
-    //values
-    public static double jumpVal;
-    public static double boostVal;
 
     public static void configLoader(){
         time = Instant.now();
         //world = Bukkit.getWorld(config.getString("world"));
+
+        //------------------------------------------------------------------------------------------------
+        //DO NOT TOUCH. Doing so will be seen as an act of piracy. Removing this is still stealing  //  |
+        LICENSEKEY = config.getString("licensekey");                                          //  |
+        //------------------------------------------------------------------------------------------------
 
         getLogger().info("Setting up blocks");
         checkpoint = Material.matchMaterial(config.getString("parkoursettings.blocks.checkpointblock"));
         nextLevel = Material.matchMaterial(config.getString("parkoursettings.blocks.nextlevelblock"));
 
         getLogger().info("Setting up Text");
-        jumpText = config.getString("parkoursettings.messages.jumpmessage");
         checkpointText = config.getString("parkoursettings.messages.checkpointmessage");
-        boostText = config.getString("parkoursettings.messages.boostmessage");
-
         getLogger().info("Setting up sounds");
         MENUCLICKNOISE = Sound.valueOf(config.getString("parkoursettings.sounds.menuclicksound"));
-        jumpSound = Sound.valueOf(config.getString("parkoursettings.sounds.jumpsound"));
         checkpointSound = Sound.valueOf(config.getString("parkoursettings.sounds.checkpointsound"));
-        boostSound = Sound.valueOf(config.getString("parkoursettings.sounds.boostsound"));
         nextLevelSound = Sound.valueOf(config.getString("parkoursettings.sounds.nextlevelsound"));
 
         getLogger().info("Loading Game settings");
         checkpointOnly = config.getBoolean("parkoursettings.gamesettings.checkpointonly");
-        jumpVal = config.getDouble("parkoursettings.gamesettings.jumpvalue");
-        boostVal = config.getDouble("parkoursettings.gamesettings.boostvalue");
         spawnWorld = config.getString("parkoursettings.gamesettings.spawnlocation.world");
         spawn.setWorld(Bukkit.getWorld(spawnWorld));
         spawn.setX(config.getDouble("parkoursettings.gamesettings.spawnlocation.x"));

@@ -25,7 +25,7 @@ public class PlayerMove implements Listener {
         //checkpoint
         if(block == checkpoint){
             Location loc = p.getLocation().add(0,-1,0).getBlock().getLocation();
-            setCheckpointOf(p, loc, b);
+            setCheckpointOf(p, loc);
         }
         //This will trigger the player to go to the next level
         if(block == nextLevel) {

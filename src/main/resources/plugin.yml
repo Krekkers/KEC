@@ -12,9 +12,9 @@ commands:
     description: Sets the level of a user
     usage: "Usage </command> <username> <level_id>"
     permission: krekks.staff
-  setleveldata:
-    description: Sets level data
-    usage: "Usage : </command> <level id> <location,reward,points,icon,creator,name> <value>"
+  setpointsof:
+    description: sets points of
+    usage: "Usage : </command> <user> <points>"
     permission: krekks.admin
   reloadconfig:
     description: "Reload the config"

@@ -19,6 +19,7 @@ import java.sql.SQLException;
 
 import static krekks.easyparkour.Config.configLoader;
 import static krekks.easyparkour.playerdata.PlayerDataHandler.finishedList;
+import static krekks.easyparkour.system.license.LincenseChecker.licenseCheck;
 import static krekks.easyparkour.system.storage.PlayerSaveUtil.initDB;
 
 public final class KEP extends JavaPlugin {
@@ -26,18 +27,20 @@ public final class KEP extends JavaPlugin {
     PluginManager pluginManager = Bukkit.getPluginManager();
     public static FileConfiguration config = null;
     public static World world;              //unused
-    public static Plugin plugin;
+    public static Plugin PLUGIN;
+
     @Override
     public void onEnable() {
         // Plugin startup logic
         getLogger().info("LAUNCHING KEC!");
         //setting up
-        plugin = this;
-        plugin.saveDefaultConfig();
-        config = plugin.getConfig();
+        PLUGIN = this;
+        PLUGIN.saveDefaultConfig();
+        config = PLUGIN.getConfig();
         configLoader();
         eventsRegister();
         commandSetup();
+        licenseCheck();
         // if the plugin gets reloaded I want it to not break
         getLogger().info("If there are any online players they now have no checkpoint location!");
         for(Player p : Bukkit.getOnlinePlayers()){
@@ -79,9 +82,6 @@ public final class KEP extends JavaPlugin {
         getCommand("SetCheckpointOf").setExecutor(new SetCheckpointCommand());
         getCommand("setlevelof").setExecutor(new TemplateCommand());
         getCommand("setpointsof").setExecutor(new TemplateCommand());
-        getCommand("setleveldata").setExecutor(new TemplateCommand());
-        getCommand("deletelevel").setExecutor(new TemplateCommand());
-        getCommand("createlevel").setExecutor(new TemplateCommand());
         getCommand("ShowPluginData").setExecutor(new PluginInfoCommand());
         getCommand("PlayerStats").setExecutor(new PlayerStatsMenuCommand());
         getLogger().info("Commands are setup");

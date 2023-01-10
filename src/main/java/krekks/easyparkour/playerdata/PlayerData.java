@@ -1,10 +1,13 @@
 package krekks.easyparkour.playerdata;
 
+import krekks.easyparkour.Config;
 import krekks.easyparkour.system.levelsystem.LevelData;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
+import static krekks.easyparkour.Config.nextLevelSound;
 import static krekks.easyparkour.system.levelsystem.LevelHandler.levelList;
 
 public class PlayerData {
@@ -12,9 +15,8 @@ public class PlayerData {
     Location checkpointLocation;
     Block checkpointBlock;
     int level;
-
-
     int points;
+    int pointsMultiplier = 1;
     int goBackCounter = 0;
 
     /**
@@ -23,7 +25,7 @@ public class PlayerData {
     public PlayerData(Player _p, Location _l){
         checkpointLocation = _l;
         player = _p;
-        level = 0;
+        setLevel(0);
     }
 
     public void addGoBackCounter(int s){
@@ -36,9 +38,6 @@ public class PlayerData {
 
     public void setPoints(int points) {
         this.points = points;
-    }
-    public void setLevel(int l) {
-        level = l;
     }
     public void setCheckpointBlock(Block b) { checkpointBlock = b; }
     public void setCheckpointLocation(Location _l){
@@ -64,6 +63,56 @@ public class PlayerData {
     }
     public Location getCheckpointLocation(){
         return checkpointLocation;
+    }
+
+    /**
+     * set level
+     * @param l level int
+     */
+    public void setLevel(int l) {
+        level = l;
+        LevelData ld = levelList.get(level);
+        setCheckpointLocation(ld.getLevelSpawn());
+        player.teleport(ld.getLevelSpawn());
+    }
+
+    //checks
+    boolean isSameCheckpoint(Location loc){
+        return loc.equals(getCheckpointLocation());
+    }
+    //misc functions
+
+    /**
+     * teleports player to checkpoint
+     * @param loc
+     */
+    public void teleportPlayerToCheckpoint(Location loc){
+        if(isSameCheckpoint(loc))
+            return;
+        //if its not the same checkpoint
+        setCheckpointLocation(loc);
+        setCheckpointBlock(loc.getBlock());
+        player.sendMessage(ChatColor.translateAlternateColorCodes('&', Config.checkpointText));
+        player.playSound(loc, Config.checkpointSound, 1 , 1);
+
+    }
+
+    /**
+     * Finish level
+     */
+    public void finishLevel() {
+        LevelData ld = levelList.get(level);
+        //set data
+        setLevel(ld.getLevelID());
+        setCheckpointLocation(ld.getLevelSpawn());
+        //success
+        player.sendMessage(ChatColor.GREEN + "You finished!");
+        player.sendMessage(ChatColor.GREEN + "You earned : " + ChatColor.RED + ld.getReward() + ChatColor.GREEN + " Points.");
+        player.sendMessage(ChatColor.GREEN + "The difficulty was : " + ChatColor.RED + ld.getDifficulty());
+        //teleports
+        player.teleport(ld.getLevelSpawn());
+        addPoints(ld.getReward() * pointsMultiplier);
+        player.playSound(player,nextLevelSound, 2f,1f);
     }
 
 

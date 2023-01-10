@@ -1,9 +1,10 @@
+#-----------------------------------------------------------
+#Put your license key here!
+licensekey: "no key"
+#-----------------------------------------------------------
 #generic settings
 parkoursettings:
-  gamesettings:
-    checkpointonly: false
-    jumpvalue: 10
-    boostvalue: 10
+  gamesettings: #gamesettings
     spawnlocation:
       world: "world"
       x: 0.0
@@ -12,19 +13,12 @@ parkoursettings:
   blocks:
     checkpointblock: "GOLD_BLOCK"
     nextlevelblock: "EMERALD_BLOCK"
-    #jumpblock: "DIAMOND_BLOCK"
-    #boostblock: "IRON_BLOCK"
   sounds:
     menuclicksound: "BLOCK_SCAFFOLDING_BREAK"
     nextlevelsound: "BLOCK_AMETHYST_BLOCK_PLACE"
     checkpointsound: "BLOCK_NOTE_BLOCK_PLING"
-    jumpsound: "BLOCK_PISTON_EXTEND"
-    boostsound: "ENTITY_FIREWORK_ROCKET_LAUNCH"
   messages:
     checkpointmessage: "&aCheckpoint &cReached!"
-    jumpmessage: "&cWHOOSH!"
-    boostmessage: "&eWHOOSH!"
-    elytramessage: "&cWHOOSH!"
     finishmessage: "&aFinish Line &eReached!"
   items:
     goback:

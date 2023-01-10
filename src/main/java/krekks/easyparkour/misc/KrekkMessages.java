@@ -1,5 +1,6 @@
 package krekks.easyparkour.misc;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -17,6 +18,10 @@ public class KrekkMessages {
         }
     }
 
-
+    public static void krekksLoggerFine(String... line){
+        for (String s : line) {
+            Bukkit.getLogger().fine(s);
+        }
+    }
 
 }

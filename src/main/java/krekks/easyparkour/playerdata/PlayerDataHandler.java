@@ -1,10 +1,7 @@
 package krekks.easyparkour.playerdata;
 
-import krekks.easyparkour.Config;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -68,17 +65,11 @@ public class PlayerDataHandler {
      * Sets the checkpoint of a player
      * @param p player
      * @param loc checkpoint location
-     * @param b
      */
-    public static void setCheckpointOf(Player p, Location loc, Block b){
-        PlayerData pd = playerList.get(p);
-        if(!loc.equals(pd.getCheckpointLocation())){
-            pd.setCheckpointLocation(loc);
-            pd.setCheckpointBlock(b);
-            p.sendMessage(ChatColor.translateAlternateColorCodes('&', Config.checkpointText));
-            p.playSound(loc, Config.checkpointSound, 1 , 1);
-        }
+    public static void setCheckpointOf(Player p, Location loc){
+        playerList.get(p).teleportPlayerToCheckpoint(loc);
     }
+
 
 
 

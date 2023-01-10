@@ -13,7 +13,7 @@ public class PluginInfoCommand implements CommandExecutor {
         //sending static values in a message to the sender.
         sender.sendMessage(ChatColor.GREEN + "Plugin Status");
         sender.sendMessage(ChatColor.GREEN + "> Toggle state : " + ChatColor.RED + Toggle);
-        sender.sendMessage(ChatColor.GREEN + "> Plugin name : " + plugin.getName());
+        sender.sendMessage(ChatColor.GREEN + "> Plugin name : " + PLUGIN.getName());
         return true;
     }
 }
