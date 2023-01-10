@@ -32,7 +32,7 @@ public final class KEP extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        getLogger().info("LAUNCHING KEC!");
+        getLogger().info("Launching!");
         //setting up
         PLUGIN = this;
         PLUGIN.saveDefaultConfig();

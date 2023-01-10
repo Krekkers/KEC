@@ -81,7 +81,6 @@ public class PlayerData {
         return loc.equals(getCheckpointLocation());
     }
     //misc functions
-
     /**
      * teleports player to checkpoint
      * @param loc
