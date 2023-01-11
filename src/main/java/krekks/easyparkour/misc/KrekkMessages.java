@@ -17,7 +17,16 @@ public class KrekkMessages {
             p.sendMessage(ChatColor.translateAlternateColorCodes('&', s));
         }
     }
-
+    public static void krekksLoggerInfo(String... line){
+        for (String s : line) {
+            Bukkit.getLogger().info(s);
+        }
+    }
+    public static void krekksLoggerWarn(String... line){
+        for (String s : line) {
+            Bukkit.getLogger().warning(s);
+        }
+    }
     public static void krekksLoggerFine(String... line){
         for (String s : line) {
             Bukkit.getLogger().fine(s);

@@ -4,6 +4,12 @@ package krekks.easyparkour.system.license;
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import static krekks.easyparkour.Config.LICENSEKEY;
 import static krekks.easyparkour.KEP.PLUGIN;
 import static krekks.easyparkour.misc.KrekkMessages.krekksLoggerFine;
 
@@ -58,8 +64,30 @@ public class LincenseChecker {
 
     public static boolean verifyLicense(){
         //will contain the api logic
-        return true;
+        try{
+            if(ApiCall("") == LICENSEKEY){
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
+    public static String ApiCall(String url) throws Exception{
+        URL apiURL = new URL(url);
+        HttpURLConnection conn = (HttpURLConnection) apiURL.openConnection();
+        conn.setRequestMethod("GET");
+        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+        return response.toString();
+    }
+
 
 
 

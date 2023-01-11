@@ -102,8 +102,8 @@ public class PlayerData {
     public void finishLevel() {
         LevelData ld = levelList.get(level);
         //set data
-        setLevel(ld.getLevelID());
-        setCheckpointLocation(ld.getLevelSpawn());
+        level = ld.getLevelID();
+        checkpointLocation = ld.getLevelSpawn();
         //success
         player.sendMessage(ChatColor.GREEN + "You finished!");
         player.sendMessage(ChatColor.GREEN + "You earned : " + ChatColor.RED + ld.getReward() + ChatColor.GREEN + " Points.");

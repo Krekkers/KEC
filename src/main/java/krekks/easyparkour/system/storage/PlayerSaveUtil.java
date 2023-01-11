@@ -8,7 +8,7 @@ public class PlayerSaveUtil {
     static Connection connection = null;
 
     public static void initDB() throws SQLException {
-        connection = DriverManager.getConnection("jdbc:sqlite:database.db");
+        connection = DriverManager.getConnection("jdbc:sqlite:/plugin/kep/database.db");
         String sql = "CREATE TABLE IF NOT EXISTS kr_KEP (" +
                 " uuid VARCHAR(255) PRIMARY KEY," +
                 " name VARCHAR(255)," +
