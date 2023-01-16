@@ -12,6 +12,14 @@ commands:
     description: "Adds a level to the config"
     usage: "Usage </command> <level name> <creator> <x> <y> <z> <difficulty> <icon> <required points> <reward>"
     permission: krekks.admin
+  setleveldata:
+    description: "Sets a level to the config"
+    usage: "Usage </command> <level id> <value>"
+    permission: krekks.admin
+  deleteLevel:
+    description: "deletes a level"
+    usage: "Usage </command> <level id> <100% sure?>"
+    permission: krekks.admin
   setlevelof:
     description: Sets the level of a user
     usage: "Usage </command> <username> <level_id>"

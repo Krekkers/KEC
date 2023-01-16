@@ -1,11 +1,13 @@
 package krekks.easyparkour.command.level.admin;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import static krekks.easyparkour.KEP.gameWorld;
 import static krekks.easyparkour.system.levelsystem.LevelHandler.createNewLevel;
 
 public class AddNewLevelCommand implements CommandExecutor {
@@ -21,11 +23,12 @@ public class AddNewLevelCommand implements CommandExecutor {
         double x = Double.parseDouble(args[2]);
         double y = Double.parseDouble(args[3]);
         double z = Double.parseDouble(args[4]);
+        Location loc = new Location(gameWorld, x,y,z);
         String difficulty = args[5];
         Material icon = Material.matchMaterial(args[6]);
         int points = Integer.parseInt(args[7]);
         int reward = Integer.parseInt(args[8]);
-        createNewLevel(lname,creator, p.getLocation() ,difficulty, icon,points,reward);
+        createNewLevel(lname,creator, loc ,difficulty, icon,points,reward);
         return false;
     }
 }

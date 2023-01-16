@@ -9,7 +9,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -20,7 +19,7 @@ import static org.bukkit.Bukkit.getLogger;
 
 public class LevelHandler {
 
-    public static final HashMap<Integer, LevelData> levelList = new HashMap<>();
+    public static final ArrayList<LevelData> levelList = new ArrayList<>();
 
     /**
      * Also works as reloading
@@ -37,7 +36,7 @@ public class LevelHandler {
             Material icon =  Material.matchMaterial((String) levelObj.get("icon"));
             LevelData ld = new LevelData(i,levelSpawn, (String) levelObj.get("name"), (String) levelObj.get("difficulty"),(String) levelObj.get("creator"), icon, (int) levelObj.get("points"),(int) levelObj.get("reward"));
             getLogger().info("Loaded level : " + (String) levelObj.get("name"));
-            levelList.put(i,ld);
+            levelList.add(ld);
         }
         getLogger().info("" +
                 "------------------------ \n" +
@@ -117,15 +116,15 @@ public class LevelHandler {
 
     public static void saveLevels(){
         List<Object> saveList = new ArrayList<>();
-        for(int i = 0; i < levelList.size(); i++){
+        for(LevelData ld : levelList){
             saveList.add(levelObjectCreator(
-                    levelList.get(i).levelName
-                    ,levelList.get(i).creator
-                    ,levelList.get(i).getLevelSpawn()
-                    ,levelList.get(i).getDifficulty()
-                    ,levelList.get(i).getIcon()
-                    ,levelList.get(i).getPoints()
-                    ,levelList.get(i).getReward()));
+                    ld.levelName
+                    ,ld.creator
+                    ,ld.getLevelSpawn()
+                    ,ld.getDifficulty()
+                    ,ld.getIcon()
+                    ,ld.getPoints()
+                    ,ld.getReward()));
         }
         config.set("levels", saveList);
     }

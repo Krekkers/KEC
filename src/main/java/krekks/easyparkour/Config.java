@@ -17,7 +17,7 @@ public class Config {
     public static int sec;
     public static Instant time;
     public static String LICENSEKEY;
-
+    public static String PRODUCTKEY = "KEP";
     public static String spawnWorld;
     public static Location spawn = new Location(Bukkit.getWorld("world"),0,0,0);
 
@@ -33,7 +33,6 @@ public class Config {
 
     public static void configLoader(){
         time = Instant.now();
-        //world = Bukkit.getWorld(config.getString("world"));
 
         //------------------------------------------------------------------------------------------------
         //DO NOT TOUCH. Doing so will be seen as an act of piracy. Removing this is still stealing  //  |

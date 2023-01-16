@@ -6,6 +6,8 @@ import krekks.easyparkour.command.TemplateCommand;
 import krekks.easyparkour.command.admin.*;
 import krekks.easyparkour.command.level.LevelSelectorCommand;
 import krekks.easyparkour.command.level.admin.AddNewLevelCommand;
+import krekks.easyparkour.command.level.admin.DeleteLevelCommand;
+import krekks.easyparkour.command.level.admin.SetLevelDataCommand;
 import krekks.easyparkour.event.*;
 import krekks.easyparkour.playerdata.PlayerDataHandler;
 import org.bukkit.Bukkit;
@@ -19,6 +21,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.sql.SQLException;
 
 import static krekks.easyparkour.Config.configLoader;
+import static krekks.easyparkour.Config.spawnWorld;
 import static krekks.easyparkour.playerdata.PlayerDataHandler.finishedList;
 import static krekks.easyparkour.system.levelsystem.LevelHandler.saveLevels;
 import static krekks.easyparkour.system.storage.PlayerSaveUtil.initDB;
@@ -27,20 +30,19 @@ public final class KEP extends JavaPlugin {
 
     PluginManager pluginManager = Bukkit.getPluginManager();
     public static FileConfiguration config = null;
-    public static World world;              //unused
+    public static World gameWorld;             //unused
     public static Plugin PLUGIN;
 
     @Override
     public void onEnable() {
         // Plugin startup logic
         getLogger().info("Launching!");
-
         //setting up
         PLUGIN = this;
         PLUGIN.saveDefaultConfig();
         config = PLUGIN.getConfig();
         configLoader();
-
+        gameWorld = Bukkit.getWorld(spawnWorld);
         eventsRegister();
         commandSetup();
         //licenseCheck();
@@ -79,7 +81,9 @@ public final class KEP extends JavaPlugin {
 
     public void commandSetup(){
         getLogger().info("Setting up Commands...");
-        getCommand(" addlevel").setExecutor(new AddNewLevelCommand());
+        getCommand("addlevel").setExecutor(new AddNewLevelCommand());
+        getCommand("deletelevel").setExecutor(new DeleteLevelCommand());
+        getCommand("editlevel").setExecutor(new SetLevelDataCommand());
         getCommand("reloadconfig").setExecutor(new ReloadConfigCommand());
         getCommand("levels").setExecutor(new LevelSelectorCommand());
         getCommand("GetPlayerInList").setExecutor(new GetPlayerInListCommand());

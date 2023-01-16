@@ -35,8 +35,7 @@ parkoursettings:
     table: "KEP" #All tables start with 'kr_'
 
 levels:
-  - 1 :
-    name: "Default"
+  - name: "Default"
     icon: "GREEN_WOOL"
     x: 0.0
     y: 0.0
@@ -45,15 +44,16 @@ levels:
     creator: "Default"
     points: 1
     reward: 15
-  - 2 :
-    name: "Default 2"
-    icon: "GREEN_WOOL"
-    x: 1.0
-    y: 0.5
-    z: 0.15
+  - name: "Default"
+    icon: "RED_WOOL"
+    x: 0.0
+    y: 0.0
+    z: 0.0
     difficulty: "easy"
     creator: "Default"
+    points: 1
     reward: 15
+
 
 
 

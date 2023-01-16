@@ -11,6 +11,7 @@ import java.net.URL;
 import java.nio.charset.Charset;
 
 import static krekks.easyparkour.Config.LICENSEKEY;
+import static krekks.easyparkour.Config.PRODUCTKEY;
 import static krekks.easyparkour.KEP.PLUGIN;
 import static krekks.easyparkour.misc.KrekkMessages.krekksLoggerFine;
 
@@ -72,7 +73,9 @@ public class LincenseChecker {
         //will contain the api logic
         try{
             String nonce = getJson(new URL("http://wpwoopluginseller.local/?nonce=1&license_key=" + LICENSEKEY)).getString("");
-            return getJson(new URL("http://wpwoopluginseller.local/wp-json/wlm/v1/license?license_key=" + LICENSEKEY + "&product_id=" + 11 + "&nonce=" + nonce)).getString("") == LICENSEKEY;
+            return getJson(new URL(
+                    "http://wpwoopluginseller.local/wp-json/wlm/v1/license?license_key="
+                            + LICENSEKEY + "&product_id=" + PRODUCTKEY + "&nonce=" + nonce)).getString("") == LICENSEKEY;
         } catch (Exception e) {
             e.printStackTrace();
         }
