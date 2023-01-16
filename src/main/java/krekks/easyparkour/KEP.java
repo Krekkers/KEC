@@ -5,6 +5,7 @@ import krekks.easyparkour.command.GoBackCommand;
 import krekks.easyparkour.command.TemplateCommand;
 import krekks.easyparkour.command.admin.*;
 import krekks.easyparkour.command.level.LevelSelectorCommand;
+import krekks.easyparkour.command.level.admin.AddNewLevelCommand;
 import krekks.easyparkour.event.*;
 import krekks.easyparkour.playerdata.PlayerDataHandler;
 import org.bukkit.Bukkit;
@@ -19,7 +20,7 @@ import java.sql.SQLException;
 
 import static krekks.easyparkour.Config.configLoader;
 import static krekks.easyparkour.playerdata.PlayerDataHandler.finishedList;
-import static krekks.easyparkour.system.license.LincenseChecker.licenseCheck;
+import static krekks.easyparkour.system.levelsystem.LevelHandler.saveLevels;
 import static krekks.easyparkour.system.storage.PlayerSaveUtil.initDB;
 
 public final class KEP extends JavaPlugin {
@@ -33,14 +34,16 @@ public final class KEP extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         getLogger().info("Launching!");
+
         //setting up
         PLUGIN = this;
         PLUGIN.saveDefaultConfig();
         config = PLUGIN.getConfig();
         configLoader();
+
         eventsRegister();
         commandSetup();
-        licenseCheck();
+        //licenseCheck();
         // if the plugin gets reloaded I want it to not break
         getLogger().info("If there are any online players they now have no checkpoint location!");
         for(Player p : Bukkit.getOnlinePlayers()){
@@ -60,6 +63,7 @@ public final class KEP extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
         finishedList.clear();
+        saveLevels();
     }
 
     public void eventsRegister(){
@@ -75,6 +79,7 @@ public final class KEP extends JavaPlugin {
 
     public void commandSetup(){
         getLogger().info("Setting up Commands...");
+        getCommand(" addlevel").setExecutor(new AddNewLevelCommand());
         getCommand("reloadconfig").setExecutor(new ReloadConfigCommand());
         getCommand("levels").setExecutor(new LevelSelectorCommand());
         getCommand("GetPlayerInList").setExecutor(new GetPlayerInListCommand());

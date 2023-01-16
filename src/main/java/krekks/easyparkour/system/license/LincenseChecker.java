@@ -1,20 +1,26 @@
 package krekks.easyparkour.system.license;
 
 
+import org.apache.commons.io.IOUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.charset.Charset;
 
 import static krekks.easyparkour.Config.LICENSEKEY;
 import static krekks.easyparkour.KEP.PLUGIN;
 import static krekks.easyparkour.misc.KrekkMessages.krekksLoggerFine;
 
 public class LincenseChecker {
+    public static void versionCheck(){
 
+
+
+
+    }
 
     public static void licenseCheck(){
         int tps = 20; //tps is to calc the looptime
@@ -65,30 +71,16 @@ public class LincenseChecker {
     public static boolean verifyLicense(){
         //will contain the api logic
         try{
-            if(ApiCall("") == LICENSEKEY){
-                return true;
-            }
+            String nonce = getJson(new URL("http://wpwoopluginseller.local/?nonce=1&license_key=" + LICENSEKEY)).getString("");
+            return getJson(new URL("http://wpwoopluginseller.local/wp-json/wlm/v1/license?license_key=" + LICENSEKEY + "&product_id=" + 11 + "&nonce=" + nonce)).getString("") == LICENSEKEY;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
     }
-    public static String ApiCall(String url) throws Exception{
-        URL apiURL = new URL(url);
-        HttpURLConnection conn = (HttpURLConnection) apiURL.openConnection();
-        conn.setRequestMethod("GET");
-        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        String inputLine;
-        StringBuffer response = new StringBuffer();
-
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
-        }
-        in.close();
-        return response.toString();
+    public static JSONObject getJson(URL url) throws IOException {
+        String json = IOUtils.toString(url, Charset.forName("UTF-8"));
+        return new JSONObject(json);
     }
-
-
-
 
 }
