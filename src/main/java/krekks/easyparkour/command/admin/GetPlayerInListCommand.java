@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import static krekks.easyparkour.misc.KrekkMessages.krekkSendMessageArray;
-import static krekks.easyparkour.playerdata.PlayerDataHandler.getFromList;
+import static krekks.easyparkour.playerdata.PlayerDataHandler.getPlayerDataFromList;
 public class GetPlayerInListCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -16,7 +16,7 @@ public class GetPlayerInListCommand implements CommandExecutor {
             sender.sendMessage("Please provide a username");
             return true;
         }
-        PlayerData d = getFromList(Bukkit.getPlayer(args[0]));
+        PlayerData d = getPlayerDataFromList(Bukkit.getPlayer(args[0]));
         if(d == null){
             sender.sendMessage("This player does not exist in the data list");
             return true;

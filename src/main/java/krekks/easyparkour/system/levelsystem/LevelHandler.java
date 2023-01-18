@@ -51,7 +51,7 @@ public class LevelHandler {
     @Deprecated
     public static void playerSetNextLevel(Player p){
         //set the parkour level and teleport player to new level
-        PlayerData pd = PlayerDataHandler.getFromList(p);
+        PlayerData pd = PlayerDataHandler.getPlayerDataFromList(p);
         if(pd.getLevel() + 1 > levelList.size()){
             p.sendMessage("You have finished the last level");
             return;
@@ -63,7 +63,7 @@ public class LevelHandler {
         pd.addPoints(reward);
         //set data
         pd.setLevel(ld.getLevelID());
-        pd.setCheckpointLocation(ld.getLevelSpawn());
+        //pd.setCheckpointLocation(ld.getLevelSpawn());
         p.teleport(ld.getLevelSpawn());
         //success
         p.sendMessage(ChatColor.GREEN + "You finished!");
@@ -74,13 +74,13 @@ public class LevelHandler {
     }
     public static void finishLevel(Player p){
         //set the parkour level and teleport player to new level
-       PlayerDataHandler.getFromList(p).finishLevel();
+       PlayerDataHandler.getPlayerDataFromList(p).finishLevel();
     }
     public static void playerSetParkourLevel(Player p, int id){
         //set the parkour level and teleport player to new level
         LevelData ld = levelList.get(id);
         //set data
-        PlayerDataHandler.getFromList(p).setLevel(ld.getLevelID());
+        PlayerDataHandler.getPlayerDataFromList(p).setLevel(ld.getLevelID());
     }
 
     /**

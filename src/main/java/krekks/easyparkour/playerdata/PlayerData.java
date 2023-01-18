@@ -43,9 +43,6 @@ public class PlayerData {
         this.points = points;
     }
     public void setCheckpointBlock(Block b) { checkpointBlock = b; }
-    public void setCheckpointLocation(Location _l){
-        checkpointLocation = _l;
-    }
     public void setPlayer(Player _p){
         player = _p;
     }
@@ -75,7 +72,7 @@ public class PlayerData {
     public void setLevel(int l) {
         level = l;
         LevelData ld = levelList.get(level);
-        setCheckpointLocation(ld.getLevelSpawn());
+        checkpointLocation = ld.getLevelSpawn();
         player.teleport(ld.getLevelSpawn());
     }
 
@@ -88,17 +85,30 @@ public class PlayerData {
      * teleports player to checkpoint
      * @param loc
      */
-    public void teleportPlayerToCheckpoint(Location loc){
+    public void setCheckpoint(Location loc){
         if(isSameCheckpoint(loc))
             return;
         //if its not the same checkpoint
-        setCheckpointLocation(loc);
+        checkpointLocation = loc;
         setCheckpointBlock(loc.getBlock());
         player.sendMessage(ChatColor.translateAlternateColorCodes('&', Config.checkpointText));
         player.playSound(loc, Config.checkpointSound, 1 , 1);
-
     }
 
+    /**
+     * player go to checkpoint
+     */
+    public void goToCheckPoint(){
+        Location checkpoint = getCheckpointLocation();
+        Location newLoc = new Location(player.getWorld(),checkpoint.getX(),checkpoint.getY(),checkpoint.getZ());
+        if(newLoc == null)return;
+        //setting location values to be teleported to
+        newLoc.add(0.5f,1f,0.5f);
+        newLoc.setPitch(player.getLocation().getPitch());
+        newLoc.setYaw(player.getLocation().getYaw());
+        //teleports
+        player.teleport(newLoc);
+    }
     /**
      * Finish level
      */

@@ -8,8 +8,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-import static krekks.easyparkour.misc.GoBack.goToCheckPoint;
-import static krekks.easyparkour.misc.item.ItemMaker.*;
+import static krekks.easyparkour.misc.item.ItemMaker.checkpointItem;
+import static krekks.easyparkour.misc.item.ItemMaker.levelSelector;
+import static krekks.easyparkour.playerdata.PlayerDataHandler.getPlayerDataFromList;
 import static krekks.easyparkour.system.menusystem.MenuManager.getMenuUtility;
 
 public class Interact implements Listener {
@@ -18,14 +19,14 @@ public class Interact implements Listener {
         if(e.getItem() == null) return;
         //go back
         if (e.getItem().getItemMeta().equals(checkpointItem.getItemMeta())) {
-            goToCheckPoint(e.getPlayer());
+            getPlayerDataFromList(e.getPlayer()).goToCheckPoint();
             e.setCancelled( true);
         }
         //level selector
         if (e.getItem().getItemMeta().equals(levelSelector.getItemMeta())) {
             Player player = e.getPlayer();
             LevelSelectionMenu menu = new LevelSelectionMenu(getMenuUtility(player));
-            menu.pd = PlayerDataHandler.getFromList(player);
+            menu.pd = PlayerDataHandler.getPlayerDataFromList(player);
             menu.openMenu();
         }
 

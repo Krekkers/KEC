@@ -15,7 +15,7 @@ public class Leave implements Listener {
     void leaveEvent(PlayerQuitEvent e){
         //removes player from list!
         try {
-            savePlayer(PlayerDataHandler.getFromList(e.getPlayer()));
+            savePlayer(PlayerDataHandler.getPlayerDataFromList(e.getPlayer()));
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

@@ -47,17 +47,9 @@ levels:
     z: 0.0
     difficulty: "easy"
     creator: "Default"
-    points: 1
+    points: 0
     reward: 15
-  - name: "Default"
-    icon: "RED_WOOL"
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    difficulty: "easy"
-    creator: "Default"
-    points: 1
-    reward: 15
+
 
 
 

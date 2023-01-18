@@ -15,7 +15,7 @@ public class LevelSelectorCommand implements CommandExecutor {
         if(!(sender instanceof Player)) return false;
         Player player = (Player) sender;
         LevelSelectionMenu menu = new LevelSelectionMenu(getMenuUtility(player));
-        menu.pd = PlayerDataHandler.getFromList(player);
+        menu.pd = PlayerDataHandler.getPlayerDataFromList(player);
         menu.openMenu();
         return true;
     }

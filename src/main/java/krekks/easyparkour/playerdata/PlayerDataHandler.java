@@ -28,7 +28,7 @@ public class PlayerDataHandler {
      * @param p player name in the form of a string
      * @return the PlayerData from the player
      */
-    public static PlayerData getFromList(Player p){
+    public static PlayerData getPlayerDataFromList(Player p){
         return playerList.get(p);
     }
 
@@ -55,7 +55,7 @@ public class PlayerDataHandler {
      * @param loc checkpoint location
      */
     public static void setCheckpointOf(Player p, Location loc){
-        playerList.get(p).teleportPlayerToCheckpoint(loc);
+        playerList.get(p).setCheckpoint(loc);
     }
 
 

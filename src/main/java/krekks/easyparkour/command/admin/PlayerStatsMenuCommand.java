@@ -25,7 +25,7 @@ public class PlayerStatsMenuCommand implements CommandExecutor {
         }
         Player player = (Player) sender;
         PlayerStatsMenu menu = new PlayerStatsMenu(getMenuUtility(player));
-        menu.playerData = PlayerDataHandler.getFromList(Bukkit.getPlayer(args[0]));
+        menu.playerData = PlayerDataHandler.getPlayerDataFromList(Bukkit.getPlayer(args[0]));
         menu.openMenu();
         return true;
     }

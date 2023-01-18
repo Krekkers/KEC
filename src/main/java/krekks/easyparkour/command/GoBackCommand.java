@@ -5,13 +5,13 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import static krekks.easyparkour.misc.GoBack.goToCheckPoint;
+import static krekks.easyparkour.playerdata.PlayerDataHandler.getPlayerDataFromList;
 
 public class GoBackCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player p = (Player) sender;
-        goToCheckPoint(p);
+        getPlayerDataFromList(p).goToCheckPoint();
         return true;
     }
 }
