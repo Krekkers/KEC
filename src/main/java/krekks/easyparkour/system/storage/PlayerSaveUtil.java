@@ -1,6 +1,7 @@
 package krekks.easyparkour.system.storage;
 
 import krekks.easyparkour.playerdata.PlayerData;
+import org.bukkit.entity.Player;
 
 import java.sql.*;
 
@@ -40,9 +41,24 @@ public class PlayerSaveUtil {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
     }
+
+    public static int getPlayerPointsFromDB(Player p){
+        String sql = "SELECT * FROM kr_KEP WHERE `uuid` = ?";
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement(sql);
+            stmt.setString(1, p.getUniqueId().toString());
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            return rs.getInt("points");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+
 
 
 

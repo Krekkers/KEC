@@ -1,12 +1,12 @@
 package krekks.easyparkour.command;
 
+import krekks.easyparkour.misc.KrekksString;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import static krekks.easyparkour.misc.KrekksString.getIntFromString;
 import static krekks.easyparkour.system.levelsystem.LevelHandler.playerSetParkourLevel;
 
 public class SetLevelCommand implements CommandExecutor {
@@ -18,7 +18,7 @@ public class SetLevelCommand implements CommandExecutor {
             return false;
         }
         //levels
-        int level = getIntFromString(args[2]);
+        int level = KrekksString.getIntFromString(args[2]);
         playerSetParkourLevel(Bukkit.getPlayer(args[1]),level);
         sender.sendMessage(ChatColor.GREEN + "Success!");
         return true;

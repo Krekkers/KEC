@@ -22,7 +22,6 @@ import java.sql.SQLException;
 
 import static krekks.easyparkour.Config.configLoader;
 import static krekks.easyparkour.Config.spawnWorld;
-import static krekks.easyparkour.playerdata.PlayerDataHandler.finishedList;
 import static krekks.easyparkour.system.levelsystem.LevelHandler.saveLevels;
 import static krekks.easyparkour.system.storage.PlayerSaveUtil.initDB;
 
@@ -64,8 +63,8 @@ public final class KEP extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        finishedList.clear();
         saveLevels();
+        Bukkit.getLogger().info("Saved levels");
     }
 
     public void eventsRegister(){
@@ -83,7 +82,7 @@ public final class KEP extends JavaPlugin {
         getLogger().info("Setting up Commands...");
         getCommand("addlevel").setExecutor(new AddNewLevelCommand());
         getCommand("deletelevel").setExecutor(new DeleteLevelCommand());
-        getCommand("editlevel").setExecutor(new SetLevelDataCommand());
+        getCommand("setleveldata").setExecutor(new SetLevelDataCommand());
         getCommand("reloadconfig").setExecutor(new ReloadConfigCommand());
         getCommand("levels").setExecutor(new LevelSelectorCommand());
         getCommand("GetPlayerInList").setExecutor(new GetPlayerInListCommand());

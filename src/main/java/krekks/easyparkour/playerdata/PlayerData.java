@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 
 import static krekks.easyparkour.Config.nextLevelSound;
 import static krekks.easyparkour.system.levelsystem.LevelHandler.levelList;
+import static krekks.easyparkour.system.storage.PlayerSaveUtil.getPlayerPointsFromDB;
 
 public class PlayerData {
     Player player;
@@ -26,6 +27,8 @@ public class PlayerData {
         checkpointLocation = _l;
         player = _p;
         setLevel(0);
+        points = getPlayerPointsFromDB(_p);
+        _p.setLevel(points);
     }
 
     public void addGoBackCounter(int s){
@@ -111,6 +114,7 @@ public class PlayerData {
         //teleports
         player.teleport(ld.getLevelSpawn());
         addPoints(ld.getReward() * pointsMultiplier);
+        player.setLevel(points);
         player.playSound(player,nextLevelSound, 2f,1f);
     }
 

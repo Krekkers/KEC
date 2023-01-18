@@ -41,11 +41,25 @@ public class LevelSelectionMenu extends Menu {
         int pagesize = 18;
         if(levelCount < pagesize)
             pagesize = levelCount;
+        if(levelCount == 0){
+            ItemStack item = createCustomItem(Material.matchMaterial("Barrier"),1 , ChatColor.RED + "No levels available");
+            inventory.addItem(item);
+        }
         for(int i = listLimit * page; i < pagesize; i++){
             LevelData ld = levelList.get(i);
             ItemStack item = null;
             //locked
-            if(isLockedLevel(pd.getPoints(), ld)){
+            if(!isLockedLevel(pd.getPoints(), ld) || pd.getPlayer().hasPermission("krekks.admin")) {
+                //unlocked
+                item = createCustomItem(ld.getIcon(), 1,
+                        "&a&lLevel : &c" + ld.getLevelName()
+                        , "&aID : &c" + ld.getLevelID()
+                        , "&aDifficulty : &c" + ld.getDifficulty()
+                        , "&aPoints : &c" + ld.getPoints()
+                        , "&aReward : &c" + ld.getReward()
+                        , "&aMade by : &c" + ld.getCreator());
+            }
+            else{
                 item = createCustomItem(Material.BARRIER,1,
                         "&a&lLevel : &c" + ld.getLevelName()
                         , "&aID : &c" +  ld.getLevelID()
@@ -53,17 +67,6 @@ public class LevelSelectionMenu extends Menu {
                         , "&aPoints : &c" + ld.getPoints()
                         , "&aReward : &c" + ld.getReward()
                         , "&aMade by : &c" + ld.getCreator());
-            }
-            //unlocked
-            else{
-                item = createCustomItem(ld.getIcon(),1,
-                        "&a&lLevel : &c" + ld.getLevelName()
-                        , "&aID : &c" +  ld.getLevelID()
-                        , "&aDifficulty : &c" + ld.getDifficulty()
-                        , "&aPoints : &c" + ld.getPoints()
-                        , "&aReward : &c" + ld.getReward()
-                        , "&aMade by : &c" + ld.getCreator());
-
             }
             inventory.addItem(item);
         }

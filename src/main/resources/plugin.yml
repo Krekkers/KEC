@@ -14,7 +14,7 @@ commands:
     permission: krekks.admin
   setleveldata:
     description: "Sets a level to the config"
-    usage: "Usage </command> <level id> <value>"
+    usage: "Usage </command> <level id> <data> <value>"
     permission: krekks.admin
   deleteLevel:
     description: "deletes a level"

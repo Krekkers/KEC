@@ -4,12 +4,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PlayerDataHandler {
     public static final HashMap<Player, PlayerData> playerList = new HashMap<>();
-    public static final ArrayList<Player> finishedList = new ArrayList<>();
 
     public static PlayerData AddToList(Player p, Location l){
         PlayerData _data = new PlayerData(p,l);
@@ -38,16 +36,6 @@ public class PlayerDataHandler {
         return playerList.containsKey(Bukkit.getPlayer(p));
     }
 
-
-    /**
-     * Adds the player to the finished list
-     * @param p player to add
-     * @return the player that got added
-     */
-    public static Player addToFinished(Player p){
-        finishedList.add(p);
-        return p;
-    }
 
     /**
      * Gets the checkpoint of a player and returns it

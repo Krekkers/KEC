@@ -125,8 +125,13 @@ public class LevelHandler {
                     ,ld.getIcon()
                     ,ld.getPoints()
                     ,ld.getReward()));
+            Bukkit.getLogger().info("Saved Level : " + ld.getLevelName());
         }
+        //setting level
         config.set("levels", saveList);
+        PLUGIN.saveConfig();
+        loadParkourLevels();
+
     }
 
 

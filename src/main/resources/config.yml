@@ -20,6 +20,7 @@ parkoursettings:
   messages:
     checkpointmessage: "&aCheckpoint &cReached!"
     finishmessage: "&aFinish Line &eReached!"
+    youcantdothis: "&cYou cannot do this."
   items:
     goback:
       name: "&c[&aGo Back&a]"
@@ -29,14 +30,18 @@ parkoursettings:
       material: "CLOCK"
   database:
     usesql: false # false = use sqlite, true = use mysql
+    levelsinsql: false # not implemented yet
     link: "localhost:3306"
     username: "root"
     password: ""
     table: "KEP" #All tables start with 'kr_'
 
+
+
 levels:
   - name: "Default"
     icon: "GREEN_WOOL"
+    rotation: 0
     x: 0.0
     y: 0.0
     z: 0.0

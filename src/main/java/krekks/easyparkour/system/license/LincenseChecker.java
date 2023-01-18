@@ -16,12 +16,7 @@ import static krekks.easyparkour.KEP.PLUGIN;
 import static krekks.easyparkour.misc.KrekkMessages.krekksLoggerFine;
 
 public class LincenseChecker {
-    public static void versionCheck(){
 
-
-
-
-    }
 
     public static void licenseCheck(){
         int tps = 20; //tps is to calc the looptime
