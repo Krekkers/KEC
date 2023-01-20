@@ -1,11 +1,13 @@
 package krekks.easyparkour;
 
+import krekks.easyparkour.playerdata.KrekksPermission;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 
 import java.time.Instant;
+import java.util.ArrayList;
 
 import static krekks.easyparkour.KEP.config;
 import static krekks.easyparkour.system.levelsystem.LevelHandler.loadParkourLevels;
@@ -30,6 +32,8 @@ public class Config {
     //sounds
     public static Sound checkpointSound;
     public static Sound nextLevelSound;
+
+    public static ArrayList<KrekksPermission> multipliers = new ArrayList<>();
 
     public static void configLoader(){
         time = Instant.now();

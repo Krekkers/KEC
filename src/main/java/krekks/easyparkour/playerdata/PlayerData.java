@@ -17,7 +17,7 @@ public class PlayerData {
     Block checkpointBlock;
     int level;
     int points;
-    int pointsMultiplier = 1;
+    double pointsMultiplier = 1;
     int goBackCounter = 0;
 
     /**
@@ -29,6 +29,7 @@ public class PlayerData {
         setLevel(0);
         points = getPlayerPointsFromDB(_p);
         _p.setLevel(points);
+        pointsMultiplier = 1;
     }
 
     public void addGoBackCounter(int s){
@@ -117,17 +118,29 @@ public class PlayerData {
         //set data
         level = ld.getLevelID();
         checkpointLocation = ld.getLevelSpawn();
-        //success
-        player.sendMessage(ChatColor.GREEN + "You finished!");
-        player.sendMessage(ChatColor.GREEN + "You earned : " + ChatColor.RED + ld.getReward() + ChatColor.GREEN + " Points.");
-        player.sendMessage(ChatColor.GREEN + "The difficulty was : " + ChatColor.RED + ld.getDifficulty());
         //teleports
+        int processedReward = (int) (ld.getReward() * pointsMultiplier);
         player.teleport(ld.getLevelSpawn());
-        addPoints(ld.getReward() * pointsMultiplier);
+        addPoints(processedReward);
         player.setLevel(points);
         player.playSound(player,nextLevelSound, 2f,1f);
+        //success
+        player.sendMessage(ChatColor.GREEN + "You finished!");
+        player.sendMessage(ChatColor.GREEN + "You earned : " + ChatColor.RED + processedReward + ChatColor.GREEN + " Points.");
+        player.sendMessage(ChatColor.GREEN + "The difficulty was : " + ChatColor.RED + ld.getDifficulty());
     }
 
-
+    /*
+    public double defineMultiplier(){
+        //custom multiplier for rank
+        for (KrekksPermission multiplier : multipliers) {
+            if (player.hasPermission("krekks.multiplier." + multiplier.permissionName)) {
+                return multiplier.multiplier;
+            }
+        }
+        //default 1
+        return 1;
+    }
+*/
 
 }

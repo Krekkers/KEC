@@ -35,7 +35,7 @@ public class LevelHandler {
             Location levelSpawn = new Location(Bukkit.getWorld("world"), (Double) levelObj.get("x"),(Double) levelObj.get("y"),(Double) levelObj.get("z"));
             Material icon =  Material.matchMaterial((String) levelObj.get("icon"));
             LevelData ld = new LevelData(i,levelSpawn, (String) levelObj.get("name"), (String) levelObj.get("difficulty"),(String) levelObj.get("creator"), icon, (int) levelObj.get("points"),(int) levelObj.get("reward"));
-            getLogger().info("Loaded level : " + (String) levelObj.get("name"));
+            getLogger().info("Loaded level : " + levelObj.get("name"));
             levelList.add(ld);
         }
         getLogger().info("" +

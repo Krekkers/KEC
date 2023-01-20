@@ -36,7 +36,11 @@ parkoursettings:
     password: ""
     table: "KEP" #All tables start with 'kr_'
 
-
+multipliers:
+  - permission: "t"
+    multiplier: 1.5
+  - permission: "s"
+    multiplier: 2.0
 
 levels:
   - name: "Default"
