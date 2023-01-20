@@ -1,5 +1,7 @@
 package krekks.easyparkour.misc;
 
+import java.util.Scanner;
+
 public class KrekksString {
     //keeps digits
     public static int getIntFromString(String input){
@@ -12,6 +14,15 @@ public class KrekksString {
             }
         }
         return Integer.parseInt(result.toString());
+    }
+    //TODO: test this function
+    public static double getDoubleFromString(String input){
+        Scanner st = new Scanner(input);
+        while (!st.hasNextDouble())
+        {
+            st.next();
+        }
+        return st.nextDouble();
     }
 
 }

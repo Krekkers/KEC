@@ -7,6 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
+import static krekks.easyparkour.Config.multipliers;
 import static krekks.easyparkour.Config.nextLevelSound;
 import static krekks.easyparkour.system.levelsystem.LevelHandler.levelList;
 import static krekks.easyparkour.system.storage.PlayerSaveUtil.getPlayerPointsFromDB;
@@ -29,7 +30,7 @@ public class PlayerData {
         setLevel(0);
         points = getPlayerPointsFromDB(_p);
         _p.setLevel(points);
-        pointsMultiplier = 1;
+        pointsMultiplier = getMultiplierPerm();
     }
 
     public void addGoBackCounter(int s){
@@ -130,17 +131,15 @@ public class PlayerData {
         player.sendMessage(ChatColor.GREEN + "The difficulty was : " + ChatColor.RED + ld.getDifficulty());
     }
 
-    /*
-    public double defineMultiplier(){
-        //custom multiplier for rank
-        for (KrekksPermission multiplier : multipliers) {
-            if (player.hasPermission("krekks.multiplier." + multiplier.permissionName)) {
-                return multiplier.multiplier;
-            }
+    public double getMultiplierPerm(){
+        for(KrekksPermission kp : multipliers){
+            String t = "krekks." + kp.permissionName;
+            if(player.hasPermission(t))
+                return kp.multiplier;
         }
-        //default 1
-        return 1;
+        return 1.0;
     }
-*/
+
+
 
 }

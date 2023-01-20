@@ -58,6 +58,7 @@ public final class KEP extends JavaPlugin {
         //bstats
         final int pluginId = 15743;
         Metrics metrics = new Metrics(this,pluginId);
+        getLogger().info("Reloading is not supported.");
     }
 
     @Override

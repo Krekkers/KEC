@@ -10,6 +10,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static krekks.easyparkour.Config.MENUCLICKNOISE;
 import static krekks.easyparkour.misc.item.CustomItem.createCustomItem;
 import static krekks.easyparkour.system.levelsystem.LevelHandler.levelList;
@@ -19,6 +23,7 @@ public class LevelSelectionMenu extends Menu {
 
     int page = 0;
     int listLimit = 16;
+    int sortmode = 0;
     public PlayerData pd;
     public LevelSelectionMenu(MenuUtility utility) {
         super(utility);
@@ -46,7 +51,7 @@ public class LevelSelectionMenu extends Menu {
             inventory.addItem(item);
         }
         for(int i = listLimit * page; i < pagesize; i++){
-            LevelData ld = levelList.get(i);
+            LevelData ld = sorter(sortmode).get(i);
             ItemStack item = null;
             //locked
             if(!isLockedLevel(pd.getPoints(), ld) || pd.getPlayer().hasPermission("krekks.admin")) {
@@ -78,7 +83,7 @@ public class LevelSelectionMenu extends Menu {
         //info
         inventory.setItem(19, createCustomItem(Material.EMERALD,1, "&c&l" + pd.getLevelData().getLevelName()));
         inventory.setItem(25, createCustomItem(Material.GOLD_INGOT,1, "&a&lPoints : &c" + pd.getPoints()));
-
+        inventory.setItem(26,  createCustomItem(Material.COMPARATOR,1, "&aSortmode : " + sortmodeToString()));
         //fill remaining space
         fillInventoryWith(createCustomItem(Material.BLACK_STAINED_GLASS_PANE,1, "&8#",""));
     }
@@ -110,6 +115,16 @@ public class LevelSelectionMenu extends Menu {
             setMenuItems();
             p.playSound(p.getLocation(), MENUCLICKNOISE,3,1);
         }
+        if(item.getType() == Material.COMPARATOR){
+
+            //logic for sortmodes
+            sortmode += 1;
+            if(sortmode > 3)
+                sortmode = 0;
+            setMenuItems();
+            p.playSound(p.getLocation(), MENUCLICKNOISE,3,1);
+            return;
+        }
 
     }
 
@@ -120,17 +135,45 @@ public class LevelSelectionMenu extends Menu {
             return false;
     }
 
+    public List<LevelData> sorter(int sortType){
+        //default
+        Comparator<LevelData> comparator = Comparator.comparing(LevelData::getPoints).reversed();;
+        //types
+        //0 = up require
+        //1 = down require
+        //2 = up reward
+        //3 = down reward
+        switch(sortType){
+            case 0 -> comparator = Comparator.comparing(LevelData::getPoints);
+            case 1 -> comparator = Comparator.comparing(LevelData::getPoints).reversed();
+            case 2 -> comparator = Comparator.comparing(LevelData::getReward);
+            case 3 -> comparator = Comparator.comparing(LevelData::getReward).reversed();
+        }
+
+        //the sorted list
+        return levelList.stream().sorted(comparator).collect(Collectors.toList());
+    }
+
+    public String sortmodeToString(){
+        switch (sortmode){
+            case 0 -> { return "&cRequired up"; }
+            case 1 -> { return "&cRequired down"; }
+            case 2 -> { return "&cReward down"; }
+            case 3 -> { return "&cReward up"; }
+        }
+        if(sortmode > 3){ return "something went wrong"; }
+        return "Something went wrong";
+
+    }
+
 
     //keeps digits
     int getDigitFromString(String input){
         char[] charArray = input.toCharArray();            //The array
         int sl = input.toCharArray().length;               //The amount of characters in the chararray
         StringBuilder result = new StringBuilder();         //String magic
-        for (int i = 0; i < sl; i++){
-            if (Character.isDigit(charArray[i])){           //magic
-                result.append(charArray[i]);
-            }
-        }
+        //loops over all characters
+        for (int i = 0; i < sl; i++){ if (Character.isDigit(charArray[i])){ result.append(charArray[i]); } }
         return Integer.parseInt(result.toString());
     }
 

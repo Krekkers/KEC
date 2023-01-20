@@ -8,6 +8,7 @@ import org.bukkit.Sound;
 
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 import static krekks.easyparkour.KEP.config;
 import static krekks.easyparkour.system.levelsystem.LevelHandler.loadParkourLevels;
@@ -61,6 +62,13 @@ public class Config {
         spawn.setX(config.getDouble("parkoursettings.gamesettings.spawnlocation.x"));
         spawn.setY(config.getDouble("parkoursettings.gamesettings.spawnlocation.y"));
         spawn.setZ(config.getDouble("parkoursettings.gamesettings.spawnlocation.z"));
+        //load multipliers
+        for(int i = 0; i < config.getList("parkoursettings.multipliers").size(); i++){
+            LinkedHashMap<String, Object> objectlist = (LinkedHashMap<String, Object>) config.getList("parkoursettings.multipliers").get(i);
+            KrekksPermission krekksPermission = new KrekksPermission((String) objectlist.get("rank"), (Double) objectlist.get("multiplier"));
+            multipliers.add(krekksPermission);
+        }
+
         loadParkourLevels();
 
     }
