@@ -156,10 +156,10 @@ public class LevelSelectionMenu extends Menu {
 
     public String sortmodeToString(){
         switch (sortmode){
-            case 0 -> { return "&cRequired up"; }
-            case 1 -> { return "&cRequired down"; }
-            case 2 -> { return "&cReward down"; }
-            case 3 -> { return "&cReward up"; }
+            case 0 -> { return "&cRequired Low > High"; }
+            case 1 -> { return "&cRequired High > Low"; }
+            case 2 -> { return "&cReward Low > High"; }
+            case 3 -> { return "&cReward High > Low"; }
         }
         if(sortmode > 3){ return "something went wrong"; }
         return "Something went wrong";

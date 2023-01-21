@@ -74,7 +74,7 @@ public class LevelHandler {
     }
     public static void finishLevel(Player p){
         //set the parkour level and teleport player to new level
-       PlayerDataHandler.getPlayerDataFromList(p).finishLevel();
+
     }
     public static void playerSetParkourLevel(Player p, int id){
         //set the parkour level and teleport player to new level

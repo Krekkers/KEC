@@ -1,5 +1,6 @@
 package krekks.easyparkour.event;
 
+import krekks.easyparkour.playerdata.PlayerDataHandler;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -11,7 +12,6 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import static krekks.easyparkour.Config.checkpoint;
 import static krekks.easyparkour.Config.nextLevel;
 import static krekks.easyparkour.playerdata.PlayerDataHandler.setCheckpointOf;
-import static krekks.easyparkour.system.levelsystem.LevelHandler.finishLevel;
 
 public class PlayerMove implements Listener {
 
@@ -26,7 +26,7 @@ public class PlayerMove implements Listener {
             setCheckpointOf(p, p.getLocation().add(0,-1,0).getBlock().getLocation());
         //This will trigger the player to go to the next level
         if(block == nextLevel)
-            finishLevel(e.getPlayer());
+            PlayerDataHandler.getPlayerDataFromList(p).finishLevel();
     }
     //prevents falldamage
     @EventHandler

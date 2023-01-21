@@ -10,9 +10,6 @@ parkoursettings:
       x: 0.0
       y: 0.0
       z: 0.0
-  blocks:
-    checkpointblock: "GOLD_BLOCK"
-    nextlevelblock: "EMERALD_BLOCK"
   sounds:
     menuclicksound: "BLOCK_SCAFFOLDING_BREAK"
     nextlevelsound: "BLOCK_AMETHYST_BLOCK_PLACE"
@@ -35,11 +32,11 @@ parkoursettings:
     username: "root"
     password: ""
     table: "KEP" #All tables start with 'kr_'
-  multipliers:
-    - rank: "mvp"
+  multipliers: #default multiplier is 1.0
+    - rank: "krekks.multiplier.mvp"
+      multiplier: 1.0
+    - rank: "krekks.multiplier.vip"
       multiplier: 1.5
-    - rank: "t"
-      multiplier: 2.0
 
 levels:
   - name: "Default"

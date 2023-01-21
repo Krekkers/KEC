@@ -2,6 +2,7 @@ package krekks.easyparkour.playerdata;
 
 import krekks.easyparkour.Config;
 import krekks.easyparkour.system.levelsystem.LevelData;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -132,10 +133,13 @@ public class PlayerData {
     }
 
     public double getMultiplierPerm(){
+        Bukkit.getLogger().info("test");
         for(KrekksPermission kp : multipliers){
-            String t = "krekks." + kp.permissionName;
-            if(player.hasPermission(t))
+            Bukkit.getLogger().info(kp.permissionName);
+            if(player.hasPermission(kp.permissionName)){
+                Bukkit.getLogger().info(kp.multiplier + "");
                 return kp.multiplier;
+            }
         }
         return 1.0;
     }
