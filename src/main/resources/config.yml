@@ -37,6 +37,12 @@ parkoursettings:
       multiplier: 1.0
     - rank: "krekks.multiplier.vip"
       multiplier: 1.5
+  rankSettings:
+    - rank: "test"
+      freepoints: 10
+      multiplier: 1.5
+
+  
 
 levels:
   - name: "Default"

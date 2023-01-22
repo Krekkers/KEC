@@ -59,7 +59,7 @@ public class LevelSelectionMenu extends Menu {
                 item = createCustomItem(ld.getIcon(), 1,
                         "&a&lLevel : &c" + ld.getLevelName()
                         , "&aID : &c" + ld.getLevelID()
-                        , "&aDifficulty : &c" + ld.getDifficulty()
+                        , "&aDifficulty : &c" + ld.getDifficulty() + " / 10"
                         , "&aPoints : &c" + ld.getPoints()
                         , "&aReward : &c" + ld.getReward()
                         , "&aMade by : &c" + ld.getCreator());
@@ -68,7 +68,7 @@ public class LevelSelectionMenu extends Menu {
                 item = createCustomItem(Material.BARRIER,1,
                         "&a&lLevel : &c" + ld.getLevelName()
                         , "&aID : &c" +  ld.getLevelID()
-                        , "&aDifficulty : &c" + ld.getDifficulty()
+                        , "&aDifficulty : &c" + ld.getDifficulty() + " / 10"
                         , "&aPoints : &c" + ld.getPoints()
                         , "&aReward : &c" + ld.getReward()
                         , "&aMade by : &c" + ld.getCreator());
@@ -119,7 +119,7 @@ public class LevelSelectionMenu extends Menu {
 
             //logic for sortmodes
             sortmode += 1;
-            if(sortmode > 3)
+            if(sortmode > 5)
                 sortmode = 0;
             setMenuItems();
             p.playSound(p.getLocation(), MENUCLICKNOISE,3,1);
@@ -144,10 +144,12 @@ public class LevelSelectionMenu extends Menu {
         //2 = up reward
         //3 = down reward
         switch(sortType){
-            case 0 -> comparator = Comparator.comparing(LevelData::getPoints);
-            case 1 -> comparator = Comparator.comparing(LevelData::getPoints).reversed();
-            case 2 -> comparator = Comparator.comparing(LevelData::getReward);
-            case 3 -> comparator = Comparator.comparing(LevelData::getReward).reversed();
+            case 0 -> comparator = Comparator.comparing(LevelData::getDifficulty);
+            case 1 -> comparator = Comparator.comparing(LevelData::getDifficulty).reversed();
+            case 2 -> comparator = Comparator.comparing(LevelData::getPoints);
+            case 3 -> comparator = Comparator.comparing(LevelData::getPoints).reversed();
+            case 4 -> comparator = Comparator.comparing(LevelData::getReward);
+            case 5 -> comparator = Comparator.comparing(LevelData::getReward).reversed();
         }
 
         //the sorted list
@@ -156,14 +158,14 @@ public class LevelSelectionMenu extends Menu {
 
     public String sortmodeToString(){
         switch (sortmode){
-            case 0 -> { return "&cRequired Low > High"; }
-            case 1 -> { return "&cRequired High > Low"; }
-            case 2 -> { return "&cReward Low > High"; }
-            case 3 -> { return "&cReward High > Low"; }
+            case 0 -> { return "&cDifficulty Low > High"; }
+            case 1 -> { return "&cDifficulty High > Low"; }
+            case 2 -> { return "&cRequired Points Low > High"; }
+            case 3 -> { return "&cRequired Points High > Low"; }
+            case 4 -> { return "&cReward Low > High"; }
+            case 5 -> { return "&cReward High > Low"; }
         }
-        if(sortmode > 3){ return "something went wrong"; }
         return "Something went wrong";
-
     }
 
 

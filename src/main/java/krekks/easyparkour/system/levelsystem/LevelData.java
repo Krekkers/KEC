@@ -10,11 +10,11 @@ public class LevelData {
     int reward;
     Location levelSpawn;
     String levelName;
-    String difficulty;
+    int difficulty;
     String creator;
     Material icon;
 
-    public LevelData (int id, Location l, String name, String d, String c, Material m, int p, int r){
+    public LevelData (int id, Location l, String name, int d, String c, Material m, int p, int r){
         levelID = id;
         levelSpawn = l;
         levelName = name;
@@ -81,11 +81,11 @@ public class LevelData {
         this.levelName = levelName;
     }
 
-    public String getDifficulty() {
+    public int getDifficulty() {
         return difficulty;
     }
 
-    public void setDifficulty(String difficulty) {
+    public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
     }
 }

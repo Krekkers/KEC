@@ -46,7 +46,7 @@ public class SetLevelDataCommand implements CommandExecutor {
                 sender.sendMessage(ChatColor.GREEN + "Successfully set creator to : " + ChatColor.RED + ld.getCreator());
                 break;
             case "difficulty" :
-                ld.setDifficulty(args[2]);
+                ld.setDifficulty(Integer.parseInt(args[2]));
                 sender.sendMessage(ChatColor.GREEN + "Successfully set difficulty to : " + ChatColor.RED + ld.getDifficulty());
                 break;
             default:

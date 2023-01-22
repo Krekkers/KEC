@@ -34,7 +34,7 @@ public class LevelHandler {
             LinkedHashMap<String, Object> levelObj = (LinkedHashMap<String, Object>) config.getList("levels").get(i);
             Location levelSpawn = new Location(Bukkit.getWorld("world"), (Double) levelObj.get("x"),(Double) levelObj.get("y"),(Double) levelObj.get("z"));
             Material icon =  Material.matchMaterial((String) levelObj.get("icon"));
-            LevelData ld = new LevelData(i,levelSpawn, (String) levelObj.get("name"), (String) levelObj.get("difficulty"),(String) levelObj.get("creator"), icon, (int) levelObj.get("points"),(int) levelObj.get("reward"));
+            LevelData ld = new LevelData(i,levelSpawn, (String) levelObj.get("name"), (int) levelObj.get("difficulty"),(String) levelObj.get("creator"), icon, (int) levelObj.get("points"),(int) levelObj.get("reward"));
             getLogger().info("Loaded level : " + levelObj.get("name"));
             levelList.add(ld);
         }
@@ -93,7 +93,7 @@ public class LevelHandler {
      * @param points points required to play
      * @param reward reward points
      */
-    public static void createNewLevel(String name, String creator, Location location, String difficulty, Material icon, int points, int reward){
+    public static void createNewLevel(String name, String creator, Location location, int difficulty, Material icon, int points, int reward){
         //create level data
         List<Object> saveList = new ArrayList<>();
         for(int i = 0; i < levelList.size(); i++){
@@ -147,7 +147,7 @@ public class LevelHandler {
      * @param reward
      * @return
      */
-    static Object levelObjectCreator(String name, String creator, Location location, String difficulty, Material icon, int points, int reward){
+    static Object levelObjectCreator(String name, String creator, Location location, int difficulty, Material icon, int points, int reward){
         LinkedHashMap<String, Object> levelObj = new LinkedHashMap<>();
         levelObj.put("name", name);
         levelObj.put("creator", creator);
