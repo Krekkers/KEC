@@ -18,9 +18,11 @@ public class KrekkMessages {
         }
     }
     public static void krekksLoggerInfo(String... line){
+        StringBuilder full = new StringBuilder();
         for (String s : line) {
-            Bukkit.getLogger().info(s);
+         full.append(s).append("\n");
         }
+        Bukkit.getLogger().info(full.toString());
     }
     public static void krekksLoggerWarn(String... line){
         for (String s : line) {

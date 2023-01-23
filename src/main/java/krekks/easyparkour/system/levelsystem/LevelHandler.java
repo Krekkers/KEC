@@ -44,7 +44,7 @@ public class LevelHandler {
                 "------------------------");
     }
 
-    /*
+    /**
     this function is depricated but will set the next level.
     A better option is to use the function : playerSetParkourLevel
      */
@@ -72,15 +72,19 @@ public class LevelHandler {
         p.playSound(p,nextLevelSound, 2f,1f);
 
     }
+    @Deprecated
     public static void finishLevel(Player p){
         //set the parkour level and teleport player to new level
 
     }
+
+    /**
+     * You can use this. But its just does : PlayerDataHandler.getPlayerDataFromList(p).setLevel(id);
+     * @param p
+     * @param id
+     */
     public static void playerSetParkourLevel(Player p, int id){
-        //set the parkour level and teleport player to new level
-        LevelData ld = levelList.get(id);
-        //set data
-        PlayerDataHandler.getPlayerDataFromList(p).setLevel(ld.getLevelID());
+        PlayerDataHandler.getPlayerDataFromList(p).setLevel(id);
     }
 
     /**
@@ -145,7 +149,7 @@ public class LevelHandler {
      * @param icon
      * @param points
      * @param reward
-     * @return
+     * @return An object reperesenting all the params
      */
     static Object levelObjectCreator(String name, String creator, Location location, int difficulty, Material icon, int points, int reward){
         LinkedHashMap<String, Object> levelObj = new LinkedHashMap<>();

@@ -41,7 +41,7 @@ public class Config {
 
         //------------------------------------------------------------------------------------------------
         //DO NOT TOUCH. Doing so will be seen as an act of piracy. Removing this is still stealing  //  |
-        LICENSEKEY = config.getString("licensekey");                                          //  |
+        LICENSEKEY = config.getString("licensekey");                                           //  |
         //------------------------------------------------------------------------------------------------
 
         getLogger().info("Setting up blocks");

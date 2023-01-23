@@ -113,7 +113,8 @@ public class PlayerData {
         player.teleport(newLoc);
     }
     /**
-     * Finish level
+     * User will finish the level.
+     * All is handled inside this function and will not be able to be edited.
      */
     public void finishLevel() {
         LevelData ld = levelList.get(level);
@@ -132,6 +133,10 @@ public class PlayerData {
         player.sendMessage(ChatColor.GREEN + "The difficulty was : " + ChatColor.RED + ld.getDifficulty());
     }
 
+    /**
+     * Returns the multiplier object. I could have done this easier but I have not.
+     * @return
+     */
     public double getMultiplierPerm(){
         Bukkit.getLogger().info("test");
         for(KrekksPermission kp : multipliers){

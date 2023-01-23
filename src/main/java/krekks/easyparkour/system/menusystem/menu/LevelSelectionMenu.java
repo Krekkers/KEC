@@ -137,7 +137,7 @@ public class LevelSelectionMenu extends Menu {
 
     public List<LevelData> sorter(int sortType){
         //default
-        Comparator<LevelData> comparator = Comparator.comparing(LevelData::getPoints).reversed();;
+        Comparator<LevelData> comparator = Comparator.comparing(LevelData::getPoints).reversed();
         //types
         //0 = up require
         //1 = down require
