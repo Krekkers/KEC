@@ -24,6 +24,7 @@ public class Config {
     public static String spawnWorld;
     public static Location spawn = new Location(Bukkit.getWorld("world"),0,0,0);
 
+
     public static Sound MENUCLICKNOISE;
     //materials
     public static Material checkpoint;
@@ -33,6 +34,13 @@ public class Config {
     //sounds
     public static Sound checkpointSound;
     public static Sound nextLevelSound;
+
+    //database options
+    public static boolean useSQL;
+    public static String dbConnectionURL;
+    public static String dbUser;
+    public static String dbPass;
+    public static String dbTable;
 
     public static ArrayList<KrekksPermission> multipliers = new ArrayList<>();
 
@@ -62,6 +70,16 @@ public class Config {
         spawn.setX(config.getDouble("parkoursettings.gamesettings.spawnlocation.x"));
         spawn.setY(config.getDouble("parkoursettings.gamesettings.spawnlocation.y"));
         spawn.setZ(config.getDouble("parkoursettings.gamesettings.spawnlocation.z"));
+
+        getLogger().info("Loading database settings");
+        if(useSQL){
+            dbConnectionURL = config.getString("parkoursettings.database.link");
+            dbUser          = config.getString("parkoursettings.database.username");
+            dbPass          = config.getString("parkoursettings.database.password");
+            dbTable         = "kr_" + config.getString("parkoursettings.database.table");
+        }
+
+
         //load multipliers
         for(int i = 0; i < config.getList("parkoursettings.multipliers").size(); i++){
             LinkedHashMap<String, Object> objectlist = (LinkedHashMap<String, Object>) config.getList("parkoursettings.multipliers").get(i);

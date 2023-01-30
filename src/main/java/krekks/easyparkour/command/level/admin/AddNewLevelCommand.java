@@ -1,5 +1,6 @@
 package krekks.easyparkour.command.level.admin;
 
+import krekks.easyparkour.misc.KrekkMessages;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -17,6 +18,20 @@ public class AddNewLevelCommand implements CommandExecutor {
         //"Usage </command> <level name> <creator> <x> <y> <z> <difficulty> <icon> <required points> <reward>"
         if(!(sender instanceof Player))
             return false;
+        if(args[0].equals("help")){
+            KrekkMessages.krekkSendMessageArray((Player) sender,
+                    ChatColor.GREEN + "Here is how to use this command!",
+                    ChatColor.GREEN + "/addlevel <level name> <creator> <x> <y> <z> <difficulty> <icon> <required points> <reward> | " + ChatColor.RED + "Or /addlevel clean level",
+                    ChatColor.GREEN + "level name = name of the level",
+                    ChatColor.GREEN + "creator = the creator of the level",
+                    ChatColor.GREEN + "x y z = location coordinates",
+                    ChatColor.GREEN + "difficulty = 0 / 10 difficulty rating",
+                    ChatColor.GREEN + "icon = the item displayed on the level menu",
+                    ChatColor.GREEN + "required points = the points required to play the level(can be 0)",
+                    ChatColor.GREEN + "reward = the points reward on completing a level"
+                    );
+            return false;
+       }
         if(args.length < 2)
             return false;
         if(args[0].equals("clean") && args[1].equals("level")){

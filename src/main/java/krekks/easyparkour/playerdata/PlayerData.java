@@ -2,10 +2,8 @@ package krekks.easyparkour.playerdata;
 
 import krekks.easyparkour.Config;
 import krekks.easyparkour.system.levelsystem.LevelData;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
 import static krekks.easyparkour.Config.multipliers;
@@ -16,7 +14,7 @@ import static krekks.easyparkour.system.storage.PlayerSaveUtil.getPlayerPointsFr
 public class PlayerData {
     Player player;
     Location checkpointLocation;
-    Block checkpointBlock;
+    //Block checkpointBlock;
     int level;
     int points;
     double pointsMultiplier = 1;
@@ -45,7 +43,7 @@ public class PlayerData {
     public void setPoints(int points) {
         this.points = points;
     }
-    public void setCheckpointBlock(Block b) { checkpointBlock = b; }
+    //public void setCheckpointBlock(Block b) { checkpointBlock = b; }
     public void setPlayer(Player _p){
         player = _p;
     }
@@ -59,7 +57,7 @@ public class PlayerData {
     public int getGoBackCounter(){
         return goBackCounter;
     }
-    public Block getCheckpointBlock() { return checkpointBlock; }
+    //public Block getCheckpointBlock() { return checkpointBlock; }
     public LevelData getLevelData(){ return levelList.get(level); }
     public int getLevel() {
         return level;
@@ -93,7 +91,7 @@ public class PlayerData {
             return;
         //if its not the same checkpoint
         checkpointLocation = loc;
-        setCheckpointBlock(loc.getBlock());
+        //setCheckpointBlock(loc.getBlock());
         player.sendMessage(ChatColor.translateAlternateColorCodes('&', Config.checkpointText));
         player.playSound(loc, Config.checkpointSound, 1 , 1);
     }
@@ -102,9 +100,9 @@ public class PlayerData {
      * player go to checkpoint
      */
     public void goToCheckPoint(){
+        addGoBackCounter(1);
         Location checkpoint = getCheckpointLocation();
         Location newLoc = new Location(player.getWorld(),checkpoint.getX(),checkpoint.getY(),checkpoint.getZ());
-        if(newLoc == null)return;
         //setting location values to be teleported to
         newLoc.add(0.5f,1f,0.5f);
         newLoc.setPitch(player.getLocation().getPitch());
@@ -135,14 +133,11 @@ public class PlayerData {
 
     /**
      * Returns the multiplier object. I could have done this easier but I have not.
-     * @return
+     * @return permission object
      */
     public double getMultiplierPerm(){
-        Bukkit.getLogger().info("test");
         for(KrekksPermission kp : multipliers){
-            Bukkit.getLogger().info(kp.permissionName);
             if(player.hasPermission(kp.permissionName)){
-                Bukkit.getLogger().info(kp.multiplier + "");
                 return kp.multiplier;
             }
         }

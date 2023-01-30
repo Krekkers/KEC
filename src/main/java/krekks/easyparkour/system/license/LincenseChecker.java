@@ -1,23 +1,9 @@
 package krekks.easyparkour.system.license;
 
 
-import org.apache.commons.io.IOUtils;
-import org.bukkit.Bukkit;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.net.URL;
-import java.nio.charset.Charset;
-
-import static krekks.easyparkour.Config.LICENSEKEY;
-import static krekks.easyparkour.Config.PRODUCTKEY;
-import static krekks.easyparkour.KEP.PLUGIN;
-import static krekks.easyparkour.misc.KrekkMessages.krekksLoggerFine;
-
 public class LincenseChecker {
 
-
+/*
     public static void licenseCheck(){
         int tps = 20; //tps is to calc the looptime
         int loopTime = 600 * tps;
@@ -80,5 +66,5 @@ public class LincenseChecker {
         String json = IOUtils.toString(url, Charset.forName("UTF-8"));
         return new JSONObject(json);
     }
-
+*/
 }

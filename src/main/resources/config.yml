@@ -26,11 +26,12 @@ parkoursettings:
       name: "&c[&aLevel Selector]"
       material: "CLOCK"
   database:
+    #!Don't touch if you don't know what you are doing!
     usesql: false # false = use sqlite, true = use mysql
-    levelsinsql: false # not implemented yet
-    link: "localhost:3306"
-    username: "root"
-    password: ""
+    levelsinsql: false #will save levels and load levels outside the config file and store it in the sql(ite) database
+    link: "" #leave empty if you have usesql on false
+    username: "" #leave empty if you have usesql on false
+    password: "" #leave empty if you have usesql on false
     table: "KEP" #All tables start with 'kr_'
   multipliers: #default multiplier is 1.0
     - rank: "krekks.multiplier.mvp"
@@ -38,7 +39,7 @@ parkoursettings:
     - rank: "krekks.multiplier.vip"
       multiplier: 1.5
   rankSettings:
-    - rank: "test"
+    - rank: "krekks.vip"
       freepoints: 10
       multiplier: 1.5
 

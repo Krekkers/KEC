@@ -17,6 +17,11 @@ public class KrekkMessages {
             p.sendMessage(ChatColor.translateAlternateColorCodes('&', s));
         }
     }
+
+    /**
+     * logger info multiline
+     * @param line
+     */
     public static void krekksLoggerInfo(String... line){
         StringBuilder full = new StringBuilder();
         for (String s : line) {
@@ -24,11 +29,19 @@ public class KrekkMessages {
         }
         Bukkit.getLogger().info(full.toString());
     }
+    /**
+     * logger warn multiline
+     * @param line
+     */
     public static void krekksLoggerWarn(String... line){
         for (String s : line) {
             Bukkit.getLogger().warning(s);
         }
     }
+    /**
+     * logger fine multiline
+     * @param line
+     */
     public static void krekksLoggerFine(String... line){
         for (String s : line) {
             Bukkit.getLogger().fine(s);
