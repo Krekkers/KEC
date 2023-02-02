@@ -70,7 +70,7 @@ public final class KEP extends JavaPlugin {
 
     public void eventsRegister(){
         getLogger().info("Setting up Events...");
-        pluginManager.registerEvents(new DeathEvent(), this);
+        pluginManager.registerEvents(new DamageEvent(), this);
         pluginManager.registerEvents(new PlayerMove(), this);
         pluginManager.registerEvents(new InventoryEvents(), this);
         pluginManager.registerEvents(new Leave(), this);

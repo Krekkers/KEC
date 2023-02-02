@@ -11,7 +11,9 @@ import static krekks.easyparkour.playerdata.PlayerDataHandler.AddToList;
 public class Join implements Listener {
     @EventHandler
     void joinEvent(PlayerJoinEvent e){
+        //adds player to the player list and sets his checkpoint
         AddToList(e.getPlayer(), spawn);
+        //add checkpoint item and level selector to inventory
         e.getPlayer().getInventory().setItem(8, ItemMaker.checkpointItem);
         e.getPlayer().getInventory().setItem(0, ItemMaker.levelSelector);
     }

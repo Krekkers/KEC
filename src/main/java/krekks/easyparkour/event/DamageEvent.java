@@ -9,25 +9,29 @@ import org.bukkit.event.entity.EntityDamageEvent;
 
 import static krekks.easyparkour.playerdata.PlayerDataHandler.getCheckpointOf;
 
-public class DeathEvent implements Listener {
+public class DamageEvent implements Listener {
 
-    //for the future
     @EventHandler
     void playerDeath(EntityDamageEvent e){
-        if(e.getEntity() instanceof Player){
-            Player p = (Player) e.getEntity();                  //gets the player
-            p.setFireTicks(0);                                  //sets firetick to 0 so it doesnt happen
-            if((p.getHealth() - e.getFinalDamage()) <= 0 ){     //if player health is lower then 0;
-                if(getCheckpointOf(p) == null) return;
+        if(e.getEntity() instanceof Player p){
+            //gets the player
+            if(p.getFireTicks() > 1) p.setFireTicks(0);
+            if((p.getHealth() - e.getFinalDamage()) < 1 ){     //if player health is lower than 0;
                 e.setCancelled(true);
                 Location l = getCheckpointOf(p);
+                assert l != null;
                 l.add(0, 1, 0);
-                p.sendMessage(ChatColor.YELLOW + "You got saved from " + ChatColor.RED + "Death!");
+                p.sendMessage(ChatColor.GREEN + "You got saved from " + ChatColor.RED + "Death!");
                 p.teleport(l);
                 p.setHealth(20);
 
             }
         }
+    }
+    //prevents fall damage
+    @EventHandler
+    void fallDamage(EntityDamageEvent e){
+        if (e.getCause() == EntityDamageEvent.DamageCause.FALL) e.setCancelled(true);
     }
 
 }
