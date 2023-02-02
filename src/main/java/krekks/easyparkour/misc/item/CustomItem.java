@@ -6,7 +6,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CustomItem {
@@ -16,10 +15,10 @@ public class CustomItem {
         ItemStack item = new ItemStack(material);
         item.setAmount(amount);
         ItemMeta meta = item.getItemMeta();
+        assert meta != null;
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
-        List<String> preColor = Arrays.asList(description);
         List<String> postColor = new ArrayList<String>();
-        for(String s : preColor){
+        for(String s : description){
             s = ChatColor.translateAlternateColorCodes('&' ,s);
             postColor.add(s);
         }

@@ -34,7 +34,7 @@ public class PlayerDataHandler {
 
     /**
      * Is the user provided in the list? returns result.
-     * @param p
+     * @param p player to check if its in list
      * @return true/false if player is in the list
      */
     public static boolean isInList(String p){

@@ -17,7 +17,7 @@ public class PlayerData {
     //Block checkpointBlock;
     int level;
     int points;
-    double pointsMultiplier = 1;
+    double pointsMultiplier;
     int goBackCounter = 0;
 
     /**
@@ -84,7 +84,7 @@ public class PlayerData {
     //misc functions
     /**
      * teleports player to checkpoint
-     * @param loc
+     * @param loc location to be set as checkpoint
      */
     public void setCheckpoint(Location loc){
         if(isSameCheckpoint(loc))
