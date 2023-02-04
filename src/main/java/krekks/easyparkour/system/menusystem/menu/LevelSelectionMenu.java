@@ -117,7 +117,7 @@ public class LevelSelectionMenu extends Menu {
         }
         if(item.getType() == Material.COMPARATOR){
 
-            //logic for sortmodes
+            //logic for sort modes
             sortmode += 1;
             if(sortmode > 5)
                 sortmode = 0;

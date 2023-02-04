@@ -100,15 +100,15 @@ public class LevelHandler {
     public static void createNewLevel(String name, String creator, Location location, int difficulty, Material icon, int points, int reward){
         //create level data
         List<Object> saveList = new ArrayList<>();
-        for(int i = 0; i < levelList.size(); i++){
+        for (LevelData levelData : levelList) {
             saveList.add(levelObjectCreator(
-                    levelList.get(i).levelName
-                    ,levelList.get(i).creator
-                    ,levelList.get(i).getLevelSpawn()
-                    ,levelList.get(i).getDifficulty()
-                    ,levelList.get(i).getIcon()
-                    ,levelList.get(i).getPoints()
-                    ,levelList.get(i).getReward()));
+                    levelData.levelName
+                    , levelData.creator
+                    , levelData.getLevelSpawn()
+                    , levelData.getDifficulty()
+                    , levelData.getIcon()
+                    , levelData.getPoints()
+                    , levelData.getReward()));
         }
 
         saveList.add(levelObjectCreator(name,creator,location,difficulty,icon,points,reward));

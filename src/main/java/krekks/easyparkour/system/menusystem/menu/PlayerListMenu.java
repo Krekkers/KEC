@@ -29,7 +29,7 @@ public class PlayerListMenu extends Menu {
 
     @Override
     public void setMenuItems() {
-        //loops trough all players and gets the corresponding playerdata
+        //loops trough all players and gets the corresponding player-data
         for(Player p : Bukkit.getOnlinePlayers()){
             PlayerData pd = playerList.get(p);
 

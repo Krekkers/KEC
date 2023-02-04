@@ -38,6 +38,7 @@ public class PlayerStatsMenu extends Menu {
         //skull item for player display
         ItemStack playerSkull = createCustomItem(Material.PLAYER_HEAD, 1, "&r&l&e" + playerData.getPlayer().getName());
         SkullMeta meta = (SkullMeta) playerSkull.getItemMeta();
+        assert meta != null;
         meta.setOwnerProfile(playerData.getPlayer().getPlayerProfile());
         playerSkull.setItemMeta(meta);
         //checkpoint
