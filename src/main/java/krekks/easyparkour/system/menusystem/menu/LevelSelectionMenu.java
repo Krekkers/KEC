@@ -22,7 +22,7 @@ import static krekks.easyparkour.system.levelsystem.LevelHandler.playerSetParkou
 public class LevelSelectionMenu extends Menu {
 
     int page = 0;
-    int listLimit = 16;
+    int listLimit = 18;
     int sortmode = 0;
     public PlayerData pd;
     public LevelSelectionMenu(MenuUtility utility) {
