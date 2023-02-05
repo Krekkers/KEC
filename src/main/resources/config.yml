@@ -4,6 +4,7 @@ licensekey: "no key"
 #-----------------------------------------------------------
 #generic settings
 parkoursettings:
+  leaderboardrefreshrate: 30 #minutes
   gamesettings: #gamesettings
     spawnlocation:
       world: "world"

@@ -66,3 +66,7 @@ commands:
     usage: "Usage /<command> <playername>"
     permission: krekks.staff
     permission-message: No permission
+  leaderboard:
+    description: Shows a menu containing the leaderboards
+    usage: "Usage /<command>"
+    aliases: [lb,leaders,board,leaderboards,top,]

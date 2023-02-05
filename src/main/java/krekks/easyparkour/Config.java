@@ -17,6 +17,7 @@ import static org.bukkit.Bukkit.getLogger;
 public class Config {
     public static boolean Toggle;
     public static boolean checkpointOnly;
+    public static int LB_refreshRate;
     public static int sec;
     public static Instant time;
     public static String LICENSEKEY;
@@ -78,6 +79,8 @@ public class Config {
             dbPass          = config.getString("parkoursettings.database.password");
             dbTable         = "kr_" + config.getString("parkoursettings.database.table");
         }
+        LB_refreshRate = config.getInt("parkoursettings.leaderboardrefreshrate") * 20 * 60; // makes it so refresh rate in minutes
+        Bukkit.getLogger().info("REFRESHRATE : " + LB_refreshRate);
 
 
         //load multipliers

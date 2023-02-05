@@ -2,6 +2,7 @@ package krekks.easyparkour;
 
 
 import krekks.easyparkour.command.GoBackCommand;
+import krekks.easyparkour.command.LeaderboardCommand;
 import krekks.easyparkour.command.TemplateCommand;
 import krekks.easyparkour.command.admin.*;
 import krekks.easyparkour.command.level.LevelSelectorCommand;
@@ -22,6 +23,7 @@ import java.sql.SQLException;
 
 import static krekks.easyparkour.Config.configLoader;
 import static krekks.easyparkour.Config.spawnWorld;
+import static krekks.easyparkour.system.leaderboardsystem.LeaderboardLoader.initLeaderboard;
 import static krekks.easyparkour.system.levelsystem.LevelHandler.saveLevels;
 import static krekks.easyparkour.system.storage.PlayerSaveUtil.initDB;
 
@@ -59,6 +61,7 @@ public final class KEP extends JavaPlugin {
         final int pluginId = 15743;
         Metrics metrics = new Metrics(this,pluginId);
         getLogger().info("Reloading is not supported.");
+        initLeaderboard();
     }
 
     @Override
@@ -93,6 +96,7 @@ public final class KEP extends JavaPlugin {
         getCommand("setpointsof").setExecutor(new TemplateCommand());
         getCommand("ShowPluginData").setExecutor(new PluginInfoCommand());
         getCommand("PlayerStats").setExecutor(new PlayerStatsMenuCommand());
+        getCommand("leaderboard").setExecutor(new LeaderboardCommand());
         getLogger().info("Commands are setup");
     }
 

@@ -10,7 +10,7 @@ public class PlayerDataHandler {
     public static final HashMap<Player, PlayerData> playerList = new HashMap<>();
 
     public static PlayerData AddToList(Player p, Location l){
-        PlayerData _data = new PlayerData(p,l);
+        PlayerData _data = new PlayerData(p);
         playerList.put(p,_data);
         return _data;
     }

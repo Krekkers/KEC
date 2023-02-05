@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import static krekks.easyparkour.Config.multipliers;
 import static krekks.easyparkour.Config.nextLevelSound;
 import static krekks.easyparkour.system.levelsystem.LevelHandler.levelList;
+import static krekks.easyparkour.system.storage.PlayerSaveUtil.getPlayerFinishCountFromDB;
 import static krekks.easyparkour.system.storage.PlayerSaveUtil.getPlayerPointsFromDB;
 
 public class PlayerData {
@@ -20,14 +21,19 @@ public class PlayerData {
     double pointsMultiplier;
     int goBackCounter = 0;
 
+
+    //other
+    int finishCount = 0;
+
     /**
      * Player data to collect.
      */
-    public PlayerData(Player _p, Location _l){
-        checkpointLocation = _l;
+    public PlayerData(Player _p){
+        checkpointLocation = Config.spawn;
         player = _p;
         setLevel(0);
         points = getPlayerPointsFromDB(_p);
+        finishCount = getPlayerFinishCountFromDB(_p);
         _p.setLevel(points);
         pointsMultiplier = getMultiplierPerm();
     }
@@ -40,6 +46,13 @@ public class PlayerData {
     }
 
 
+
+    public void setFinishCount(int finishCount) {
+        this.finishCount = finishCount;
+    }
+    public int getFinishCount() {
+        return finishCount;
+    }
     public void setPoints(int points) {
         this.points = points;
     }
@@ -124,6 +137,7 @@ public class PlayerData {
         player.teleport(ld.getLevelSpawn());
         addPoints(processedReward);
         player.setLevel(points);
+        setFinishCount(this.finishCount += 1);
         player.playSound(player,nextLevelSound, 2f,1f);
         //success
         player.sendMessage(ChatColor.GREEN + "You finished!");

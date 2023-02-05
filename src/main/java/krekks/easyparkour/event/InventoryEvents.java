@@ -1,6 +1,5 @@
 package krekks.easyparkour.event;
 
-import krekks.easyparkour.misc.item.ItemMaker;
 import krekks.easyparkour.system.menusystem.Menu;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,10 +19,11 @@ public class InventoryEvents implements Listener {
             menu.handleMenu(e);
         }
         //set items if those slots are null
+        /*
         if(e.getInventory().getItem(0) == null || e.getInventory().getItem(8) == null) {
             e.getInventory().setItem(8, ItemMaker.checkpointItem);
             e.getInventory().setItem(0, ItemMaker.levelSelector);
-        }
+        }*/
         //if user has staff permissions they can move items in inventory
         //could cause duplication of checkpoint and level selector item
         if(e.getWhoClicked().hasPermission("krekks.staff")) return;
