@@ -44,13 +44,15 @@ public class LevelSelectionMenu extends Menu {
         inventory.clear();
         int levelCount = levelList.size();
         int pagesize = 18;
-        if(levelCount < pagesize)
-            pagesize = levelCount;
+        int curLimit = listLimit * page;
+        if(levelCount < curLimit + pagesize)
+            pagesize = pagesize - ((curLimit + pagesize) - levelCount);
         if(levelCount == 0){
             ItemStack item = createCustomItem(Material.matchMaterial("Barrier"),1 , ChatColor.RED + "No levels available");
             inventory.addItem(item);
         }
-        for(int i = listLimit * page; i < pagesize; i++){
+
+        for(int i = curLimit; i < curLimit + pagesize; i++){
             LevelData ld = sorter(sortmode).get(i);
             ItemStack item = null;
             //locked

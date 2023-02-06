@@ -3,7 +3,6 @@ package krekks.easyparkour.system.leaderboardsystem;
 import krekks.easyparkour.Config;
 import krekks.easyparkour.system.storage.PlayerSaveUtil;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 
 import java.util.ArrayList;
 
@@ -15,9 +14,7 @@ public class LeaderboardLoader {
     public static void initLeaderboard(){
         PlayerSaveUtil.loadLeaderboard();
         //repeat task!
-        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(PLUGIN, () -> {
-            Bukkit.broadcastMessage(ChatColor.RED + "Leaderboard will be updated.");
-            Bukkit.broadcastMessage(ChatColor.RED + "Lag is expected.");
+        Bukkit.getScheduler().runTaskTimerAsynchronously(PLUGIN, () -> {
             Bukkit.getLogger().info("ATTEMPTING TO LOAD IN LEADERBOARD DATA");
             lb_List.clear();
             Bukkit.getLogger().info("-------------------------");
@@ -25,9 +22,15 @@ public class LeaderboardLoader {
             PlayerSaveUtil.loadLeaderboard();
             Bukkit.getLogger().info("-------------------------");
             Bukkit.getLogger().info("LIST HAS BEEN LOADED!");
-            Bukkit.broadcastMessage(ChatColor.RED + "Leaderboard " + ChatColor.GREEN + "succesfully updated.");
         }, 0, Config.LB_refreshRate);
 
+        Bukkit.getScheduler().runTaskAsynchronously(PLUGIN, new Runnable() {
+            @Override
+            public void run() {
+                Bukkit.getLogger().info("This message was printed to the console asynchronously");
+                //Bukkit.broadcastMessage is not thread-safe
+            }
+        });
     }
 
 }

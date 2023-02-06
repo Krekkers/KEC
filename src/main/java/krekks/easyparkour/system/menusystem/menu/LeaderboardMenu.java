@@ -51,8 +51,9 @@ public class LeaderboardMenu extends Menu {
             LeaderboardObj lb_player = lb_List.stream().sorted(comparator).toList().get(i);
             item = createCustomItem(Material.PLAYER_HEAD, 1, "&a" + lb_player.getName(),
                     "&aPosition : &c" + (i + 1),
-                    "&aPoints : " + lb_player.getPoints(),
-                    "&aFinish Count : " + lb_player.getFinishCount());
+                    "&aFinish Count : &c" + lb_player.getFinishCount(),
+                    "&aPoints : &c" + lb_player.getPoints());
+
             SkullMeta sm = (SkullMeta) item.getItemMeta();
             assert sm != null;
             sm.setOwningPlayer(lb_player.getP());

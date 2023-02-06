@@ -13,13 +13,12 @@ public class SetLevelCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if(args[1] == null || args[2] == null){
+        if(args[0] == null || args[1] == null){
             sender.sendMessage("Please add context");
             return false;
         }
         //levels
-        int level = KrekksString.getIntFromString(args[2]);
-        playerSetParkourLevel(Bukkit.getPlayer(args[1]),level);
+        playerSetParkourLevel(Bukkit.getPlayer(args[0]),KrekksString.getIntFromString(args[1]));
         sender.sendMessage(ChatColor.GREEN + "Success!");
         return true;
     }
