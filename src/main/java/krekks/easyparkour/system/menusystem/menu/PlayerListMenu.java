@@ -9,10 +9,16 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
+import static krekks.easyparkour.Config.MENUCLICKNOISE;
 import static krekks.easyparkour.misc.item.CustomItem.createCustomItem;
 import static krekks.easyparkour.playerdata.PlayerDataHandler.playerList;
 
 public class PlayerListMenu extends Menu {
+
+    int page = 0;
+    int listLimit = 5;
+    public PlayerData menuOwner_PD;
+
     public PlayerListMenu(MenuUtility utility) {
         super(utility);
     }
@@ -29,25 +35,39 @@ public class PlayerListMenu extends Menu {
 
     @Override
     public void setMenuItems() {
-        //loops trough all players and gets the corresponding player-data
+        //loops through all players and gets the corresponding player-data
         for(Player p : Bukkit.getOnlinePlayers()){
             PlayerData pd = playerList.get(p);
+
 
             ItemStack item = createCustomItem(Material.matchMaterial("Grass_block"),1
                     ,pd.getPlayer().getName()
                     ,"Points : " + pd.getPoints()
                     ,"Level : " + pd.getLevel());
-
             inventory.addItem(item);
-
         }
-
-
+        inventory.setItem(24, createCustomItem(Material.RED_WOOL,1, "&cPrevious"));
+        inventory.setItem(25, createCustomItem(Material.GRAY_WOOL,1, "&2Page : " + (page + 1)));
+        inventory.setItem(26, createCustomItem(Material.GREEN_WOOL,1, "&aNext"));
 
     }
 
     @Override
     public void handleMenu(InventoryClickEvent e) {
-
+        //should handle clicks
+        Player p = (Player) e.getWhoClicked();
+        ItemStack item = e.getCurrentItem();
+        //pagination
+        assert item != null;
+        if(item.getItemMeta().getDisplayName().contains("Next")){
+            page += 1;
+            setMenuItems();
+            p.playSound(p.getLocation(), MENUCLICKNOISE,3,1);
+        }
+        if(item.getItemMeta().getDisplayName().contains("Previous") && page >= 1){
+            page -= 1;
+            setMenuItems();
+            p.playSound(p.getLocation(), MENUCLICKNOISE,3,1);
+        }
     }
 }

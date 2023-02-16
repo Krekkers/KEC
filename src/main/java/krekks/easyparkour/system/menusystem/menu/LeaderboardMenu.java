@@ -53,12 +53,12 @@ public class LeaderboardMenu extends Menu {
                     "&aPosition : &c" + (i + 1),
                     "&aFinish Count : &c" + lb_player.getFinishCount(),
                     "&aPoints : &c" + lb_player.getPoints());
-
             SkullMeta sm = (SkullMeta) item.getItemMeta();
             assert sm != null;
-            sm.setOwningPlayer(lb_player.getP());
+            sm.setOwner(lb_player.getP().getName());
             item.setItemMeta(sm);
             inventory.addItem(item);
+
         }
 
         /*inventory.setItem(6, createCustomItem(Material.SKELETON_SKULL,1, "&a" + menuOwner_PD.getPlayer().getDisplayName(),
@@ -70,6 +70,7 @@ public class LeaderboardMenu extends Menu {
         fillInventoryWith(createCustomItem(Material.GRAY_STAINED_GLASS_PANE, 1 , "&8#"));
         // 6 7 8 slots are for controlling pages
     }
+
 
     @Override
     public void handleMenu(InventoryClickEvent e) {

@@ -7,8 +7,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
-import static krekks.easyparkour.Config.*;
-
 public class PlayerBoost {
     /**
      * A function to boost players in a direction
@@ -18,7 +16,6 @@ public class PlayerBoost {
      * @param message Messaged that will be displayed
      */
     public static void boost(Vector velocity, Player p, Sound sound, String message){
-        if(!Toggle) return;
         p.setVelocity(velocity);
         p.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
         p.playSound(p.getLocation(), sound,1,1);

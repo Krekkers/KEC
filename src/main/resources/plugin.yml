@@ -8,11 +8,11 @@ authors: [ Krekkers ]
 description: KEP is the successor of KEC. This plugin will allow you to host a parkour server! To see all the features to go play.villager-club.com
 
 commands:
-  addlevel:
+  createlevel:
     description: "Adds a level to the config"
     usage: "Usage </command> <level name> <creator> <x> <y> <z> <difficulty> <icon> <required points> <reward>"
     permission: krekks.admin
-  setleveldata:
+  editlevel:
     description: "Sets a level to the config"
     usage: "Usage </command> <level id> <data> <value>"
     permission: krekks.admin

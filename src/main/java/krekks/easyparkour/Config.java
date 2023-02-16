@@ -30,12 +30,14 @@ public class Config {
     //materials
     public static Material checkpoint;
     public static Material nextLevel;
+    public static Material boost = Material.DIAMOND_BLOCK;
     //text
     public static String checkpointText;
     //sounds
     public static Sound checkpointSound;
     public static Sound nextLevelSound;
-
+    //values
+    public static int boostAmount = 5;
     //database options
     public static boolean useSQL;
     public static String dbConnectionURL;

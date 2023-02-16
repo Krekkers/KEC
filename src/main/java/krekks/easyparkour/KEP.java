@@ -84,9 +84,9 @@ public final class KEP extends JavaPlugin {
 
     public void commandSetup(){
         getLogger().info("Setting up Commands...");
-        getCommand("addlevel").setExecutor(new AddNewLevelCommand());
+        getCommand("createlevel").setExecutor(new AddNewLevelCommand());
         getCommand("deletelevel").setExecutor(new DeleteLevelCommand());
-        getCommand("setleveldata").setExecutor(new SetLevelDataCommand());
+        getCommand("editlevel").setExecutor(new SetLevelDataCommand());
         getCommand("reloadconfig").setExecutor(new ReloadConfigCommand());
         getCommand("levels").setExecutor(new LevelSelectorCommand());
         getCommand("GetPlayerInList").setExecutor(new GetPlayerInListCommand());

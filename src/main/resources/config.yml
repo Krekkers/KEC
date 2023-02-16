@@ -15,6 +15,12 @@ parkoursettings:
     menuclicksound: "BLOCK_SCAFFOLDING_BREAK"
     nextlevelsound: "BLOCK_AMETHYST_BLOCK_PLACE"
     checkpointsound: "BLOCK_NOTE_BLOCK_PLING"
+  colors: #future options
+    primary: GREEN
+    secondary: RED
+    gray: LIGHT_GRAY
+    error: RED
+    info: CYAN
   messages:
     checkpointmessage: "&aCheckpoint &cReached!"
     finishmessage: "&aFinish Line &eReached!"
@@ -43,6 +49,15 @@ parkoursettings:
     - rank: "krekks.vip"
       freepoints: 10
       multiplier: 1.5
+
+
+menuoptions:
+  buttonicons:
+    previous:
+    currentpage:
+    next:
+    close:
+
 
   
 

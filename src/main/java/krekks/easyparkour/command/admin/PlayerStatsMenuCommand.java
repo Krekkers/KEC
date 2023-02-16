@@ -14,16 +14,15 @@ public class PlayerStatsMenuCommand implements CommandExecutor {
     //DominikPro4252 made me think of this
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(!(sender instanceof Player)) return false;
+        if(!(sender instanceof Player player)) return false;
         if(args.length == 0) {
             sender.sendMessage("Please provide a player name.");
             return false;
         }
-        if(!PlayerDataHandler.isInList(args[0])){
+        if(!PlayerDataHandler.isInListName(args[0])){
             sender.sendMessage("Please provide a username from a player that is online.");
             return false;
         }
-        Player player = (Player) sender;
         PlayerStatsMenu menu = new PlayerStatsMenu(getMenuUtility(player));
         menu.playerData = PlayerDataHandler.getPlayerDataFromList(Bukkit.getPlayer(args[0]));
         menu.openMenu();

@@ -37,10 +37,17 @@ public class PlayerDataHandler {
      * @param p player to check if its in list
      * @return true/false if player is in the list
      */
-    public static boolean isInList(String p){
+    public static boolean isInListName(String p){
         return playerList.containsKey(Bukkit.getPlayer(p));
     }
-
+    /**
+     * Is the user provided in the list? returns result.
+     * @param p player to check if its in list
+     * @return true/false if player is in the list
+     */
+    public static boolean isInListPlayer(Player p){
+        return playerList.containsKey(p);
+    }
     /**
      * Gets the checkpoint of a player and returns it
      * @param p player to check the checkpoint of

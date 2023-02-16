@@ -12,7 +12,7 @@ import static krekks.easyparkour.playerdata.PlayerDataHandler.getCheckpointOf;
 public class DamageEvent implements Listener {
 
     @EventHandler
-    void playerDeath(EntityDamageEvent e){
+    void damage(EntityDamageEvent e){
         if(e.getEntity() instanceof Player p){
             //gets the player
             if(p.getFireTicks() > 1) p.setFireTicks(0);
