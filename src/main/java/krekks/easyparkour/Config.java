@@ -1,10 +1,7 @@
 package krekks.easyparkour;
 
 import krekks.easyparkour.playerdata.KrekksPermission;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import org.bukkit.*;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -37,13 +34,19 @@ public class Config {
     public static Sound checkpointSound;
     public static Sound nextLevelSound;
     //values
-    public static int boostAmount = 5;
+    public static int boostAmount = 10;
     //database options
     public static boolean useSQL;
     public static String dbConnectionURL;
     public static String dbUser;
     public static String dbPass;
     public static String dbTable;
+    //colors todo: use these colors to display text instead of the current ones
+    ChatColor primary;
+    ChatColor secondary;
+    ChatColor gray;
+    ChatColor info;
+    ChatColor error;
 
     public static ArrayList<KrekksPermission> multipliers = new ArrayList<>();
 
@@ -58,7 +61,7 @@ public class Config {
         getLogger().info("Setting up blocks");
         checkpoint = Material.matchMaterial(config.getString("parkoursettings.blocks.checkpointblock"));
         nextLevel = Material.matchMaterial(config.getString("parkoursettings.blocks.nextlevelblock"));
-
+        boost = Material.matchMaterial(config.getString("parkoursettings.blocks.boostblock"));
         getLogger().info("Setting up Text");
         checkpointText = config.getString("parkoursettings.messages.checkpointmessage");
         getLogger().info("Setting up sounds");

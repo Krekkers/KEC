@@ -23,14 +23,6 @@ public class LeaderboardLoader {
             Bukkit.getLogger().info("-------------------------");
             Bukkit.getLogger().info("LIST HAS BEEN LOADED!");
         }, 0, Config.LB_refreshRate);
-
-        Bukkit.getScheduler().runTaskAsynchronously(PLUGIN, new Runnable() {
-            @Override
-            public void run() {
-                Bukkit.getLogger().info("This message was printed to the console asynchronously");
-                //Bukkit.broadcastMessage is not thread-safe
-            }
-        });
     }
 
 }

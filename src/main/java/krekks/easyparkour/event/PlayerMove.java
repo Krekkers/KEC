@@ -34,8 +34,6 @@ public class PlayerMove implements Listener {
         //boost
         if(block == Config.boost)
             boost(new Vector(0,Config.boostAmount / 10,0), e.getPlayer(), Sound.ENTITY_DOLPHIN_DEATH, "WOOSH");
-
-
     }
 
 }

@@ -11,6 +11,10 @@ parkoursettings:
       x: 0.0
       y: 0.0
       z: 0.0
+  blocks:
+    checkpointblock: GOLD_BLOCK
+    nextlevelblock: EMERALD_BLOCK
+    boostblock: DIAMOND_BLOCK
   sounds:
     menuclicksound: "BLOCK_SCAFFOLDING_BREAK"
     nextlevelsound: "BLOCK_AMETHYST_BLOCK_PLACE"
