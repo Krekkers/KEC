@@ -2,13 +2,13 @@ package krekks.easyparkour.system.leaderboardsystem;
 
 import org.bukkit.OfflinePlayer;
 
-public class LeaderboardObj {
+public class LeaderboardPlayer {
     public OfflinePlayer p;
     public String name;
     public int points;
     public int finishCount;
 
-    public LeaderboardObj(OfflinePlayer op, String name, int p, int fc){
+    public LeaderboardPlayer(OfflinePlayer op, String name, int p, int fc){
         this.p = op;
         this.name = name;
         points = p;

@@ -1,0 +1,84 @@
+package krekks.easyparkour.system.leaderboardsystem;
+
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+
+import static krekks.easyparkour.system.leaderboardsystem.LeaderboardLoader.lb_List;
+
+public class Leaderboard {
+    //holds all the data for the leaderboard itself
+    int id;
+    String name;
+    Location loc;
+    int limit;
+    double lineOffset = -0.3;
+    String type; // how is this one sorted?
+    ArrayList<String> lines = new ArrayList<>();
+    ArrayList<Entity> lineEntity = new ArrayList<>();
+
+    public Leaderboard(int id, String name, Location loc, int limit, String type) {
+        this.id = id;
+        this.name = name;
+        this.loc = loc;
+        this.limit = limit;
+        this.type = type;
+        Comparator<LeaderboardPlayer> comparator = Comparator.comparing(LeaderboardPlayer::getFinishCount).reversed();
+        lines.add(ChatColor.translateAlternateColorCodes('&', name));
+        int i = 0;
+        for(LeaderboardPlayer lp : lb_List.stream().sorted(comparator).toList()){
+            lines.add(ChatColor.translateAlternateColorCodes('&',
+                    "&c" + (i + 1) + " &a" + lp.name + " : &c" + lp.getFinishCount()));
+            i += 1;
+        }
+    }
+
+    public void CreateWorldObject(){
+        Location loc2 = loc.clone();
+        // + 1 is because the name string is reserved
+        for(int i = 0; i < limit  + 1; i++){
+            //took this from https://www.spigotmc.org/threads/tutorial-holograms-1-8.65183/
+            ArmorStand as = (ArmorStand) loc2.getWorld().spawnEntity(loc2, EntityType.ARMOR_STAND); //Spawn the ArmorStand
+            lineEntity.add(as);
+            as.setGravity(false); //Make sure it doesn't fall
+            as.setCanPickupItems(false); //I'm not sure what happens if you leave this as it is, but you might as well disable it
+            as.setCustomName(lines.get(i)); //Set this to the text you want
+            as.setCustomNameVisible(true); //This makes the text appear no matter if your looking at the entity or not
+            as.setVisible(false); //Makes the ArmorStand invisible
+            //newline
+            loc2.add(0,lineOffset, 0); // Offset
+            Bukkit.getLogger().info("location "  + loc2);
+        }
+    }
+    //some stuff interesting to play with if i want to add holograms
+    public void addline(String input){
+        lines.add(input);
+        removeEntities(true);
+    }
+    public String getLine(int index){
+        return lines.get(index);
+    }
+    public void editLine(int index, String input){
+        lines.set(index, input);
+        removeEntities(true);
+    }
+    public void removeLine(int id){
+        lines.remove(id);
+        removeEntities(true);
+    }
+    public void removeEntities(boolean replace){
+        for(Entity en : lineEntity){
+            en.remove();
+        }
+        if(replace)
+            CreateWorldObject();
+    }
+
+
+}

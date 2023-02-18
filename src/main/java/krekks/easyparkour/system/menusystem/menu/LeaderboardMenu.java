@@ -1,7 +1,7 @@
 package krekks.easyparkour.system.menusystem.menu;
 
 import krekks.easyparkour.playerdata.PlayerData;
-import krekks.easyparkour.system.leaderboardsystem.LeaderboardObj;
+import krekks.easyparkour.system.leaderboardsystem.LeaderboardPlayer;
 import krekks.easyparkour.system.menusystem.Menu;
 import krekks.easyparkour.system.menusystem.MenuUtility;
 import org.bukkit.Material;
@@ -47,8 +47,8 @@ public class LeaderboardMenu extends Menu {
         //loop over page
         for(int i = listLimit * page; i < pagesize; i++){
             ItemStack item = null;
-            Comparator<LeaderboardObj> comparator = Comparator.comparing(LeaderboardObj::getFinishCount).reversed();
-            LeaderboardObj lb_player = lb_List.stream().sorted(comparator).toList().get(i);
+            Comparator<LeaderboardPlayer> comparator = Comparator.comparing(LeaderboardPlayer::getFinishCount).reversed();
+            LeaderboardPlayer lb_player = lb_List.stream().sorted(comparator).toList().get(i);
             item = createCustomItem(Material.PLAYER_HEAD, 1, "&a" + lb_player.getName(),
                     "&aPosition : &c" + (i + 1),
                     "&aFinish Count : &c" + lb_player.getFinishCount(),
@@ -90,19 +90,19 @@ public class LeaderboardMenu extends Menu {
             p.playSound(p.getLocation(), MENUCLICKNOISE,3,1);
         }
     }
-    public List<LeaderboardObj> sorter(int sortType){
+    public List<LeaderboardPlayer> sorter(int sortType){
         //default
-        Comparator<LeaderboardObj> comparator = Comparator.comparing(LeaderboardObj::getPoints).reversed();
+        Comparator<LeaderboardPlayer> comparator = Comparator.comparing(LeaderboardPlayer::getPoints).reversed();
         //types
         //0 = up require
         //1 = down require
         //2 = up reward
         //3 = down reward
         switch(sortType){
-            case 0 -> comparator = Comparator.comparing(LeaderboardObj::getPoints);
-            case 1 -> comparator = Comparator.comparing(LeaderboardObj::getPoints).reversed();
-            case 2 -> comparator = Comparator.comparing(LeaderboardObj::getFinishCount);
-            case 3 -> comparator = Comparator.comparing(LeaderboardObj::getFinishCount).reversed();
+            case 0 -> comparator = Comparator.comparing(LeaderboardPlayer::getPoints);
+            case 1 -> comparator = Comparator.comparing(LeaderboardPlayer::getPoints).reversed();
+            case 2 -> comparator = Comparator.comparing(LeaderboardPlayer::getFinishCount);
+            case 3 -> comparator = Comparator.comparing(LeaderboardPlayer::getFinishCount).reversed();
         }
 
         //the sorted list

@@ -28,11 +28,9 @@ public class PlayerBoost {
      */
     @Deprecated
     public static void elytraBoost(Player p,double force, Sound sound, String message){
+        boost(new Vector(p.getLocation().getDirection().getX(), force, p.getLocation().getDirection().getZ()), p, sound,message);
         p.getInventory().setChestplate(new ItemStack(Material.ELYTRA));
-        p.setVelocity(new Vector(0,force,0));
         p.setGliding(true);
-        p.playSound(p.getLocation(), sound,1,1);
-        p.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
     }
 
 }

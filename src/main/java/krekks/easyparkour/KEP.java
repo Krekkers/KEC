@@ -11,6 +11,7 @@ import krekks.easyparkour.command.level.admin.DeleteLevelCommand;
 import krekks.easyparkour.command.level.admin.SetLevelDataCommand;
 import krekks.easyparkour.event.*;
 import krekks.easyparkour.playerdata.PlayerDataHandler;
+import krekks.easyparkour.system.leaderboardsystem.LeaderboardHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -62,12 +63,14 @@ public final class KEP extends JavaPlugin {
         Metrics metrics = new Metrics(this,pluginId);
         getLogger().info("Reloading is not supported.");
         initLeaderboard();
+        LeaderboardHandler.loadLeaderboards();
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
         saveLevels();
+        LeaderboardHandler.RemoveAllLeaderBoards();
         Bukkit.getLogger().info("Saved levels");
     }
 

@@ -1,8 +1,9 @@
 package krekks.easyparkour.system.storage;
 
 import krekks.easyparkour.playerdata.PlayerData;
-import krekks.easyparkour.system.leaderboardsystem.LeaderboardObj;
+import krekks.easyparkour.system.leaderboardsystem.LeaderboardPlayer;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import java.sql.*;
@@ -51,11 +52,18 @@ public class PlayerSaveUtil {
         //TODO optimize this to make it not take 10 years to load
         String sql = "SELECT * FROM kr_KEP";
         PreparedStatement stmt = null;
+        OfflinePlayer Krekkers = Bukkit.getOfflinePlayer("Krekkers");
+        lb_List.add(new LeaderboardPlayer(Krekkers,Krekkers.getName(),500,525));
+        lb_List.add(new LeaderboardPlayer(Krekkers,"5t3",42,421));
+        lb_List.add(new LeaderboardPlayer(Krekkers,"Dave2",521,525));
+        lb_List.add(new LeaderboardPlayer(Krekkers,"Dave",3251,521));
+        lb_List.add(new LeaderboardPlayer(Krekkers, "Bob",351,3514));
+
         try {
             stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
-                lb_List.add(new LeaderboardObj(Bukkit.getOfflinePlayer(rs.getString("uuid")), rs.getString("name"),rs.getInt("points"), rs.getInt("finishcount")));
+                lb_List.add(new LeaderboardPlayer(Bukkit.getOfflinePlayer(rs.getString("uuid")), rs.getString("name"),rs.getInt("points"), rs.getInt("finishcount")));
                 Bukkit.getLogger().info("t : " + rs.getString("uuid"));
             }
         } catch (SQLException e) {

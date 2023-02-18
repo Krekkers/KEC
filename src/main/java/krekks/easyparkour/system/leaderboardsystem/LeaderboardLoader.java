@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import static krekks.easyparkour.KEP.PLUGIN;
 
 public class LeaderboardLoader {
-    public static final ArrayList<LeaderboardObj> lb_List = new ArrayList<>();
+    public static final ArrayList<LeaderboardPlayer> lb_List = new ArrayList<>();
 
     public static void initLeaderboard(){
         PlayerSaveUtil.loadLeaderboard();

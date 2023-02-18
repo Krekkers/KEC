@@ -77,7 +77,15 @@ levels:
     points: 0
     reward: 15
 
-
-
+leaderboards:
+  - name: "Placeholder"
+    id: 1
+    limit: 5
+    type: FC
+    yoffset: 5 #location offset
+    position:
+      x: 0.0
+      y: 0.0 # y indicates the 1st line of the leaderboard
+      z: 0.0
 
 

@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 import java.util.HashMap;
 
 public class PlayerDataHandler {
-    public static final HashMap<Player, PlayerData> playerList = new HashMap<>();
+    public static HashMap<Player, PlayerData> playerList = new HashMap<>();
 
     public static PlayerData AddToList(Player p, Location l){
         PlayerData _data = new PlayerData(p);
