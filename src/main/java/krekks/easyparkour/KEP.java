@@ -5,6 +5,9 @@ import krekks.easyparkour.command.GoBackCommand;
 import krekks.easyparkour.command.LeaderboardCommand;
 import krekks.easyparkour.command.TemplateCommand;
 import krekks.easyparkour.command.admin.*;
+import krekks.easyparkour.command.leaderboard.CreateLeaderboardCommand;
+import krekks.easyparkour.command.leaderboard.ListAllLeaderboardsCommand;
+import krekks.easyparkour.command.leaderboard.RemoveLeaderboardCommand;
 import krekks.easyparkour.command.level.LevelSelectorCommand;
 import krekks.easyparkour.command.level.admin.AddNewLevelCommand;
 import krekks.easyparkour.command.level.admin.DeleteLevelCommand;
@@ -70,6 +73,7 @@ public final class KEP extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
         saveLevels();
+        LeaderboardHandler.saveBoards();
         LeaderboardHandler.RemoveAllLeaderBoards();
         Bukkit.getLogger().info("Saved levels");
     }
@@ -96,10 +100,13 @@ public final class KEP extends JavaPlugin {
         getCommand("Back").setExecutor(new GoBackCommand());
         getCommand("SetCheckpointOf").setExecutor(new SetCheckpointCommand());
         getCommand("setlevelof").setExecutor(new TemplateCommand());
-        getCommand("setpointsof").setExecutor(new TemplateCommand());
+        getCommand("setpointsof").setExecutor(new SetPointsCommand());
         getCommand("ShowPluginData").setExecutor(new PluginInfoCommand());
         getCommand("PlayerStats").setExecutor(new PlayerStatsMenuCommand());
         getCommand("leaderboard").setExecutor(new LeaderboardCommand());
+        getCommand("createLeaderboard").setExecutor(new CreateLeaderboardCommand());
+        getCommand("removeleaderboard").setExecutor(new RemoveLeaderboardCommand());
+        getCommand("listLB").setExecutor(new ListAllLeaderboardsCommand());
         getLogger().info("Commands are setup");
     }
 

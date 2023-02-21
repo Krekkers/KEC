@@ -70,3 +70,15 @@ commands:
     description: Shows a menu containing the leaderboards
     usage: "Usage /<command>"
     aliases: [lb,leaders,board,leaderboards,top,]
+  createleaderboard:
+    description: Spawns a leaderboard
+    usage: "Usage /<command> <title> <limit> (optional)<Type>"
+    permission: krekks.admin
+  removeleaderboard:
+    description: Spawns a leaderboard
+    usage: "Usage /<command> <title> <limit> (optional)<Type>"
+    permission: krekks.admin
+  listLB:
+    description: lists all leaderboards
+    usage: "Usage /<command>"
+    permission: krekks.admin

@@ -1,4 +1,25 @@
 package krekks.easyparkour.command.leaderboard;
 
-public class CreateLeaderboardCommand {
+import krekks.easyparkour.system.leaderboardsystem.Leaderboard;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
+
+import static krekks.easyparkour.system.leaderboardsystem.LeaderboardHandler.leaderboard_List;
+
+public class CreateLeaderboardCommand implements CommandExecutor {
+    @Override
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+        Player p  = (Player) sender;
+        if(args.length < 2)
+            return false;
+
+        Leaderboard newlb = new Leaderboard(1,args[0], p.getLocation(),Integer.parseInt(args[1]),"t");
+        leaderboard_List.add(newlb);
+        newlb.CreateWorldObject();
+
+        return false;
+    }
 }

@@ -16,6 +16,7 @@ public class Leaderboard {
     //holds all the data for the leaderboard itself
     int id;
     String name;
+
     Location loc;
     int limit;
     double lineOffset = -0.3;
@@ -29,6 +30,7 @@ public class Leaderboard {
         this.loc = loc;
         this.limit = limit;
         this.type = type;
+        Bukkit.getLogger().info("loc :" + loc);
         Comparator<LeaderboardPlayer> comparator = Comparator.comparing(LeaderboardPlayer::getFinishCount).reversed();
         lines.add(ChatColor.translateAlternateColorCodes('&', name));
         int i = 0;
@@ -42,6 +44,7 @@ public class Leaderboard {
     public void CreateWorldObject(){
         Location loc2 = loc.clone();
         // + 1 is because the name string is reserved
+        removeEntities(false); // put this to true to have an loop and break your server :)
         for(int i = 0; i < limit  + 1; i++){
             //took this from https://www.spigotmc.org/threads/tutorial-holograms-1-8.65183/
             ArmorStand as = (ArmorStand) loc2.getWorld().spawnEntity(loc2, EntityType.ARMOR_STAND); //Spawn the ArmorStand
@@ -79,6 +82,52 @@ public class Leaderboard {
         if(replace)
             CreateWorldObject();
     }
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Location getLoc() {
+        return loc;
+    }
+
+    public void setLoc(Location loc) {
+        this.loc = loc;
+    }
+
+    public int getLimit() {
+        return limit;
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
+
+    public double getLineOffset() {
+        return lineOffset;
+    }
+
+    public void setLineOffset(double lineOffset) {
+        this.lineOffset = lineOffset;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
 }

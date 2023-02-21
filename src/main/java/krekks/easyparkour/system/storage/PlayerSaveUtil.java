@@ -53,12 +53,6 @@ public class PlayerSaveUtil {
         String sql = "SELECT * FROM kr_KEP";
         PreparedStatement stmt = null;
         OfflinePlayer Krekkers = Bukkit.getOfflinePlayer("Krekkers");
-        lb_List.add(new LeaderboardPlayer(Krekkers,Krekkers.getName(),500,525));
-        lb_List.add(new LeaderboardPlayer(Krekkers,"5t3",42,421));
-        lb_List.add(new LeaderboardPlayer(Krekkers,"Dave2",521,525));
-        lb_List.add(new LeaderboardPlayer(Krekkers,"Dave",3251,521));
-        lb_List.add(new LeaderboardPlayer(Krekkers, "Bob",351,3514));
-
         try {
             stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();

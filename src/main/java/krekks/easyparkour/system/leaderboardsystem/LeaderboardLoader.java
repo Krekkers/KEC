@@ -22,7 +22,12 @@ public class LeaderboardLoader {
             PlayerSaveUtil.loadLeaderboard();
             Bukkit.getLogger().info("-------------------------");
             Bukkit.getLogger().info("LIST HAS BEEN LOADED!");
+            Bukkit.getLogger().info("BOARDS GOT UPDATED!");
         }, 0, Config.LB_refreshRate);
+        //handles refreshrate
+        Bukkit.getScheduler().runTaskTimer(PLUGIN, () -> {
+            LeaderboardHandler.refreshAllBoards();
+        }, 60, Config.LB_refreshRate);
     }
 
 }

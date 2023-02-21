@@ -134,7 +134,6 @@ public class LevelHandler {
         //setting level
         config.set("levels", saveList);
         PLUGIN.saveConfig();
-        loadParkourLevels();
 
     }
 

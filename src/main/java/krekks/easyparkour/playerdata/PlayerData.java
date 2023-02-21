@@ -31,7 +31,7 @@ public class PlayerData {
     public PlayerData(Player _p){
         checkpointLocation = Config.spawn;
         player = _p;
-        setLevel(0);
+        level = 0;
         points = getPlayerPointsFromDB(_p);
         finishCount = getPlayerFinishCountFromDB(_p);
         _p.setLevel(points);

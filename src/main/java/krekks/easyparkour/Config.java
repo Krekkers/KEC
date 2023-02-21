@@ -42,11 +42,11 @@ public class Config {
     public static String dbPass;
     public static String dbTable;
     //colors todo: use these colors to display text instead of the current ones
-    ChatColor primary;
-    ChatColor secondary;
-    ChatColor gray;
-    ChatColor info;
-    ChatColor error;
+    public static ChatColor primary = ChatColor.GREEN;
+    public static ChatColor secondary = ChatColor.RED;
+    public static ChatColor gray = ChatColor.GRAY;
+    public static ChatColor info = ChatColor.BLUE;
+    public static ChatColor error = ChatColor.DARK_RED;
 
     public static ArrayList<KrekksPermission> multipliers = new ArrayList<>();
 
