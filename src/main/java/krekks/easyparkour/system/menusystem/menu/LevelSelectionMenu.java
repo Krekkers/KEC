@@ -162,8 +162,8 @@ public class LevelSelectionMenu extends Menu {
         switch (sortmode){
             case 0 -> { return "&cDifficulty Low > High"; }
             case 1 -> { return "&cDifficulty High > Low"; }
-            case 2 -> { return "&cRequired Points Low > High"; }
-            case 3 -> { return "&cRequired Points High > Low"; }
+            case 2 -> { return "&cPoints Low > High"; }
+            case 3 -> { return "&cPoints High > Low"; }
             case 4 -> { return "&cReward Low > High"; }
             case 5 -> { return "&cReward High > Low"; }
         }

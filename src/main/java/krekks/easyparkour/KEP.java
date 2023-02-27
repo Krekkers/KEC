@@ -3,6 +3,7 @@ package krekks.easyparkour;
 
 import krekks.easyparkour.command.GoBackCommand;
 import krekks.easyparkour.command.LeaderboardCommand;
+import krekks.easyparkour.command.SpawnCommand;
 import krekks.easyparkour.command.TemplateCommand;
 import krekks.easyparkour.command.admin.*;
 import krekks.easyparkour.command.leaderboard.CreateLeaderboardCommand;
@@ -91,6 +92,7 @@ public final class KEP extends JavaPlugin {
 
     public void commandSetup(){
         getLogger().info("Setting up Commands...");
+        getCommand("spawn").setExecutor(new SpawnCommand());
         getCommand("createlevel").setExecutor(new AddNewLevelCommand());
         getCommand("deletelevel").setExecutor(new DeleteLevelCommand());
         getCommand("editlevel").setExecutor(new SetLevelDataCommand());

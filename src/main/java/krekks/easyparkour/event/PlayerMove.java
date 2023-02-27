@@ -32,14 +32,14 @@ public class PlayerMove implements Listener {
         //boost
         if(p.isSneaking()) return; //thank me later ;)
         if(block == Config.boost)
-            boost(new Vector(0,Config.boostAmount / 10,0), e.getPlayer(), Sound.ENTITY_DOLPHIN_DEATH, "WOOSH");
+            boost(new Vector(0,Config.boostAmount / 10,0), e.getPlayer(), Sound.ENTITY_DOLPHIN_DEATH, Config.primary + "WOOSH");
         //boost in direction
         if(block == Material.IRON_BLOCK)
             boost(new Vector(p.getLocation().getDirection().getX(),
                     Config.boostAmount / 10,
                     p.getLocation().getDirection().getZ()),
                     e.getPlayer(),
-                    Sound.ENTITY_ENDER_DRAGON_FLAP, "WOOSH");
+                    Sound.ENTITY_ENDER_DRAGON_FLAP, Config.secondary + "WOOSH!");
 
     }
 

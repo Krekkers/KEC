@@ -9,8 +9,7 @@ import org.bukkit.entity.Player;
 import static krekks.easyparkour.Config.multipliers;
 import static krekks.easyparkour.Config.nextLevelSound;
 import static krekks.easyparkour.system.levelsystem.LevelHandler.levelList;
-import static krekks.easyparkour.system.storage.PlayerSaveUtil.getPlayerFinishCountFromDB;
-import static krekks.easyparkour.system.storage.PlayerSaveUtil.getPlayerPointsFromDB;
+import static krekks.easyparkour.system.storage.PlayerSaveUtil.*;
 
 public class PlayerData {
     Player player;
@@ -32,10 +31,13 @@ public class PlayerData {
         checkpointLocation = Config.spawn;
         player = _p;
         level = 0;
-        points = getPlayerPointsFromDB(_p);
-        finishCount = getPlayerFinishCountFromDB(_p);
-        _p.setLevel(points);
         pointsMultiplier = getMultiplierPerm();
+        player.teleport(Config.spawn);
+        if(playerIsInDatabase(_p)){ points = getPlayerPointsFromDB(_p);
+                                    finishCount = getPlayerFinishCountFromDB(_p);}
+        else{points = 0;
+             finishCount = 0;}
+        _p.setLevel(points);
     }
 
     public void addGoBackCounter(int s){
@@ -135,13 +137,13 @@ public class PlayerData {
         //teleports
         int processedReward = (int) (ld.getReward() * pointsMultiplier);
         player.teleport(ld.getLevelSpawn());
-        addPoints(processedReward);
+        addPoints(ld.getReward());
         player.setLevel(points);
         setFinishCount(this.finishCount += 1);
         player.playSound(player,nextLevelSound, 2f,1f);
         //success
         player.sendMessage(ChatColor.GREEN + "You finished!");
-        player.sendMessage(ChatColor.GREEN + "You earned : " + ChatColor.RED + processedReward + ChatColor.GREEN + " Points.");
+        player.sendMessage(ChatColor.GREEN + "You earned : " + ChatColor.RED + ld.getReward() + ChatColor.GREEN + " Points.");
         player.sendMessage(ChatColor.GREEN + "The difficulty was : " + ChatColor.RED + ld.getDifficulty());
     }
 

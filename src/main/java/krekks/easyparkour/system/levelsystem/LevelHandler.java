@@ -1,5 +1,6 @@
 package krekks.easyparkour.system.levelsystem;
 
+import krekks.easyparkour.Config;
 import krekks.easyparkour.playerdata.PlayerData;
 import krekks.easyparkour.playerdata.PlayerDataHandler;
 import org.bukkit.Bukkit;
@@ -32,7 +33,7 @@ public class LevelHandler {
                 "------------------------");
         for (int i = 0; i < config.getList("levels").size(); i++){
             LinkedHashMap<String, Object> levelObj = (LinkedHashMap<String, Object>) config.getList("levels").get(i);
-            Location levelSpawn = new Location(Bukkit.getWorld("world"), (Double) levelObj.get("x"),(Double) levelObj.get("y"),(Double) levelObj.get("z"));
+            Location levelSpawn = new Location(Bukkit.getWorld("world"), (Double) levelObj.get("x"),(Double) levelObj.get("y"),(Double) levelObj.get("z"), Config.spawn.getYaw(), 0);
             Material icon =  Material.matchMaterial((String) levelObj.get("icon"));
             LevelData ld = new LevelData(i,levelSpawn, (String) levelObj.get("name"), (int) levelObj.get("difficulty"),(String) levelObj.get("creator"), icon, (int) levelObj.get("points"),(int) levelObj.get("reward"));
             getLogger().info("Loaded level : " + levelObj.get("name"));

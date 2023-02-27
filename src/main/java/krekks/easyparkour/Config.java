@@ -76,7 +76,7 @@ public class Config {
         spawn.setX(config.getDouble("parkoursettings.gamesettings.spawnlocation.x"));
         spawn.setY(config.getDouble("parkoursettings.gamesettings.spawnlocation.y"));
         spawn.setZ(config.getDouble("parkoursettings.gamesettings.spawnlocation.z"));
-
+        spawn.setYaw((float) config.getDouble("parkoursettings.gamesettings.spawnlocation.rotation"));
         getLogger().info("Loading database settings");
         if(useSQL){
             dbConnectionURL = config.getString("parkoursettings.database.link");

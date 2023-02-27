@@ -49,19 +49,31 @@ public class PlayerSaveUtil {
 
 
     public static void loadLeaderboard(){
-        //TODO optimize this to make it not take 10 years to load
-        String sql = "SELECT * FROM kr_KEP";
+        String sql = "SELECT * FROM kr_KEP ORDER BY finishcount DESC LIMIT 30";
         PreparedStatement stmt = null;
-        OfflinePlayer Krekkers = Bukkit.getOfflinePlayer("Krekkers");
         try {
             stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
                 lb_List.add(new LeaderboardPlayer(Bukkit.getOfflinePlayer(rs.getString("uuid")), rs.getString("name"),rs.getInt("points"), rs.getInt("finishcount")));
-                Bukkit.getLogger().info("t : " + rs.getString("uuid"));
+                Bukkit.getLogger().info("t : " + rs.getString("uuid") + "data : " + rs.getInt("finishcount"));
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static boolean playerIsInDatabase(OfflinePlayer p){
+        String sql = "SELECT * FROM kr_KEP WHERE `uuid` = '" + p.getUniqueId() + "'";
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            return true;
+        } catch (SQLException e) {
+            return false;
         }
     }
 
