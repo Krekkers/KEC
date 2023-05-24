@@ -46,11 +46,11 @@ public class Config {
     public String dbPass;
     public String dbTable;
     //colors todo: use these colors to display text instead of the current ones
-    public ChatColor primary = ChatColor.GREEN;
-    public ChatColor secondary = ChatColor.RED;
-    public ChatColor gray = ChatColor.GRAY;
-    public ChatColor info = ChatColor.BLUE;
-    public ChatColor error = ChatColor.DARK_RED;
+    public ChatColor primary;
+    public ChatColor secondary;
+    public ChatColor gray;
+    public ChatColor info;
+    public ChatColor error;
 
     public static ArrayList<KrekksPermission> multipliers = new ArrayList<>();
     public Config(FileConfiguration fileConfig){
@@ -80,6 +80,13 @@ public class Config {
         spawn.setY(fileConfig.getDouble("parkoursettings.gamesettings.spawnlocation.y"));
         spawn.setZ(fileConfig.getDouble("parkoursettings.gamesettings.spawnlocation.z"));
         spawn.setYaw((float) fileConfig.getDouble("parkoursettings.gamesettings.spawnlocation.rotation"));
+
+        this.primary = ChatColor.valueOf(fileConfig.getString("parkoursettings.colors.primary"));
+        this.secondary = ChatColor.valueOf(fileConfig.getString("parkoursettings.colors.secondary"));
+        this.gray = ChatColor.valueOf(fileConfig.getString("parkoursettings.colors.secondary"));
+        this.info = ChatColor.valueOf(fileConfig.getString("parkoursettings.colors.info"));
+        this.error = ChatColor.valueOf(fileConfig.getString("parkoursettings.colors.error"));
+
         getLogger().info("Loading database settings");
         if(useSQL){
             dbConnectionURL = fileConfig.getString("parkoursettings.database.link");
@@ -88,7 +95,7 @@ public class Config {
             dbTable         = "kr_" + fileConfig.getString("parkoursettings.database.table");
         }
         LB_refreshRate = fileConfig.getInt("parkoursettings.leaderboardrefreshrate") * 20 * 60; // makes it so refresh rate in minutes
-        Bukkit.getLogger().info("REFRESHRATE : " + LB_refreshRate);
+        getLogger().info("REFRESHRATE : " + LB_refreshRate);
 
 
     }

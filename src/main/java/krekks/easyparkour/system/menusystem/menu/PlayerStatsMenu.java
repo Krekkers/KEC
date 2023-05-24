@@ -43,20 +43,20 @@ public class PlayerStatsMenu extends Menu {
         meta.setOwnerProfile(playerData.getPlayer().getPlayerProfile());
         playerSkull.setItemMeta(meta);
         //checkpoint
-        ItemStack checkpointCount = createCustomItem(Material.GOLD_BLOCK, 1 ,"&eCount : &c" + playerData.getGoBackCounter());
-        //finished
+        ItemStack finishCount = createCustomItem(Material.EMERALD_BLOCK, 1 ,
+                config.primary + "Count : "
+                + config.secondary + playerData.getFinishCount());
         //checkpoint
-        ItemStack checkpointLocation = createCustomItem(Material.BARRIER,1, "&cPlayer has no checkpoint");
+        ItemStack checkpointLocation = createCustomItem(Material.BARRIER,1, config.error + "Player has no checkpoint");
         if(playerData.getCheckpointLocation() != null){
-            checkpointLocation = createCustomItem(Material.ARROW,1, "&aCheckpoint","Click to go to players last checkpoint.", "Coordinates",
+            checkpointLocation = createCustomItem(Material.ARROW,1, config.primary + "Checkpoint","Click to go to players last checkpoint.", "Coordinates",
                     "x : " + playerData.getCheckpointLocation().getX(),
                     "y : " + playerData.getCheckpointLocation().getY(),
                     "z : " + playerData.getCheckpointLocation().getZ());
         }
         inventory.setItem(2,playerSkull);
-        inventory.setItem(4, checkpointCount);
-        inventory.setItem(6, checkpointCount);
-        inventory.setItem(22, checkpointLocation);
+        inventory.setItem(4, finishCount);
+        inventory.setItem(6, checkpointLocation);
         fillInventoryWith(createCustomItem(Material.BLACK_STAINED_GLASS_PANE, 1, "&8Filler"));
     }
 

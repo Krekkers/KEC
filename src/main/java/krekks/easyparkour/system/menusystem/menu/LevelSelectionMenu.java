@@ -14,7 +14,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 import static krekks.easyparkour.KEP.config;
 import static krekks.easyparkour.misc.item.CustomItem.createCustomItem;
 import static krekks.easyparkour.system.levelsystem.LevelHandler.levelList;
@@ -32,7 +31,7 @@ public class LevelSelectionMenu extends Menu {
 
     @Override
     public String getMenuName() {
-        return ChatColor.GREEN + "Levels";
+        return config.primary + "Levels";
     }
 
     @Override
@@ -49,7 +48,7 @@ public class LevelSelectionMenu extends Menu {
         if(levelCount < curLimit + pagesize)
             pagesize = pagesize - ((curLimit + pagesize) - levelCount);
         if(levelCount == 0){
-            ItemStack item = createCustomItem(Material.matchMaterial("Barrier"),1 , ChatColor.RED + "No levels available");
+            ItemStack item = createCustomItem(Material.matchMaterial("Barrier"),1 , config.error + "No levels available");
             inventory.addItem(item);
         }
 
@@ -60,21 +59,21 @@ public class LevelSelectionMenu extends Menu {
             if(!isLockedLevel(pd.getPoints(), ld) || pd.getPlayer().hasPermission("krekks.admin")) {
                 //unlocked
                 item = createCustomItem(ld.getIcon(), 1,
-                        "&a&lLevel : &c" + ld.getLevelName()
-                        , "&aID : &c" + ld.getLevelID()
-                        , "&aDifficulty : &c" + ld.getDifficulty() + " / 10"
-                        , "&aPoints : &c" + ld.getPoints()
-                        , "&aReward : &c" + ld.getReward()
-                        , "&aMade by : &c" + ld.getCreator());
+                        config.primary + "&lLevel : " + config.secondary + ld.getLevelName()
+                        , config.primary + "ID : " + config.secondary + ld.getLevelID()
+                        , config.primary + "Difficulty : " + config.secondary + ld.getDifficulty() + " / 10"
+                        , config.primary + "Points : " + config.secondary +  ld.getPoints()
+                        , config.primary + "Reward : " + config.secondary + ld.getReward()
+                        , config.primary + "Made by : " + config.secondary + ld.getCreator());
             }
             else{
                 item = createCustomItem(Material.BARRIER,1,
-                        "&a&lLevel : &c" + ld.getLevelName()
-                        , "&aID : &c" +  ld.getLevelID()
-                        , "&aDifficulty : &c" + ld.getDifficulty() + " / 10"
-                        , "&aPoints : &c" + ld.getPoints()
-                        , "&aReward : &c" + ld.getReward()
-                        , "&aMade by : &c" + ld.getCreator());
+                        config.primary + "&lLevel : " + config.secondary + ld.getLevelName()
+                        , config.primary + "ID : " + config.secondary + ld.getLevelID()
+                        , config.primary + "Difficulty : " + config.secondary + ld.getDifficulty() + " / 10"
+                        , config.primary + "Points : " + config.secondary +  ld.getPoints()
+                        , config.primary + "Reward : " + config.secondary + ld.getReward()
+                        , config.primary + "Made by : " + config.secondary + ld.getCreator());
             }
             inventory.addItem(item);
         }
@@ -84,9 +83,9 @@ public class LevelSelectionMenu extends Menu {
         inventory.setItem(23, createCustomItem(Material.GREEN_WOOL,1, "&aNext"));
 
         //info
-        inventory.setItem(19, createCustomItem(Material.EMERALD,1, "&c&l" + pd.getLevelData().getLevelName()));
-        inventory.setItem(25, createCustomItem(Material.GOLD_INGOT,1, "&a&lPoints : &c" + pd.getPoints()));
-        inventory.setItem(26,  createCustomItem(Material.COMPARATOR,1, "&aSortmode : " + sortmodeToString()));
+        inventory.setItem(19, createCustomItem(Material.EMERALD,1, config.secondary +"&l" + pd.getLevelData().getLevelName()));
+        inventory.setItem(25, createCustomItem(Material.GOLD_INGOT,1, config.primary + "&lPoints : " + config.secondary + pd.getPoints()));
+        inventory.setItem(26,  createCustomItem(Material.COMPARATOR,1, config.primary + "Sortmode : " + config.secondary + sortmodeToString()));
         //fill remaining space
         fillInventoryWith(createCustomItem(Material.BLACK_STAINED_GLASS_PANE,1, "&8#",""));
     }
@@ -97,13 +96,13 @@ public class LevelSelectionMenu extends Menu {
         ItemStack item = e.getCurrentItem();
         //locked level
         if(item.getType() == Material.BARRIER){
-            p.sendMessage(ChatColor.RED + "This level is locked.");
+            p.sendMessage(config.error + "This level is locked.");
             p.playSound(p.getLocation(), config.MENUCLICKNOISE,3,1);
             return;
         }
         //handle level
         if(item.getItemMeta().getDisplayName().contains("Level")){
-            int id = getDigitFromString(e.getCurrentItem().getItemMeta().getLore().get(0));
+            int id = getDigitFromString(ChatColor.stripColor(item.getItemMeta().getLore().get(0)));
             playerSetParkourLevel((Player) e.getWhoClicked(),id);
             p.playSound(p.getLocation(), config.MENUCLICKNOISE,3,1);
         }
@@ -159,21 +158,22 @@ public class LevelSelectionMenu extends Menu {
 
     public String sortmodeToString(){
         switch (sortmode){
-            case 0 -> { return "&cDifficulty Low > High"; }
-            case 1 -> { return "&cDifficulty High > Low"; }
-            case 2 -> { return "&cPoints Low > High"; }
-            case 3 -> { return "&cPoints High > Low"; }
-            case 4 -> { return "&cReward Low > High"; }
-            case 5 -> { return "&cReward High > Low"; }
+            case 0 -> { return config.secondary + "Difficulty Low > High"; }
+            case 1 -> { return config.secondary + "Difficulty High > Low"; }
+            case 2 -> { return config.secondary + "Points Low > High"; }
+            case 3 -> { return config.secondary + "Points High > Low"; }
+            case 4 -> { return config.secondary + "Reward Low > High"; }
+            case 5 -> { return config.secondary + "Reward High > Low"; }
         }
-        return "Something went wrong";
+        return config.error + "Something went wrong";
     }
 
 
     //keeps digits
     int getDigitFromString(String input){
-        char[] charArray = input.toCharArray();            //The array
-        int sl = input.toCharArray().length;               //The amount of characters in the chararray
+        String in = ChatColor.stripColor(input);
+        char[] charArray = in.toCharArray();            //The array
+        int sl = in.toCharArray().length;               //The amount of characters in the chararray
         StringBuilder result = new StringBuilder();         //String magic
         //loops over all characters
         for (int i = 0; i < sl; i++){ if (Character.isDigit(charArray[i])){ result.append(charArray[i]); } }

@@ -8,6 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import static krekks.easyparkour.KEP.config;
 import static krekks.easyparkour.system.menusystem.MenuManager.getMenuUtility;
 
 public class PlayerStatsMenuCommand implements CommandExecutor {
@@ -16,11 +17,11 @@ public class PlayerStatsMenuCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(!(sender instanceof Player player)) return false;
         if(args.length == 0) {
-            sender.sendMessage("Please provide a player name.");
+            sender.sendMessage(config.error +  "Please provide a player name.");
             return false;
         }
         if(!PlayerDataHandler.isInListName(args[0])){
-            sender.sendMessage("Please provide a username from a player that is online.");
+            sender.sendMessage(config.error +  "Please provide a username from a player that is online.");
             return false;
         }
         PlayerStatsMenu menu = new PlayerStatsMenu(getMenuUtility(player));

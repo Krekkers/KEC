@@ -1,7 +1,3 @@
-# -----------------------------------------------------------
-# Put your license key here!
-licensekey: no key
-# -----------------------------------------------------------
 
 # generic settings
 parkoursettings:
@@ -28,8 +24,8 @@ parkoursettings:
     primary: GREEN
     secondary: RED
     gray: LIGHT_GRAY
-    error: RED
-    info: CYAN
+    error: DARK_RED
+    info: AQUA
   messages:
     checkpointmessage: '&aCheckpoint &cReached!'
     finishmessage: '&aFinish Line &eReached!'
