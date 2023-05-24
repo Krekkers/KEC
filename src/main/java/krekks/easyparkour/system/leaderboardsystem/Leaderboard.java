@@ -14,15 +14,15 @@ import static krekks.easyparkour.system.leaderboardsystem.LeaderboardLoader.lb_L
 
 public class Leaderboard {
     //holds all the data for the leaderboard itself
-    int id;
-    String name;
+    private int id;
+    private String name;
 
-    Location loc;
-    int limit;
-    double lineOffset = -0.3;
-    String type; // how is this one sorted?
-    ArrayList<String> lines = new ArrayList<>();
-    ArrayList<Entity> lineEntity = new ArrayList<>();
+    private Location loc;
+    private int limit;
+    private double lineOffset = -0.3;
+    private String type; // how is this one sorted?
+    private ArrayList<String> lines = new ArrayList<>();
+    private ArrayList<Entity> lineEntity = new ArrayList<>();
 
     public Leaderboard(int id, String name, Location loc, int limit, String type) {
         this.id = id;
@@ -45,13 +45,19 @@ public class Leaderboard {
         Location loc2 = loc.clone();
         // + 1 is because the name string is reserved
         removeEntities(false); // put this to true to have an loop and break your server :)
-        for(int i = 0; i < limit  + 1; i++){
+        int _l = limit;
+        if(lines.size() <= _l)
+            _l = lines.size();
+
+        Bukkit.getLogger().info("_l = " + _l);
+        for(int i = 0; i < _l + 1; i++){
             //took this from https://www.spigotmc.org/threads/tutorial-holograms-1-8.65183/
             ArmorStand as = (ArmorStand) loc2.getWorld().spawnEntity(loc2, EntityType.ARMOR_STAND); //Spawn the ArmorStand
             lineEntity.add(as);
             as.setGravity(false); //Make sure it doesn't fall
-            as.setCanPickupItems(false); //I'm not sure what happens if you leave this as it is, but you might as well disable it
+            as.setCanPickupItems(false); //Might as well
             as.setCustomName(lines.get(i)); //Set this to the text you want
+            Bukkit.getLogger().info("name " + lines.get(i));
             as.setCustomNameVisible(true); //This makes the text appear no matter if your looking at the entity or not
             as.setVisible(false); //Makes the ArmorStand invisible
             //newline

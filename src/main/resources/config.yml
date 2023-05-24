@@ -1,90 +1,84 @@
-#-----------------------------------------------------------
-#Put your license key here!
-licensekey: "no key"
-#-----------------------------------------------------------
-#generic settings
+# -----------------------------------------------------------
+# Put your license key here!
+licensekey: no key
+# -----------------------------------------------------------
+
+# generic settings
 parkoursettings:
-  leaderboardrefreshrate: 30 #minutes
-  gamesettings: #gamesettings
+  leaderboardrefreshrate: 30 # minutes
+  gamesettings:
+    checkpointonly: false
+    jumpvalue: 10
+    boostvalue: 10
     spawnlocation:
-      world: "world"
-      x: 0.0
-      y: 0.0
-      z: 0.0
+      world: world
+      x: -111.5
+      y: 57.0
+      z: 103.5
   blocks:
     checkpointblock: GOLD_BLOCK
     nextlevelblock: EMERALD_BLOCK
     boostblock: DIAMOND_BLOCK
+    floatblock: END_STONE
   sounds:
-    menuclicksound: "BLOCK_SCAFFOLDING_BREAK"
-    nextlevelsound: "BLOCK_AMETHYST_BLOCK_PLACE"
-    checkpointsound: "BLOCK_NOTE_BLOCK_PLING"
-  colors: #future options
+    menuclicksound: BLOCK_SCAFFOLDING_BREAK
+    nextlevelsound: BLOCK_AMETHYST_BLOCK_PLACE
+    checkpointsound: BLOCK_NOTE_BLOCK_PLING
+  colors: # future options
     primary: GREEN
     secondary: RED
     gray: LIGHT_GRAY
     error: RED
     info: CYAN
   messages:
-    checkpointmessage: "&aCheckpoint &cReached!"
-    finishmessage: "&aFinish Line &eReached!"
-    youcantdothis: "&cYou cannot do this."
+    checkpointmessage: '&aCheckpoint &cReached!'
+    finishmessage: '&aFinish Line &eReached!'
+    youcantdothis: '&cYou cannot do this.'
   items:
     goback:
-      name: "&c[&aGo Back&a]"
-      material: "REDSTONE"
+      name: '&c[&aGo Back&c]'
+      material: REDSTONE
     levelselector:
-      name: "&c[&aLevel Selector]"
-      material: "CLOCK"
+      name: '&c[&aLevel Selector&c]'
+      material: CLOCK
   database:
-    #!Don't touch if you don't know what you are doing!
     usesql: false # false = use sqlite, true = use mysql
-    levelsinsql: false #will save levels and load levels outside the config file and store it in the sql(ite) database
-    link: "" #leave empty if you have usesql on false
-    username: "" #leave empty if you have usesql on false
-    password: "" #leave empty if you have usesql on false
-    table: "KEP" #All tables start with 'kr_'
-  multipliers: #default multiplier is 1.0
-    - rank: "krekks.multiplier.mvp"
-      multiplier: 1.0
-    - rank: "krekks.multiplier.vip"
-      multiplier: 1.5
-  rankSettings:
-    - rank: "krekks.vip"
-      freepoints: 10
-      multiplier: 1.5
+    link: localhost:3306
+    username: root
+    password: ''
+    table: KEP # All tables start with 'kr_'
 
-
-menuoptions:
-  buttonicons:
-    previous:
-    currentpage:
-    next:
-    close:
-
-
-  
 
 levels:
-  - name: "Default"
-    icon: "GREEN_WOOL"
-    rotation: 0
+  - name: Example
+    creator: Krekkers
     x: 0.0
-    y: 0.0
+    y: 57.0
     z: 0.0
-    difficulty: "easy"
-    creator: "Default"
+    difficulty: 1
+    icon: POPPY
     points: 0
     reward: 15
 
 leaderboards:
-  - title: "Placeholder"
-    id: 1
-    limit: 5
-    type: FC
-    yoffset: 0.5 #location offset
+  - title: Test
+    type: Type
+    limit: 1
     x: 0.0
-    y: 0.0 # y indicates the 1st line of the leaderboard
+    y: 0.0
     z: 0.0
+    yoffset: -0.3
+
+
+
+
+
+
+
+
+
+
+
+
 
 

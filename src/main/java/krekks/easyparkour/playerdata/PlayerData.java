@@ -1,13 +1,12 @@
 package krekks.easyparkour.playerdata;
 
-import krekks.easyparkour.Config;
 import krekks.easyparkour.system.levelsystem.LevelData;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 import static krekks.easyparkour.Config.multipliers;
-import static krekks.easyparkour.Config.nextLevelSound;
+import static krekks.easyparkour.KEP.config;
 import static krekks.easyparkour.system.levelsystem.LevelHandler.levelList;
 import static krekks.easyparkour.system.storage.PlayerSaveUtil.*;
 
@@ -28,11 +27,11 @@ public class PlayerData {
      * Player data to collect.
      */
     public PlayerData(Player _p){
-        checkpointLocation = Config.spawn;
+        checkpointLocation = config.spawn;
         player = _p;
         level = 0;
         pointsMultiplier = getMultiplierPerm();
-        player.teleport(Config.spawn);
+        player.teleport(config.spawn);
         if(playerIsInDatabase(_p)){ points = getPlayerPointsFromDB(_p);
                                     finishCount = getPlayerFinishCountFromDB(_p);}
         else{points = 0;
@@ -107,8 +106,8 @@ public class PlayerData {
         //if its not the same checkpoint
         checkpointLocation = loc;
         //setCheckpointBlock(loc.getBlock());
-        player.sendMessage(ChatColor.translateAlternateColorCodes('&', Config.checkpointText));
-        player.playSound(loc, Config.checkpointSound, 1 , 1);
+        player.sendMessage(ChatColor.translateAlternateColorCodes('&', config.checkpointText));
+        player.playSound(loc, config.checkpointSound, 1 , 1);
     }
 
     /**
@@ -140,7 +139,7 @@ public class PlayerData {
         addPoints(ld.getReward());
         player.setLevel(points);
         setFinishCount(this.finishCount += 1);
-        player.playSound(player,nextLevelSound, 2f,1f);
+        player.playSound(player,config.nextLevelSound, 2f,1f);
         //success
         player.sendMessage(ChatColor.GREEN + "You finished!");
         player.sendMessage(ChatColor.GREEN + "You earned : " + ChatColor.RED + ld.getReward() + ChatColor.GREEN + " Points.");

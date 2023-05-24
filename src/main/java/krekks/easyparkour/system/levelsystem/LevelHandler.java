@@ -1,6 +1,5 @@
 package krekks.easyparkour.system.levelsystem;
 
-import krekks.easyparkour.Config;
 import krekks.easyparkour.playerdata.PlayerData;
 import krekks.easyparkour.playerdata.PlayerDataHandler;
 import org.bukkit.Bukkit;
@@ -13,7 +12,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import static krekks.easyparkour.Config.nextLevelSound;
 import static krekks.easyparkour.KEP.PLUGIN;
 import static krekks.easyparkour.KEP.config;
 import static org.bukkit.Bukkit.getLogger;
@@ -31,9 +29,9 @@ public class LevelHandler {
                 "------------------------ \n" +
                 "Loading levels!\n" +
                 "------------------------");
-        for (int i = 0; i < config.getList("levels").size(); i++){
-            LinkedHashMap<String, Object> levelObj = (LinkedHashMap<String, Object>) config.getList("levels").get(i);
-            Location levelSpawn = new Location(Bukkit.getWorld("world"), (Double) levelObj.get("x"),(Double) levelObj.get("y"),(Double) levelObj.get("z"), Config.spawn.getYaw(), 0);
+        for (int i = 0; i < config.fileConfig.getList("levels").size(); i++){
+            LinkedHashMap<String, Object> levelObj = (LinkedHashMap<String, Object>) config.fileConfig.getList("levels").get(i);
+            Location levelSpawn = new Location(Bukkit.getWorld("world"), (Double) levelObj.get("x"),(Double) levelObj.get("y"),(Double) levelObj.get("z"), config.spawn.getYaw(), 0);
             Material icon =  Material.matchMaterial((String) levelObj.get("icon"));
             LevelData ld = new LevelData(i,levelSpawn, (String) levelObj.get("name"), (int) levelObj.get("difficulty"),(String) levelObj.get("creator"), icon, (int) levelObj.get("points"),(int) levelObj.get("reward"));
             getLogger().info("Loaded level : " + levelObj.get("name"));
@@ -70,7 +68,7 @@ public class LevelHandler {
         p.sendMessage(ChatColor.GREEN + "You finished!");
         p.sendMessage(ChatColor.GREEN + "You earned : " + ChatColor.RED + reward + ChatColor.GREEN + " Points.");
         p.sendMessage(ChatColor.GREEN + "The difficulty was : " + ChatColor.RED + ld.getDifficulty());
-        p.playSound(p,nextLevelSound, 2f,1f);
+        p.playSound(p,config.nextLevelSound, 2f,1f);
 
     }
     @Deprecated
@@ -114,7 +112,7 @@ public class LevelHandler {
 
         saveList.add(levelObjectCreator(name,creator,location,difficulty,icon,points,reward));
 
-        config.set("levels", saveList);
+        config.fileConfig.set("levels", saveList);
         PLUGIN.saveConfig();
         loadParkourLevels();
     }
@@ -124,16 +122,16 @@ public class LevelHandler {
         for(LevelData ld : levelList){
             saveList.add(levelObjectCreator(
                     ld.levelName
-                    ,ld.creator
-                    ,ld.getLevelSpawn()
-                    ,ld.getDifficulty()
-                    ,ld.getIcon()
-                    ,ld.getPoints()
-                    ,ld.getReward()));
+                    , ld.creator
+                    , ld.getLevelSpawn()
+                    , ld.getDifficulty()
+                    , ld.getIcon()
+                    , ld.getPoints()
+                    , ld.getReward()));
             Bukkit.getLogger().info("Saved Level : " + ld.getLevelName());
         }
         //setting level
-        config.set("levels", saveList);
+        config.fileConfig.set("levels", saveList);
         PLUGIN.saveConfig();
 
     }

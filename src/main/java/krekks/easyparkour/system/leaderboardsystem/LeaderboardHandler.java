@@ -18,13 +18,13 @@ public class LeaderboardHandler {
         if(leaderboard_List.size() > 0)
             RemoveAllLeaderBoards();
         leaderboard_List.clear();
-        for (int i = 0; i < config.getList("leaderboards").size(); i++){
-            LinkedHashMap<String, Object> LeaderboardOBJ = (LinkedHashMap<String, Object>) config.getList("leaderboards").get(i);
+        for (int i = 0; i < config.fileConfig.getList("leaderboards").size(); i++){
+            LinkedHashMap<String, Object> LeaderboardOBJ = (LinkedHashMap<String, Object>) config.fileConfig.getList("leaderboards").get(i);
 
             Leaderboard lb = new Leaderboard(1,(String) LeaderboardOBJ.get("title"),
                     new Location(Bukkit.getWorld("world"), (Double) LeaderboardOBJ.get("x"), (Double) LeaderboardOBJ.get("y"), (Double) LeaderboardOBJ.get("z")),
                     (int) LeaderboardOBJ.get("limit"),
-                    "test");
+                    "Default");
             lb.CreateWorldObject(); // spawns the board in.
             leaderboard_List.add(lb);
 
@@ -52,14 +52,14 @@ public class LeaderboardHandler {
     public static void saveBoards(){
         List<Object> saveList = new ArrayList<>();
         for(Leaderboard lb : leaderboard_List){
-            Bukkit.getLogger().info("saved loc" + lb.loc);
+            Bukkit.getLogger().info("saved loc" + lb.getLoc());
             saveList.add(
-                    savableLeaderboard(lb.name, lb.type,lb.limit, lb.loc.getX(),lb.loc.getY(),lb.loc.getZ(),lb.lineOffset)
+                    savableLeaderboard(lb.getName(), lb.getType(),lb.getLimit(), lb.getLoc().getX(),lb.getLoc().getY(),lb.getLoc().getZ(),lb.getLineOffset())
             );
-            Bukkit.getLogger().info("Saved Level : " + lb.name);
+            Bukkit.getLogger().info("Saved board : " + lb.getName());
         }
         //setting level
-        config.set("leaderboards", saveList);
+        config.fileConfig.set("leaderboards", saveList);
         PLUGIN.saveConfig();
     }
 

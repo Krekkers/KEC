@@ -26,19 +26,18 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.sql.SQLException;
 
-import static krekks.easyparkour.Config.configLoader;
-import static krekks.easyparkour.Config.spawnWorld;
 import static krekks.easyparkour.system.leaderboardsystem.LeaderboardLoader.initLeaderboard;
+import static krekks.easyparkour.system.levelsystem.LevelHandler.loadParkourLevels;
 import static krekks.easyparkour.system.levelsystem.LevelHandler.saveLevels;
 import static krekks.easyparkour.system.storage.PlayerSaveUtil.initDB;
 
 public final class KEP extends JavaPlugin {
 
     PluginManager pluginManager = Bukkit.getPluginManager();
-    public static FileConfiguration config = null;
+    public static Config config;
+    public static FileConfiguration fileConfig;
     public static World gameWorld;             //unused
     public static Plugin PLUGIN;
-
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -46,9 +45,10 @@ public final class KEP extends JavaPlugin {
         //setting up
         PLUGIN = this;
         PLUGIN.saveDefaultConfig();
-        config = PLUGIN.getConfig();
-        configLoader();
-        gameWorld = Bukkit.getWorld(spawnWorld);
+        fileConfig = PLUGIN.getConfig();
+        config = new Config(PLUGIN.getConfig());
+        gameWorld = Bukkit.getWorld(config.spawnWorld);
+        loadParkourLevels();
         eventsRegister();
         commandSetup();
         //licenseCheck();
@@ -111,5 +111,6 @@ public final class KEP extends JavaPlugin {
         getCommand("listLB").setExecutor(new ListAllLeaderboardsCommand());
         getLogger().info("Commands are setup");
     }
+
 
 }

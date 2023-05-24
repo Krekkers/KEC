@@ -21,7 +21,7 @@ public class AddNewLevelCommand implements CommandExecutor {
         if(args[0].equals("help")){
             KrekkMessages.krekkSendMessageArray((Player) sender,
                     ChatColor.GREEN + "Here is how to use this command!",
-                    ChatColor.GREEN + "/addlevel <level name> <creator> <x> <y> <z> <difficulty> <icon> <required points> <reward> | " + ChatColor.RED + "Or /addlevel clean level",
+                    ChatColor.GREEN + "/createlevel <level name> <creator> <x> <y> <z> <difficulty> <icon> <required points> <reward> | " + ChatColor.RED + "Or /createlevel clean level",
                     ChatColor.GREEN + "level name = name of the level",
                     ChatColor.GREEN + "creator = the creator of the level",
                     ChatColor.GREEN + "x y z = location coordinates",

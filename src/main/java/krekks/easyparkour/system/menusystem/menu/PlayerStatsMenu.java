@@ -10,7 +10,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
-import static krekks.easyparkour.Config.MENUCLICKNOISE;
+
+import static krekks.easyparkour.KEP.config;
 import static krekks.easyparkour.misc.item.CustomItem.createCustomItem;
 
 public class PlayerStatsMenu extends Menu {
@@ -65,7 +66,7 @@ public class PlayerStatsMenu extends Menu {
         if(e.getCurrentItem().getItemMeta().getDisplayName().contains("Checkpoint")){
             Location newLoc = new Location(p.getWorld(),playerData.getCheckpointLocation().getX(),playerData.getCheckpointLocation().getY(),playerData.getCheckpointLocation().getZ());
             p.teleport(newLoc.add(0.5f,1f,0.5f));
-            p.playSound(p.getLocation(), MENUCLICKNOISE,3,1);
+            p.playSound(p.getLocation(), config.MENUCLICKNOISE,3,1);
             setMenuItems();
         }
     }

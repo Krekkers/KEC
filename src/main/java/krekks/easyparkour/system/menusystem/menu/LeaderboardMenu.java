@@ -14,7 +14,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static krekks.easyparkour.Config.MENUCLICKNOISE;
+import static krekks.easyparkour.KEP.config;
 import static krekks.easyparkour.misc.item.CustomItem.createCustomItem;
 import static krekks.easyparkour.system.leaderboardsystem.LeaderboardLoader.lb_List;
 
@@ -82,12 +82,12 @@ public class LeaderboardMenu extends Menu {
         if(item.getItemMeta().getDisplayName().contains("Next")){
             page += 1;
             setMenuItems();
-            p.playSound(p.getLocation(), MENUCLICKNOISE,3,1);
+            p.playSound(p.getLocation(), config.MENUCLICKNOISE,3,1);
         }
         if(item.getItemMeta().getDisplayName().contains("Previous") && page >= 1){
             page -= 1;
             setMenuItems();
-            p.playSound(p.getLocation(), MENUCLICKNOISE,3,1);
+            p.playSound(p.getLocation(), config.MENUCLICKNOISE,3,1);
         }
     }
     public List<LeaderboardPlayer> sorter(int sortType){

@@ -16,7 +16,7 @@ public class CreateLeaderboardCommand implements CommandExecutor {
         if(args.length < 2)
             return false;
 
-        Leaderboard newlb = new Leaderboard(1,args[0], p.getLocation(),Integer.parseInt(args[1]),"t");
+        Leaderboard newlb = new Leaderboard(1,args[0], p.getLocation(),Integer.parseInt(args[1]),"Type");
         leaderboard_List.add(newlb);
         newlb.CreateWorldObject();
 

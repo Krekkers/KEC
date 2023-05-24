@@ -1,5 +1,6 @@
 package krekks.easyparkour.system.storage;
 
+
 import krekks.easyparkour.playerdata.PlayerData;
 import krekks.easyparkour.system.leaderboardsystem.LeaderboardPlayer;
 import org.bukkit.Bukkit;
@@ -8,6 +9,7 @@ import org.bukkit.entity.Player;
 
 import java.sql.*;
 
+import static krekks.easyparkour.playerdata.PlayerDataHandler.playerList;
 import static krekks.easyparkour.system.leaderboardsystem.LeaderboardLoader.lb_List;
 
 public class PlayerSaveUtil {
@@ -20,6 +22,7 @@ public class PlayerSaveUtil {
      */
     public static void initDB() throws SQLException {
         connection = DriverManager.getConnection(connURL);
+
         String sql = "CREATE TABLE IF NOT EXISTS kr_KEP (" +
                 " uuid VARCHAR(255) PRIMARY KEY," +
                 " name VARCHAR(255)," +
@@ -49,16 +52,15 @@ public class PlayerSaveUtil {
 
 
     public static void loadLeaderboard(){
-        String sql = "SELECT * FROM kr_KEP ORDER BY finishcount DESC LIMIT 30";
-        PreparedStatement stmt = null;
+        int limit = 15;
+        String sql = "SELECT * FROM kr_KEP ORDER BY finishcount DESC LIMIT " + limit;
         try {
-            stmt = connection.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
                 lb_List.add(new LeaderboardPlayer(Bukkit.getOfflinePlayer(rs.getString("uuid")), rs.getString("name"),rs.getInt("points"), rs.getInt("finishcount")));
-                Bukkit.getLogger().info("t : " + rs.getString("uuid") + "data : " + rs.getInt("finishcount"));
+                Bukkit.getLogger().info("UUID : " + rs.getString("uuid") + " FinishCount : " + rs.getInt("finishcount"));
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -126,7 +128,15 @@ public class PlayerSaveUtil {
         return 0;
     }
 
-
+    public static void SaveAllPlayers(){
+        for(Player p : Bukkit.getOnlinePlayers()){
+            try {
+                savePlayer(playerList.get(p));
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 
 
 }
