@@ -53,7 +53,8 @@ public class PlayerSaveUtil {
 
     public static void loadLeaderboard(){
         int limit = 15;
-        String sql = "SELECT * FROM kr_KEP ORDER BY finishcount DESC LIMIT " + limit;
+        //may become an issue without limit. Testing required on villager-club
+        String sql = "SELECT * FROM kr_KEP ORDER BY finishcount DESC";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();

@@ -21,8 +21,8 @@ public class Leaderboard {
     private int limit;
     private double lineOffset = -0.3;
     private String type; // how is this one sorted?
-    private ArrayList<String> lines = new ArrayList<>();
-    private ArrayList<Entity> lineEntity = new ArrayList<>();
+    private final ArrayList<String> lines = new ArrayList<>();
+    private final ArrayList<Entity> lineEntity = new ArrayList<>();
 
     public Leaderboard(int id, String name, Location loc, int limit, String type) {
         this.id = id;
@@ -31,7 +31,14 @@ public class Leaderboard {
         this.limit = limit;
         this.type = type;
         Bukkit.getLogger().info("loc :" + loc);
+        //default
         Comparator<LeaderboardPlayer> comparator = Comparator.comparing(LeaderboardPlayer::getFinishCount).reversed();
+        if(type == "finish"){
+            comparator = Comparator.comparing(LeaderboardPlayer::getFinishCount).reversed();
+        }
+        else if(type == "points"){
+            comparator = Comparator.comparing(LeaderboardPlayer::getPoints).reversed();
+        }
         lines.add(ChatColor.translateAlternateColorCodes('&', name));
         int i = 0;
         for(LeaderboardPlayer lp : lb_List.stream().sorted(comparator).toList()){

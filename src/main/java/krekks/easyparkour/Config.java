@@ -15,13 +15,9 @@ import static org.bukkit.Bukkit.getLogger;
  */
 public class Config {
     public FileConfiguration fileConfig;
-    public boolean Toggle;
     public boolean checkpointOnly;
     public int LB_refreshRate;
-    public int sec;
     public Instant time;
-    public String LICENSEKEY;
-    public String PRODUCTKEY = "KEP";
     public String spawnWorld;
     public Location spawn = new Location(Bukkit.getWorld("world"),0,0,0);
 
@@ -58,7 +54,7 @@ public class Config {
         time = Instant.now();
         //------------------------------------------------------------------------------------------------
         //DO NOT TOUCH. Doing so will be seen as an act of piracy. Removing this is still stealing  //  |
-        LICENSEKEY = fileConfig.getString("licensekey");                                           //  |
+        //LICENSEKEY = fileConfig.getString("licensekey");                                           //  |
         //------------------------------------------------------------------------------------------------
 
         getLogger().info("Setting up blocks");

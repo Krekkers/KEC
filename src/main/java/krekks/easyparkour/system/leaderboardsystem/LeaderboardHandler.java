@@ -31,10 +31,14 @@ public class LeaderboardHandler {
         }
     }
 
+    /**
+     * refreshes all leaderboards
+     */
     public static void refreshAllBoards(){
         for(Leaderboard lb : leaderboard_List){
             lb.removeEntities(true);
         }
+        loadLeaderboards();
     }
 
     public static void RemoveAllLeaderBoards(){

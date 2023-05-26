@@ -1,0 +1,10 @@
+levels:
+  - name: Example
+    creator: Krekkers
+    x: 0.0
+    y: 57.0
+    z: 0.0
+    difficulty: 1
+    icon: POPPY
+    points: 0
+    reward: 15
