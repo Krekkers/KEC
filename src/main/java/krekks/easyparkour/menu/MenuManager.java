@@ -1,4 +1,4 @@
-package krekks.easyparkour.system.menusystem;
+package krekks.easyparkour.menu;
 
 import org.bukkit.entity.Player;
 

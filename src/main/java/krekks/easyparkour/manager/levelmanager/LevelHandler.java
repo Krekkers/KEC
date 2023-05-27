@@ -1,4 +1,4 @@
-package krekks.easyparkour.system.levelsystem;
+package krekks.easyparkour.manager.levelmanager;
 
 import krekks.easyparkour.playerdata.PlayerData;
 import krekks.easyparkour.playerdata.PlayerDataHandler;

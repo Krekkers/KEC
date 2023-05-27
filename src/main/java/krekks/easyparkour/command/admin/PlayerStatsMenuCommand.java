@@ -1,7 +1,7 @@
 package krekks.easyparkour.command.admin;
 
 import krekks.easyparkour.playerdata.PlayerDataHandler;
-import krekks.easyparkour.system.menusystem.menu.PlayerStatsMenu;
+import krekks.easyparkour.menu.menu.PlayerStatsMenu;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import static krekks.easyparkour.KEP.config;
-import static krekks.easyparkour.system.menusystem.MenuManager.getMenuUtility;
+import static krekks.easyparkour.menu.MenuManager.getMenuUtility;
 
 public class PlayerStatsMenuCommand implements CommandExecutor {
     //DominikPro4252 made me think of this

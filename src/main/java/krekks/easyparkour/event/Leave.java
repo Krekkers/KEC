@@ -8,7 +8,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import java.sql.SQLException;
 
 import static krekks.easyparkour.playerdata.PlayerDataHandler.removeFromList;
-import static krekks.easyparkour.system.storage.PlayerSaveUtil.savePlayer;
+import static krekks.easyparkour.storage.PlayerSaveUtil.savePlayer;
 
 public class Leave implements Listener {
     @EventHandler

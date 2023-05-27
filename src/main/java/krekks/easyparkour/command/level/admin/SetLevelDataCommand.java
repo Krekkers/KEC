@@ -1,8 +1,8 @@
 package krekks.easyparkour.command.level.admin;
 
 import krekks.easyparkour.misc.KrekkMessages;
-import krekks.easyparkour.system.levelsystem.LevelData;
-import krekks.easyparkour.system.levelsystem.LevelHandler;
+import krekks.easyparkour.manager.levelmanager.LevelData;
+import krekks.easyparkour.manager.levelmanager.LevelHandler;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.Command;

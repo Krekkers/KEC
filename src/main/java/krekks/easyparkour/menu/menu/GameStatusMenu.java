@@ -1,7 +1,7 @@
-package krekks.easyparkour.system.menusystem.menu;
+package krekks.easyparkour.menu.menu;
 
-import krekks.easyparkour.system.menusystem.Menu;
-import krekks.easyparkour.system.menusystem.MenuUtility;
+import krekks.easyparkour.menu.Menu;
+import krekks.easyparkour.menu.MenuUtility;
 import org.bukkit.Material;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;

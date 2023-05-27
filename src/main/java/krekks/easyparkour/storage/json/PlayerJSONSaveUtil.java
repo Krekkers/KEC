@@ -1,4 +1,4 @@
-package krekks.easyparkour.system.storage.json;
+package krekks.easyparkour.storage.json;
 
 import krekks.easyparkour.playerdata.PlayerData;
 import org.json.simple.JSONObject;
@@ -14,9 +14,6 @@ public class PlayerJSONSaveUtil {
         JSONObject jsonObject = new JSONObject();
         //add values
         jsonObject.put("key", "value");
-
-
-
         //save data
         try {
             FileWriter file = new FileWriter("");
@@ -30,7 +27,6 @@ public class PlayerJSONSaveUtil {
 
     public int getSavedPoints(PlayerData pd){
         //gets points
-
 
         //sets points
         pd.setPoints(1);

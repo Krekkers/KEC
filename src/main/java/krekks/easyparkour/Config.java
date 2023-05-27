@@ -26,7 +26,7 @@ public class Config {
     //materials
     public Material checkpoint;
     public Material nextLevel;
-    public Material boost = Material.DIAMOND_BLOCK;
+    public Material boost;
     public Material floatblock;
     //text
     public String checkpointText;
@@ -61,13 +61,16 @@ public class Config {
         checkpoint = Material.matchMaterial(fileConfig.getString("parkoursettings.blocks.checkpointblock"));
         nextLevel = Material.matchMaterial(fileConfig.getString("parkoursettings.blocks.nextlevelblock"));
         boost = Material.matchMaterial(fileConfig.getString("parkoursettings.blocks.boostblock"));
+        floatblock = Material.matchMaterial(fileConfig.getString("parkoursettings.blocks.floatblock"));
+        //-----------
         getLogger().info("Setting up Text");
         checkpointText = fileConfig.getString("parkoursettings.messages.checkpointmessage");
+        //-----------
         getLogger().info("Setting up sounds");
         MENUCLICKNOISE = Sound.valueOf(fileConfig.getString("parkoursettings.sounds.menuclicksound"));
         checkpointSound = Sound.valueOf(fileConfig.getString("parkoursettings.sounds.checkpointsound"));
         nextLevelSound = Sound.valueOf(fileConfig.getString("parkoursettings.sounds.nextlevelsound"));
-
+        //-----------
         getLogger().info("Loading Game settings");
         checkpointOnly = fileConfig.getBoolean("parkoursettings.gamesettings.checkpointonly");
         spawnWorld = fileConfig.getString("parkoursettings.gamesettings.spawnlocation.world");
@@ -76,7 +79,8 @@ public class Config {
         spawn.setY(fileConfig.getDouble("parkoursettings.gamesettings.spawnlocation.y"));
         spawn.setZ(fileConfig.getDouble("parkoursettings.gamesettings.spawnlocation.z"));
         spawn.setYaw((float) fileConfig.getDouble("parkoursettings.gamesettings.spawnlocation.rotation"));
-
+        //-----------
+        getLogger().info("Loading color settings");
         this.primary = ChatColor.valueOf(fileConfig.getString("parkoursettings.colors.primary"));
         this.secondary = ChatColor.valueOf(fileConfig.getString("parkoursettings.colors.secondary"));
         this.gray = ChatColor.valueOf(fileConfig.getString("parkoursettings.colors.secondary"));
@@ -91,7 +95,7 @@ public class Config {
             dbTable         = "kr_" + fileConfig.getString("parkoursettings.database.table");
         }
         LB_refreshRate = fileConfig.getInt("parkoursettings.leaderboardrefreshrate") * 20 * 60; // makes it so refresh rate in minutes
-        getLogger().info("REFRESHRATE : " + LB_refreshRate);
+        getLogger().info("Leaderboard refresh rate : " + LB_refreshRate / 20 / 60);
 
 
     }

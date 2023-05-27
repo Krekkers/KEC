@@ -1,12 +1,12 @@
 package krekks.easyparkour.command.admin;
 
-import krekks.easyparkour.system.menusystem.menu.GameStatusMenu;
+import krekks.easyparkour.menu.menu.GameStatusMenu;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import static krekks.easyparkour.system.menusystem.MenuManager.getMenuUtility;
+import static krekks.easyparkour.menu.MenuManager.getMenuUtility;
 
 public class GameManagerCommand implements CommandExecutor {
     @Override

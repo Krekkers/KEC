@@ -1,4 +1,4 @@
-package krekks.easyparkour.system.leaderboardsystem;
+package krekks.easyparkour.manager.leaderboardmanager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

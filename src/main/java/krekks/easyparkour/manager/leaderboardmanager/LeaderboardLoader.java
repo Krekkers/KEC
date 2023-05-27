@@ -1,7 +1,7 @@
-package krekks.easyparkour.system.leaderboardsystem;
+package krekks.easyparkour.manager.leaderboardmanager;
 
 
-import krekks.easyparkour.system.storage.PlayerSaveUtil;
+import krekks.easyparkour.storage.PlayerSaveUtil;
 import org.bukkit.Bukkit;
 
 import java.util.ArrayList;

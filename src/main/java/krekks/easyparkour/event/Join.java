@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 import static krekks.easyparkour.KEP.config;
 import static krekks.easyparkour.playerdata.PlayerDataHandler.AddToList;
-import static krekks.easyparkour.system.storage.PlayerSaveUtil.savePlayer;
+import static krekks.easyparkour.storage.PlayerSaveUtil.savePlayer;
 
 public class Join implements Listener {
     @EventHandler

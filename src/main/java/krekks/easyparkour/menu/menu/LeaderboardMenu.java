@@ -1,9 +1,9 @@
-package krekks.easyparkour.system.menusystem.menu;
+package krekks.easyparkour.menu.menu;
 
 import krekks.easyparkour.playerdata.PlayerData;
-import krekks.easyparkour.system.leaderboardsystem.LeaderboardPlayer;
-import krekks.easyparkour.system.menusystem.Menu;
-import krekks.easyparkour.system.menusystem.MenuUtility;
+import krekks.easyparkour.manager.leaderboardmanager.LeaderboardPlayer;
+import krekks.easyparkour.menu.Menu;
+import krekks.easyparkour.menu.MenuUtility;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 import static krekks.easyparkour.KEP.config;
 import static krekks.easyparkour.misc.item.CustomItem.createCustomItem;
-import static krekks.easyparkour.system.leaderboardsystem.LeaderboardLoader.lb_List;
+import static krekks.easyparkour.manager.leaderboardmanager.LeaderboardLoader.lb_List;
 
 public class LeaderboardMenu extends Menu {
 

@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import static krekks.easyparkour.KEP.gameWorld;
-import static krekks.easyparkour.system.levelsystem.LevelHandler.createNewLevel;
+import static krekks.easyparkour.manager.levelmanager.LevelHandler.createNewLevel;
 
 public class AddNewLevelCommand implements CommandExecutor {
     @Override

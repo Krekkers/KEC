@@ -1,6 +1,6 @@
 package krekks.easyparkour.event;
 
-import krekks.easyparkour.system.menusystem.Menu;
+import krekks.easyparkour.menu.Menu;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;

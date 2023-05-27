@@ -1,12 +1,12 @@
 package krekks.easyparkour.command.level.admin;
 
-import krekks.easyparkour.system.levelsystem.LevelData;
+import krekks.easyparkour.manager.levelmanager.LevelData;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import static krekks.easyparkour.system.levelsystem.LevelHandler.*;
+import static krekks.easyparkour.manager.levelmanager.LevelHandler.*;
 
 public class DeleteLevelCommand implements CommandExecutor {
     @Override

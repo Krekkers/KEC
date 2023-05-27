@@ -7,7 +7,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import static krekks.easyparkour.system.levelsystem.LevelHandler.playerSetParkourLevel;
+import static krekks.easyparkour.manager.levelmanager.LevelHandler.playerSetParkourLevel;
 
 public class SetLevelCommand implements CommandExecutor {
     @Override

@@ -14,22 +14,20 @@ import krekks.easyparkour.command.level.admin.AddNewLevelCommand;
 import krekks.easyparkour.command.level.admin.DeleteLevelCommand;
 import krekks.easyparkour.command.level.admin.SetLevelDataCommand;
 import krekks.easyparkour.event.*;
-import krekks.easyparkour.playerdata.PlayerDataHandler;
-import krekks.easyparkour.system.leaderboardsystem.LeaderboardHandler;
+import krekks.easyparkour.manager.leaderboardmanager.LeaderboardHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.sql.SQLException;
 
-import static krekks.easyparkour.system.leaderboardsystem.LeaderboardLoader.initLeaderboard;
-import static krekks.easyparkour.system.levelsystem.LevelHandler.loadParkourLevels;
-import static krekks.easyparkour.system.levelsystem.LevelHandler.saveLevels;
-import static krekks.easyparkour.system.storage.PlayerSaveUtil.initDB;
+import static krekks.easyparkour.manager.leaderboardmanager.LeaderboardLoader.initLeaderboard;
+import static krekks.easyparkour.manager.levelmanager.LevelHandler.loadParkourLevels;
+import static krekks.easyparkour.manager.levelmanager.LevelHandler.saveLevels;
+import static krekks.easyparkour.storage.PlayerSaveUtil.initDB;
 
 public final class KEP extends JavaPlugin {
 
@@ -53,18 +51,11 @@ public final class KEP extends JavaPlugin {
         commandSetup();
         //licenseCheck();
         // if the plugin gets reloaded I want it to not break
-        getLogger().info("If there are any online players they now have no checkpoint location!");
-        for(Player p : Bukkit.getOnlinePlayers()){
-            PlayerDataHandler.AddToList(p,null);
-        }
         try {
             initDB();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        //bstats
-        final int pluginId = 15743;
-        Metrics metrics = new Metrics(this,pluginId);
         getLogger().info("Reloading is not supported.");
         initLeaderboard();
         LeaderboardHandler.loadLeaderboards();

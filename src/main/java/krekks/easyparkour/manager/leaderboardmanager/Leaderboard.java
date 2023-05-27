@@ -1,4 +1,4 @@
-package krekks.easyparkour.system.leaderboardsystem;
+package krekks.easyparkour.manager.leaderboardmanager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -10,7 +10,7 @@ import org.bukkit.entity.EntityType;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-import static krekks.easyparkour.system.leaderboardsystem.LeaderboardLoader.lb_List;
+import static krekks.easyparkour.manager.leaderboardmanager.LeaderboardLoader.lb_List;
 
 public class Leaderboard {
     //holds all the data for the leaderboard itself

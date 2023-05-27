@@ -1,14 +1,14 @@
 package krekks.easyparkour.command.leaderboard;
 
 
-import krekks.easyparkour.system.leaderboardsystem.Leaderboard;
+import krekks.easyparkour.manager.leaderboardmanager.Leaderboard;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
 import static krekks.easyparkour.KEP.config;
-import static krekks.easyparkour.system.leaderboardsystem.LeaderboardHandler.leaderboard_List;
+import static krekks.easyparkour.manager.leaderboardmanager.LeaderboardHandler.leaderboard_List;
 
 public class ListAllLeaderboardsCommand implements CommandExecutor {
     @Override

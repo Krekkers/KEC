@@ -1,7 +1,7 @@
 package krekks.easyparkour.event;
 
 import krekks.easyparkour.playerdata.PlayerDataHandler;
-import krekks.easyparkour.system.menusystem.menu.LevelSelectionMenu;
+import krekks.easyparkour.menu.menu.LevelSelectionMenu;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,7 +13,7 @@ import java.util.Objects;
 import static krekks.easyparkour.misc.item.ItemMaker.checkpointItem;
 import static krekks.easyparkour.misc.item.ItemMaker.levelSelector;
 import static krekks.easyparkour.playerdata.PlayerDataHandler.getPlayerDataFromList;
-import static krekks.easyparkour.system.menusystem.MenuManager.getMenuUtility;
+import static krekks.easyparkour.menu.MenuManager.getMenuUtility;
 
 public class Interact implements Listener {
     @EventHandler

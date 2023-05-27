@@ -1,8 +1,8 @@
-package krekks.easyparkour.system.storage;
+package krekks.easyparkour.storage;
 
 
 import krekks.easyparkour.playerdata.PlayerData;
-import krekks.easyparkour.system.leaderboardsystem.LeaderboardPlayer;
+import krekks.easyparkour.manager.leaderboardmanager.LeaderboardPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 import java.sql.*;
 
 import static krekks.easyparkour.playerdata.PlayerDataHandler.playerList;
-import static krekks.easyparkour.system.leaderboardsystem.LeaderboardLoader.lb_List;
+import static krekks.easyparkour.manager.leaderboardmanager.LeaderboardLoader.lb_List;
 
 public class PlayerSaveUtil {
     static Connection connection = null;

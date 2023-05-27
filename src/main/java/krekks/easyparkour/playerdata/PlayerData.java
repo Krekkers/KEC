@@ -1,14 +1,14 @@
 package krekks.easyparkour.playerdata;
 
-import krekks.easyparkour.system.levelsystem.LevelData;
+import krekks.easyparkour.manager.levelmanager.LevelData;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 import static krekks.easyparkour.Config.multipliers;
 import static krekks.easyparkour.KEP.config;
-import static krekks.easyparkour.system.levelsystem.LevelHandler.levelList;
-import static krekks.easyparkour.system.storage.PlayerSaveUtil.*;
+import static krekks.easyparkour.manager.levelmanager.LevelHandler.levelList;
+import static krekks.easyparkour.storage.PlayerSaveUtil.*;
 
 public class PlayerData {
     Player player;
@@ -46,8 +46,6 @@ public class PlayerData {
         this.points += points;
     }
 
-
-
     public void setFinishCount(int finishCount) {
         this.finishCount = finishCount;
     }
@@ -61,17 +59,12 @@ public class PlayerData {
     public void setPlayer(Player _p){
         player = _p;
     }
-    public void setGoBackCounter(int b) { goBackCounter = b; }
     public int getPoints() {
         return points;
     }
     public Player getPlayer(){
         return player;
     }
-    public int getGoBackCounter(){
-        return goBackCounter;
-    }
-    //public Block getCheckpointBlock() { return checkpointBlock; }
     public LevelData getLevelData(){ return levelList.get(level); }
     public int getLevel() {
         return level;

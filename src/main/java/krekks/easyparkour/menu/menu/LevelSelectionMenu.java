@@ -1,9 +1,9 @@
-package krekks.easyparkour.system.menusystem.menu;
+package krekks.easyparkour.menu.menu;
 
 import krekks.easyparkour.playerdata.PlayerData;
-import krekks.easyparkour.system.levelsystem.LevelData;
-import krekks.easyparkour.system.menusystem.Menu;
-import krekks.easyparkour.system.menusystem.MenuUtility;
+import krekks.easyparkour.manager.levelmanager.LevelData;
+import krekks.easyparkour.menu.Menu;
+import krekks.easyparkour.menu.MenuUtility;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -16,8 +16,8 @@ import java.util.stream.Collectors;
 
 import static krekks.easyparkour.KEP.config;
 import static krekks.easyparkour.misc.item.CustomItem.createCustomItem;
-import static krekks.easyparkour.system.levelsystem.LevelHandler.levelList;
-import static krekks.easyparkour.system.levelsystem.LevelHandler.playerSetParkourLevel;
+import static krekks.easyparkour.manager.levelmanager.LevelHandler.levelList;
+import static krekks.easyparkour.manager.levelmanager.LevelHandler.playerSetParkourLevel;
 
 public class LevelSelectionMenu extends Menu {
 

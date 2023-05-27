@@ -1,4 +1,4 @@
-package krekks.easyparkour.system.holograms;
+package krekks.easyparkour.manager.hologrammanager;
 
 import org.bukkit.Location;
 

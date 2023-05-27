@@ -1,4 +1,4 @@
-package krekks.easyparkour.system.levelsystem;
+package krekks.easyparkour.manager.levelmanager;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
